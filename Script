@@ -277,7 +277,7 @@ local Section6 = Tab6:AddSection({
 Tab6:AddButton({
     Name = "3 HJ ÇEK!",
     Callback = function()
-        local messages = {"Bir.", "B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ"}
+        local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ"}
         for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
             task.wait(2)
