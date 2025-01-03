@@ -345,7 +345,7 @@ Tab4:AddButton({
             end
         end
 
-        teleportTo("MetroDoor2")
+        teleportTo("MetroDoor2") 
     end
 })
 
@@ -511,24 +511,26 @@ SORU 6: - Kirpi aracını kimlerin ne şartlarla sürebildiğini açıklayınız
 SORU 7: - KK birimlerini sayınız.
 
 → • Zırhlı Birlikler
-→ •Börü
+→ • Börü
 → • Komando Harp Okulu (KHO)
 
-SORU 8: Komando Harp Okulu (KHO)'nun bir görevinden bahsediniz.
+SORU 8: - Komando Harp Okulu (KHO)'nun bir görevinden bahsediniz.
 
-→KK eğitimlerini ve etkinliklerini korur.
+→ KK eğitimlerini ve etkinliklerini korur.
 
-SORU 9: Zırhlı Birlikerin bir görevinden behsediniz.
+SORU 9: - Zırhlı Birlikerin bir görevinden behsediniz.
 
-→Denetimlerde Kara Kuvvetlerini korur. KK Yönetimi jç
+→ 
 
-SORU 10: Börü Timi'nin bir görevinden bahsediniz.
+SORU 10: - Börü Timi'nin bir görevinden bahsediniz.
 
-→
+→ • Denetimlerde Kara Kuvvetlerini korur.
+→ • Kara Kuvvtleri Yönetimi için raporlama yapar.
 
-SORU 11: Araç kurallarından 2 tanesine örnek veriniz.
+SORU 11: - Araç kurallarından 2 tanesine örnek veriniz.
 
-→
+→ • Hız sınırını aşmayınız.
+→ • Aracı sürerken hiçbir yere çarpmayınız.
 
 SORU 12: - Birim liderimizin birinin adını söyleyiniz
 
