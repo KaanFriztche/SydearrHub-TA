@@ -481,7 +481,7 @@ local Section8 = Tab8:AddSection({
     Name = "- Eğitim Soruları -"
 })
 
-Tab7:AddParagraph("Eğitim Soruları Nelerdir?", [[
+Tab8:AddParagraph("Eğitim Soruları Nelerdir?", [[
 
 1)  + TA'da ilk 5000 üye olan, şu anda da en büyük branş olarak geçen branşın adı nedir?
 
