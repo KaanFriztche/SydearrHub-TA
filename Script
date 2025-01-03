@@ -262,6 +262,73 @@ local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi."
     end
 })
 
+-- Create a tab
+local Tab6 = Window:MakeTab({
+    Name = "HJ",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Add a section to the tab
+local Section6 = Tab6:AddSection({
+    Name = "- Hummer Jackler -"
+})
+
+Tab6:AddButton({
+    Name = "3 HJ ÇEK!",
+    Callback = function()
+        local messages = {"Bir.", "B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+Tab6:AddButton({
+    Name = "4 HJ ÇEK!",
+    Callback = function()
+        local messages = {"Bir.", "B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R" "T", "DÖRT"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+Tab6:AddButton({
+    Name = "5 HJ ÇEK!",
+    Callback = function()
+        local messages = {"Bir.", "B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R" "T", "DÖRT" "B", "E", "Ş", "BEŞ"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+Tab6:AddButton({
+    Name = "6 HJ ÇEK!",
+    Callback = function()
+        local messages = {"Bir.", "B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R" "T", "DÖRT" "B", "E", "Ş", "BEŞ", "A", "L", "T", "I", "ALTI"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+Tab6:AddButton({
+    Name = "7 HJ ÇEK!",
+    Callback = function()
+        local messages = {"Bir.", "B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R" "T", "DÖRT" "B", "E", "Ş", "BEŞ", "A", "L", "T", "I", "ALTI", "Y", "E", "D", "İ"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
 -- Create Tab 3
 local Tab4 = Window:MakeTab({
     Name = "Teleport",
