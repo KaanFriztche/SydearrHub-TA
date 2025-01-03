@@ -288,8 +288,8 @@ Tab6:AddButton({
 Tab6:AddButton({
     Name = "4 HJ ÇEK!",
     Callback = function()
-        local messages = {"Bir.", "B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT"}
-        for _, message in ipairs(messages) do
+        local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT"}   
+for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
             task.wait(2)
         end
