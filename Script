@@ -280,7 +280,7 @@ Tab6:AddButton({
         local messages = {"Bir.", "B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ"}
         for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            tasks.wait(2)
+            task.wait(2)
         end
     end
 })
@@ -291,7 +291,7 @@ Tab6:AddButton({
         local messages = {"Bir.", "B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT"}
         for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            tasks.wait(2)
+            task.wait(2)
         end
     end
 })
@@ -302,7 +302,7 @@ Tab6:AddButton({
         local messages = {"Bir.", "B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT" "B", "E", "Ş", "BEŞ"}
         for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            tasks.wait(2)
+            task.wait(2)
         end
     end
 })
@@ -313,7 +313,7 @@ Tab6:AddButton({
         local messages = {"Bir.", "B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT" "B", "E", "Ş", "BEŞ", "A", "L", "T", "I", "ALTI"}
         for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            tasks.wait(2)
+            task.wait(2)
         end
     end
 })
@@ -324,7 +324,7 @@ Tab6:AddButton({
         local messages = {"Bir.", "B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT" "B", "E", "Ş", "BEŞ", "A", "L", "T", "I", "ALTI", "Y", "E", "D", "İ"}
         for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            tasks.wait(2)
+            task.wait(2)
         end
     end
 })
