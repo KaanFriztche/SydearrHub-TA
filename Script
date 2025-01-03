@@ -483,60 +483,60 @@ local Section8 = Tab8:AddSection({
 
 Tab7:AddParagraph("Eğitim Soruları Nelerdir?", [[
 
-SORU 1: - TA'da ilk 5000 üye olan, şu anda da en büyük branş olarak geçen branşın adı nedir?
+SORU 1: + TA'da ilk 5000 üye olan, şu anda da en büyük branş olarak geçen branşın adı nedir?
 
 → KKK
 
-SORU 2: - TA'da en büyük birime ev sahipliği yapan branş hangisidir?
+SORU 2: + TA'da en büyük birime ev sahipliği yapan branş hangisidir?
 
 → KKK
 
-SORU 3: - KK Komutanı kimdir?
+SORU 3: + KK Komutanı kimdir?
 
 → emrcn56
 
-SORU 4: - KK Yönetimi'nden bir isme örnek veriniz.
+SORU 4: + KK Yönetimi'nden bir isme örnek veriniz.
 
 → Sheader_1
 
-SORU 5: - KK kurallarına örnek veriniz.
+SORU 5: + KK kurallarına örnek veriniz.
 
 → Man Face zorunludur.
 
 
-SORU 6: - Kirpi aracını kimlerin ne şartlarla sürebildiğini açıklayınız.
+SORU 6: + Kirpi aracını kimlerin ne şartlarla sürebildiğini açıklayınız.
 
 → P@EB+ ehliyeti olmak şartıyla sürebilir.
 
-SORU 7: - KK birimlerini sayınız.
+SORU 7: + KK birimlerini sayınız.
 
 → • Zırhlı Birlikler
 → • Börü
 → • Komando Harp Okulu (KHO)
 
-SORU 8: - Komando Harp Okulu (KHO)'nun bir görevinden bahsediniz.
+SORU 8: + Komando Harp Okulu (KHO)'nun bir görevinden bahsediniz.
 
 → KK eğitimlerini ve etkinliklerini korur.
 
-SORU 9: - Zırhlı Birlikerin bir görevinden behsediniz.
+SORU 9: + Zırhlı Birlikerin bir görevinden behsediniz.
 
 → 
 
-SORU 10: - Börü Timi'nin bir görevinden bahsediniz.
+SORU 10: + Börü Timi'nin bir görevinden bahsediniz.
 
 → • Denetimlerde Kara Kuvvetlerini korur.
 → • Kara Kuvvtleri Yönetimi için raporlama yapar.
 
-SORU 11: - Araç kurallarından 2 tanesine örnek veriniz.
+SORU 11: + Araç kurallarından 2 tanesine örnek veriniz.
 
 → • Hız sınırını aşmayınız.
 → • Aracı sürerken hiçbir yere çarpmayınız.
 
-SORU 12: - Birim liderimizin birinin adını söyleyiniz
+SORU 12: + Birim liderimizin birinin adını söyleyiniz
 
 → RANDOWTR
 
-SORU 13: - TA'nın şu anki m@reşali kimdir?
+SORU 13: + TA'nın şu anki m@reşali kimdir?
 
 → OzgunFriztche
 
