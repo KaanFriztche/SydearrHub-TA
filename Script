@@ -1,0 +1,705 @@
+local player = game.Players.LocalPlayer
+local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/newfile.lua'))()
+
+local Window = OrionLib:MakeWindow({
+    Name = "Sydearr Hub - TA",
+    HidePremium = false,
+    SaveConfig = true,
+    ConfigFolder = "OrionTest"
+})
+
+-- Create a tab
+local Tab1 = Window:MakeTab({
+    Name = "Anasayfa",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Add a section to the tab
+local Section1 = Tab1:AddSection({
+    Name = "- GUI Anasayfası -"
+})
+
+Tab1:AddParagraph("Sydearr Hub Sunar:", [[
+ 
+- Yapılan ilk TA GUI hilesidir.
+ 
+- Sunucumuza gelip GUI hakkında isteklerinizi belirtebilirsiniz.
+ 
+- Discord sunucumuzda mümkün olduğunca güncelleme isteyebilirsiniz ama güncelleme'nin ne hakkında olması gerektiğini bildirmeniz gerekir.
+ 
+- Teleport bölgeleri, siz yakalanmayın diye metro istasyonları olarak ayarlandı.
+]])
+
+
+Tab1:AddParagraph("Olası Güncellemeler:", [[
+
+- JJ ve GJ lere: durdurma , devam ettirme , sıfırlama gibi butonlar ekleyebiliriz.
+
+- Dönüşler: En yakındaki kişilerin mesajlarını tespit edip Ona göre ekrana bu komutu yerine getirmesi gerektiği ile ilgili bir buton gelebilir ve ona basınca komuta göre dönüşleri gerçekleştirebilir.
+
+~ Örneğin: MR size sadece Sağa dön! / Sağa dön. Dediğinde ekrana bu komutu yerine getirecek bir butonun gelebilir ve ona basınca 90° sağa dönecek şekilde ayarlayabiliriz.
+]])
+
+Tab1:AddParagraph("Discord Sunucularımız:", [[
+
+- Ana Sunucumuz: https://discord.gg/xTafcNjWcd
+
+- Script Sunucumuz: https://discord.gg/AR2AeEnPDG
+]])
+
+Tab1:AddParagraph("Destekleriniz İçin Teşekkürler:", [[
+
+- @ross_x1 
+
+- @rip_sigma_31
+
+- @rewaqz
+]])
+
+
+-- Create a tab
+local Tab2 = Window:MakeTab({
+    Name = "JJ",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Add a section to the tab
+local Section2 = Tab2:AddSection({
+    Name = "- Jump Jackler -"
+})
+
+-- Create a notification
+OrionLib:MakeNotification({
+    Name = "Hoşgeldin!",
+    Content = "Sydearr Hub'a Hoşgeldin!",
+    Image = "rbxassetid://4483345998",
+    Time = 8
+})
+
+-- Add buttons to the tab
+Tab2:AddButton({
+    Name = "20 JJ ÇEK!",
+    Callback = function()
+        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
+            "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+Tab2:AddButton({
+    Name = "30 JJ ÇEK!",
+    Callback = function()
+        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
+            "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+Tab2:AddButton({
+    Name = "40 JJ ÇEK!",
+    Callback = function()
+        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
+            "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ",
+            "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+Tab2:AddButton({
+    Name = "50 JJ ÇEK!",
+    Callback = function()
+local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+        "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
+        "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ",
+        "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK",
+        "KIRK BİR", "KIRK İKİ", "KIRK ÜÇ", "KIRK DÖRT", "KIRK BEŞ", "KIRK ALTI", "KIRK YEDİ", "KIRK SEKİZ", "KIRK DOKUZ", "ELLİ"}
+    for _, message in ipairs(messages) do
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+        wait(2)
+       end
+    end
+})
+
+Tab2:AddButton({
+    Name = "100 JJ ÇEK!",
+    Callback = function()
+local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+        "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
+        "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ",
+        "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK",
+        "KIRK BİR", "KIRK İKİ", "KIRK ÜÇ", "KIRK DÖRT", "KIRK BEŞ", "KIRK ALTI", "KIRK YEDİ", "KIRK SEKİZ", "KIRK DOKUZ", "ELLİ",
+        "ELLİ BİR", "ELLİ İKİ", "ELLİ ÜÇ", "ELLİ DÖRT", "ELLİ BEŞ", "ELLİ ALTI", "ELLİ YEDİ", "ELLİ SEKİZ", "ELLİ DOKUZ", "ALTMIŞ", "ALTMIŞ BİR", "ALTMIŞ İKİ", "ALTMIŞ ÜÇ", "ALTMIŞ DÖRT", "ALTMIŞ BEŞ", 
+    "ALTMIŞ ALTI", "ALTMIŞ YEDİ", "ALTMIŞ SEKİZ", "ALTMIŞ DOKUZ", "YETMİŞ", "YETMİŞ BİR", 
+    "YETMİŞ İKİ", "YETMİŞ ÜÇ", "YETMİŞ DÖRT", "YETMİŞ BEŞ", "YETMİŞ ALTI", "YETMİŞ YEDİ", 
+    "YETMİŞ SEKİZ", "YETMİŞ DOKUZ", "SEKSEN", "SEKSEN BİR", "SEKSEN İKİ", "SEKSEN ÜÇ", "SEKSEN DÖRT", 
+    "SEKSEN BEŞ", "SEKSEN ALTI", "SEKSEN YEDİ", "SEKSEN SEKİZ", "SEKSEN DOKUZ", "DOKSAN", 
+    "DOKSAN BİR", "DOKSAN İKİ", "DOKSAN ÜÇ", "DOKSAN DÖRT", "DOKSAN BEŞ", "DOKSAN ALTI", "DOKSAN YEDİ", 
+    "DOKSAN SEKİZ", "DOKSAN DOKUZ", "YÜZ"}
+    for _, message in ipairs(messages) do
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+        wait(2)
+       end
+    end
+})
+
+-- Create a tab
+local Tab3 = Window:MakeTab({
+    Name = "GJ",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Add a section to the tab
+local Section3 = Tab3:AddSection({
+    Name = "- Grammer Jackler -"
+})
+
+-- Add buttons to the tab
+Tab3:AddButton({
+    Name = "20 GJ ÇEK!",
+    Callback = function()
+        local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi.", "Sekiz.", "Dokuz.", "On.",
+ "On bir.", "On iki.", "On üç.", "On dört.", "On beş.",
+ "On altı.", "On yedi.", "On sekiz.", "On dokuz.", "Yirmi."}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+Tab3:AddButton({
+    Name = "30 GJ ÇEK!",
+    Callback = function()
+        local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi.", "Sekiz.", "Dokuz.", "On.",
+ "On bir.", "On iki.", "On üç.", "On dört.", "On beş.",
+ "On altı.", "On yedi.", "On sekiz.", "On dokuz.", "Yirmi.",
+ "Yirmi bir.", "Yirmi iki.", "Yirmi üç.", "Yirmi dört.", "Yirmi beş.",
+ "Yirmi altı.", "Yirmi yedi.", "Yirmi sekiz.", "Yirmi dokuz.", "Otuz."}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+Tab3:AddButton({
+    Name = "40 GJ ÇEK!",
+    Callback = function()
+        local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi.", "Sekiz.", "Dokuz.", "On.",
+ "On bir.", "On iki.", "On üç.", "On dört.", "On beş.",
+ "On altı.", "On yedi.", "On sekiz.", "On dokuz.", "Yirmi.",
+ "Yirmi bir.", "Yirmi iki.", "Yirmi üç.", "Yirmi dört.", "Yirmi beş.",
+ "Yirmi altı.", "Yirmi yedi.", "Yirmi sekiz.", "Yirmi dokuz.", "Otuz.",
+ "Otuz bir.", "Otuz iki.", "Otuz üç.", "Otuz dört.", "Otuz beş.",
+ "Otuz altı.", "Otuz yedi.", "Otuz sekiz.", "Otuz dokuz.", "Kırk."}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+Tab3:AddButton({
+    Name = "50 GJ ÇEK!",
+    Callback = function()
+local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi.", "Sekiz.", "Dokuz.", "On.",
+ "On bir.", "On iki.", "On üç.", "On dört.", "On beş.",
+ "On altı.", "On yedi.", "On sekiz.", "On dokuz.", "Yirmi.",
+ "Yirmi bir.", "Yirmi iki.", "Yirmi üç.", "Yirmi dört.", "Yirmi beş.",
+ "Yirmi altı.", "Yirmi yedi.", "Yirmi sekiz.", "Yirmi dokuz.", "Otuz.",
+ "Otuz bir.", "Otuz iki.", "Otuz üç.", "Otuz dört.", "Otuz beş.",
+ "Otuz altı.", "Otuz yedi.", "Otuz sekiz.", "Otuz dokuz.", "Kırk.",
+ "Kırk bir.", "Kırk iki.", "Kırk üç.", "Kırk dört.", "Kırk beş.",
+ "Kırk altı.", "Kırk yedi.", "Kırk sekiz.", "Kırk dokuz.", "Elli."}
+    for _, message in ipairs(messages) do
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+        wait(2)
+       end
+    end
+})
+
+Tab3:AddButton({
+    Name = "100 GJ ÇEK!",
+    Callback = function()
+local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi.", "Sekiz.", "Dokuz.", "On.",
+ "On bir.", "On iki.", "On üç.", "On dört.", "On beş.",
+ "On altı.", "On yedi.", "On sekiz.", "On dokuz.", "Yirmi.",
+ "Yirmi bir.", "Yirmi iki.", "Yirmi üç.", "Yirmi dört.", "Yirmi beş.",
+ "Yirmi altı.", "Yirmi yedi.", "Yirmi sekiz.", "Yirmi dokuz.", "Otuz.",
+ "Otuz bir.", "Otuz iki.", "Otuz üç.", "Otuz dört.", "Otuz beş.",
+ "Otuz altı.", "Otuz yedi.", "Otuz sekiz.", "Otuz dokuz.", "Kırk.",
+ "Kırk bir.", "Kırk iki.", "Kırk üç.", "Kırk dört.", "Kırk beş.",
+ "Kırk altı.", "Kırk yedi.", "Kırk sekiz.", "Kırk dokuz.", "Elli.",
+ "Elli bir.", "Elli iki.", "Elli üç.", "Elli dört.", "Elli beş.",
+ "Elli altı.", "Elli yedi.", "Elli sekiz.", "Elli dokuz.", "Altmış.",
+ "Altmış bir.", "Altmış iki.", "Altmış üç.", "Altmış dört.", "Altmış beş.",
+ "Altmış altı.", "Altmış yedi.", "Altmış sekiz.", "Altmış dokuz.", "Yetmiş.",
+ "Yetmiş bir.", "Yetmiş iki.", "Yetmiş üç.", "Yetmiş dört.", "Yetmiş beş.",
+ "Yetmiş altı.", "Yetmiş yedi.", "Yetmiş sekiz.", "Yetmiş dokuz.", "Seksen.",
+ "Seksen bir.", "Seksen iki.", "Seksen üç.", "Seksen dört.", "Seksen beş.",
+ "Seksen altı.", "Seksen yedi.", "Seksen sekiz.", "Seksen dokuz.", "Doksan.",
+ "Doksan bir.", "Doksan iki.", "Doksan üç.", "Doksan dört.", "Doksan beş.",
+ "Doksan altı.", "Doksan yedi.", "Doksan sekiz.", "Doksan dokuz.", "Yüz."}
+    for _, message in ipairs(messages) do
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+        wait(2)
+       end
+    end
+})
+
+-- Create Tab 3
+local Tab4 = Window:MakeTab({
+    Name = "Teleport",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Add a section to Tab 3
+local Section4 = Tab4:AddSection({
+    Name = "- Teleport Bölgeleri -"
+})
+
+-- Add TSK BASE button to Tab 3
+Tab4:AddButton({
+    Name = "TSK Base",
+    Callback = function()
+        local teleportLocations = {
+            MetroDoor = Vector3.new(3077.62, 34.01, -252.62)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("MetroDoor")
+    end
+})
+
+-- Add TSK BASE button to Tab 3
+Tab4:AddButton({
+    Name = "Denetim Alanı",
+    Callback = function()
+        local teleportLocations = {
+            MetroDoor1 = Vector3.new(1143.87, 13.76, -253.43)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("MetroDoor1")
+    end
+})
+
+-- Add TSK BASE button to Tab 3
+Tab4:AddButton({
+    Name = "HKK Base",
+    Callback = function()
+        local teleportLocations = {
+            MetroDoor2 = Vector3.new(1278.45, 33.45, 1510.48)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("MetroDoor2")
+    end
+})
+
+-- Add TSK BASE button to Tab 3
+Tab4:AddButton({
+    Name = "Kafeterya",
+    Callback = function()
+        local teleportLocations = {
+            MetroDoor3 = Vector3.new(2927.18, 105.48, 536.67)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("MetroDoor3")
+    end
+})
+
+-- Add TSK BASE button to Tab 3
+Tab4:AddButton({
+    Name = "Düşman Adası",
+    Callback = function()
+        local teleportLocations = {
+            MetroDoor4 = Vector3.new(-2037.29, 17.98, -364.72)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("MetroDoor4")
+    end
+})
+
+-- Create a tab
+local Tab7 = Window:MakeTab({
+    Name = "Temel Bilgiler",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Add a section to the tab
+local Section7 = Tab7:AddSection({
+    Name = "- Bilmeniz Gerekenler -"
+})
+
+Tab7:AddParagraph("Nasıl Tekmil Verilir?", [[
+
+İsim/ TA içi rütbe/ Branş/ Branş içi rütbe/ Birim/ Birim içi rütbe/ Emir ve görüşlerinize hazırdır, Paşam!
+
+→ Bu alanı kendinize göre doldurarak tekmil verebilirsiniz.
+]])
+
+Tab7:AddParagraph("Formasyonlar:", [[
+
+1) STS:
+
+- Personellerin omuz omuza tek bir çizgi üzerinde sıra olduğu formasyondur. İkili STS, Üçlü STS ve benzeri türleri vardır.
+
+2) İkili STS:
+
+- Personellerin omuz omuza iki çizgi üzerinde sıra olduğu formasyondur.Üçlü STS, Dörtlü STS ve benzeri türleri vardır.
+
+3) Üçlü STS:
+
+- Personellerin omuz omuza üç çizgi üzerinde sıra olduğu formasyondur.Dörtlü STS, Beşli STS ve benzeri türleri vardır.
+
+4) SFL:
+
+- Personellerin aralarında bir omuz boşluk olacak şekilde komutu veren kişinin arkasında sıra olduğu formasyondur. İkili SFL ve benzeri türleri vardır.
+
+5) İkili SFL:
+
+-Personellerin aralarında bir omuz boşluk olacak şekilde komutu veren kişinin arkasında ikili sıra olduğu formasyondur. Üçlü SFL ve benzeri türleri vardır.
+
+6) Üçlü SFL:
+
+- Personellerin aralarında bir omuz boşluk olacak şekilde komutu veren kişinin arkasında üçlü sıra olduğu formasyondur. Dörtlü SFL ve benzeri türleri vardır.
+
+7) Wedge:
+
+- Personellerin komutu veren kişinin omuzlarının arkasında geçmesine denir. Wedge yapılırken en baştaki ve en sondaki personel aynı anda çıkar, biri sağa diğeri ise sol tarafa
+ geçer. Eğer eşitlik bozulursa fazlalık olan kişi ortaya geçer.
+
+8) Sağ Kanat ve Sol Kanat:
+
+- Wedgenin aynısıdır. Sağ tarafa wedge şekilde omuza hiza alarak geçilir. Sol tarafa wedge şekilde omuza hiza geçilir.
+
+9) Box:
+
+- Personeller komutu veren kişinin çevresini kare şeklinde kapatmaya çalışırlar. Eğer 3 kişiyse
+ üçgen şeklinde kapatılır. Eğer 5 veya daha fazla personel varsa ilk 4 kişinin oluşturduğu boşluklar
+kapatılmalıdır.
+
+10- Çift Sütun:
+
+- Komutu veren kişinin sağ ve sol omzunun arkasına geçilir. Diğer personeller ise komutu veren kişinin sağ veya sol omzuna geçmiş kişilerin arkasına geçerler.
+
+11- Sağ Sütun ve Sol Sütun:
+
+Çift Sütun formasyonunun aynısıdır. Tek farkı ‘’Sağ Sütun”dendiğinde sağa, " Sol Sütun " dendiğinde sol tarafa geçilir.
+]])
+
+
+-- Create a tab
+local Tab8 = Window:MakeTab({
+    Name = "Kara Kuvvetleri",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Add a section to the tab
+local Section8 = Tab8:AddSection({
+    Name = "- Eğitim Soruları -"
+})
+
+Tab7:AddParagraph("Eğitim Soruları Nelerdir?", [[
+
+SORU 1: - TA'da ilk 5000 üye olan, şu anda da en büyük branş olarak geçen branşın adı nedir?
+
+→ KKK
+
+SORU 2: - TA'da en büyük birime ev sahipliği yapan branş hangisidir?
+
+→ KKK
+
+SORU 3: - KK Komutanı kimdir?
+
+→ emrcn56
+
+SORU 4: - KK Yönetimi'nden bir isme örnek veriniz.
+
+→ Sheader_1
+
+SORU 5: - KK kurallarına örnek veriniz.
+
+→ Man Face zorunludur.
+
+
+SORU 6: - Kirpi aracını kimlerin ne şartlarla sürebildiğini açıklayınız.
+
+→ P@EB+ ehliyeti olmak şartıyla sürebilir.
+
+SORU 7: - KK birimlerini sayınız.
+
+→ • Zırhlı Birlikler
+→ •Börü
+→ • Komando Harp Okulu (KHO)
+
+SORU 8: Komando Harp Okulu (KHO)'nun bir görevinden bahsediniz.
+
+→KK eğitimlerini ve etkinliklerini korur.
+
+SORU 9: Zırhlı Birlikerin bir görevinden behsediniz.
+
+→Denetimlerde Kara Kuvvetlerini korur. KK Yönetimi jç
+
+SORU 10: Börü Timi'nin bir görevinden bahsediniz.
+
+→
+
+SORU 11: Araç kurallarından 2 tanesine örnek veriniz.
+
+→
+
+SORU 12: - Birim liderimizin birinin adını söyleyiniz
+
+→ RANDOWTR
+
+SORU 13: - TA'nın şu anki m@reşali kimdir?
+
+→ OzgunFriztche
+
+]])
+
+-- Tab 4 oluşturuluyor
+local Tab5 = Window:MakeTab({
+    Name = "Diğer",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Tab 4'e bölüm ekleniyor
+local Section5 = Tab5:AddSection({
+    Name = "- Diğer Scriptler -"
+})
+
+-- Infinite Yield admin butonunu ekliyoruz
+Tab5:AddButton({
+    Name = "İnfinite Yield Admin",
+    Callback = function()
+        -- İnfinite Yield scriptini CodeX ile çalıştırmak için
+        local scriptUrl = "https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab5:AddButton({
+    Name = "Rejoin Server",
+    Callback = function()
+local TeleportService = game:GetService("TeleportService")
+local Player = game.Players.LocalPlayer
+
+TeleportService:Teleport(game.PlaceId, Player)
+end
+
+})
+
+Tab5:AddButton({
+    Name = "Infinite Jump",
+    Callback = function()
+        local InfiniteJumpEnabled = true
+        game:GetService("UserInputService").JumpRequest:Connect(function()
+            if InfiniteJumpEnabled then
+                local humanoid = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+                if humanoid then
+                    humanoid:ChangeState("Jumping")
+                end
+            end
+        end)
+    end
+})
+
+-- Infinite Yield admin butonunu ekliyoruz
+Tab5:AddButton({
+    Name = "Sydearr Mobile Aim Menü",
+    Callback = function()
+        -- İnfinite Yield scriptini CodeX ile çalıştırmak için
+        local scriptUrl = "https://pastebin.com/raw/9wj1EWCQ"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+Tab5:AddButton({
+    Name = "FPS Booster (Potato Graphics)",
+    Callback = function()
+        -- Grafik düşürme fonksiyonu
+        local function optimizeGraphics()
+            -- Gereksiz parçacık efektlerini kaldır
+            for _, obj in pairs(game:GetDescendants()) do
+                if obj:IsA("ParticleEmitter") or obj:IsA("Trail") or obj:IsA("Smoke") or obj:IsA("Fire") then
+                    obj:Destroy()
+                elseif obj:IsA("BasePart") then
+                    obj.Material = Enum.Material.SmoothPlastic
+                    obj.CastShadow = false
+                    obj.Reflectance = 0 -- Yansımaları kapat
+                elseif obj:IsA("Decal") then
+                    obj:Destroy()
+                end
+            end
+
+            -- Aydınlatma ayarlarını optimize et
+            local lighting = game:GetService("Lighting")
+            lighting.GlobalShadows = false
+            lighting.FogEnd = 1e9 -- Sonsuz görüş alanı
+            lighting.Brightness = 1 -- Minimum parlaklık
+            lighting.OutdoorAmbient = Color3.fromRGB(128, 128, 128) -- Nötr ortam ışığı
+        end
+
+        -- Optimizasyonu başlat
+        optimizeGraphics()
+
+        -- Yeni eklenen nesneleri optimize et
+        game.DescendantAdded:Connect(function(obj)
+            if obj:IsA("ParticleEmitter") or obj:IsA("Trail") or obj:IsA("Smoke") or obj:IsA("Fire") then
+                obj:Destroy()
+            elseif obj:IsA("BasePart") then
+                obj.Material = Enum.Material.SmoothPlastic
+                obj.CastShadow = false
+                obj.Reflectance = 0
+            elseif obj:IsA("Decal") then
+                obj:Destroy()
+            end
+        end)
+
+        -- Bildirim gönder
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "FPS Booster",
+            Text = "Grafikler başarıyla düşürüldü.",
+            Duration = 5
+        })
+    end
+})
+
+-- Tab 6 oluşturuluyor
+local Tab6 = Window:MakeTab({
+    Name = "Yapımcılar",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Tab 6'ya bölüm ekleniyor
+local Section6 = Tab6:AddSection({
+    Name = "- GUI Yapımcıları -"
+})
+
+Tab6:AddParagraph("GUI Developers:", [[
+ 
+- @kaansfriztche
+
+- @ross_x1
+]])
+
+Tab6:AddParagraph("Content Finders:", [[
+
+- @ross_x1 
+
+- @rip_sigma_31
+
+- @rewaqz
+
+- @kaansfriztche
+]])
