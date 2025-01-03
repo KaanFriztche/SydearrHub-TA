@@ -478,7 +478,7 @@ local Tab8 = Window:MakeTab({
 
 -- Add a section to the tab
 local Section8 = Tab8:AddSection({
-    Name = "- Eğitim Soruları -"
+    Name = "- Rütbeler ve Eğitim Soruları -"
 })
 
 Tab8:AddParagraph("Kara Kuvvetleri Rütbeleri:", [[
@@ -573,6 +573,69 @@ Tab8:AddParagraph("Eğitim Soruları Nelerdir?", [[
 - OzgunFriztche
 
 ]])
+
+-- Create a tab
+local Tab9 = Window:MakeTab({
+    Name = "Hava Kuvvetleri",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Add a section to the tab
+local Section9 = Tab9:AddSection({
+    Name = "- Rütbeler ve Eğitim Soruları -"
+})
+
+
+-- Create a tab
+local Tab10 = Window:MakeTab({
+    Name = "Özel Kuvvetler",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Add a section to the tab
+local Section10 = Tab10:AddSection({
+    Name = "- Rütbeler ve Eğitim Soruları -"
+})
+
+
+-- Create a tab
+local Tab11 = Window:MakeTab({
+    Name = "Askeri İnzibat",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Add a section to the tab
+local Section11 = Tab11:AddSection({
+    Name = "- Rütbeler ve Eğitim Soruları -"
+})
+
+-- Create a tab
+local Tab12 = Window:MakeTab({
+    Name = "Sınır Müfettişleri",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Add a section to the tab
+local Section12 = Tab12:AddSection({
+    Name = "- Rütbeler ve Eğitim Soruları -"
+})
+
+
+-- Create a tab
+local Tab13 = Window:MakeTab({
+    Name = "Jandarma",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Add a section to the tab
+local Section13 = Tab13:AddSection({
+    Name = "- Rütbeler ve Eğitim Soruları -"
+})
 
 -- Tab 4 oluşturuluyor
 local Tab5 = Window:MakeTab({
