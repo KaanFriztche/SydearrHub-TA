@@ -420,50 +420,50 @@ Tab7:AddParagraph("Nasıl Tekmil Verilir?", [[
 
 Tab7:AddParagraph("Formasyonlar:", [[
 
-1) STS:
+     1) STS:
 
 - Personellerin omuz omuza tek bir çizgi üzerinde sıra olduğu formasyondur. İkili STS, Üçlü STS ve benzeri türleri vardır.
 
-2) İkili STS:
+     2) İkili STS:
 
 - Personellerin omuz omuza iki çizgi üzerinde sıra olduğu formasyondur.Üçlü STS, Dörtlü STS ve benzeri türleri vardır.
 
-3) Üçlü STS:
+     3) Üçlü STS:
 
 - Personellerin omuz omuza üç çizgi üzerinde sıra olduğu formasyondur.Dörtlü STS, Beşli STS ve benzeri türleri vardır.
 
-4) SFL:
+     4) SFL:
 
 - Personellerin aralarında bir omuz boşluk olacak şekilde komutu veren kişinin arkasında sıra olduğu formasyondur. İkili SFL ve benzeri türleri vardır.
 
-5) İkili SFL:
+     5) İkili SFL:
 
 -Personellerin aralarında bir omuz boşluk olacak şekilde komutu veren kişinin arkasında ikili sıra olduğu formasyondur. Üçlü SFL ve benzeri türleri vardır.
 
-6) Üçlü SFL:
+     6) Üçlü SFL:
 
 - Personellerin aralarında bir omuz boşluk olacak şekilde komutu veren kişinin arkasında üçlü sıra olduğu formasyondur. Dörtlü SFL ve benzeri türleri vardır.
 
-7) Wedge:
+     7) Wedge:
 
 - Personellerin komutu veren kişinin omuzlarının arkasında geçmesine denir. Wedge yapılırken en baştaki ve en sondaki personel aynı anda çıkar, biri sağa diğeri ise sol tarafa
  geçer. Eğer eşitlik bozulursa fazlalık olan kişi ortaya geçer.
 
-8) Sağ Kanat ve Sol Kanat:
+     8) Sağ Kanat ve Sol Kanat:
 
 - Wedgenin aynısıdır. Sağ tarafa wedge şekilde omuza hiza alarak geçilir. Sol tarafa wedge şekilde omuza hiza geçilir.
 
-9) Box:
+     9) Box:
 
 - Personeller komutu veren kişinin çevresini kare şeklinde kapatmaya çalışırlar. Eğer 3 kişiyse
  üçgen şeklinde kapatılır. Eğer 5 veya daha fazla personel varsa ilk 4 kişinin oluşturduğu boşluklar
 kapatılmalıdır.
 
-10- Çift Sütun:
+     10- Çift Sütun:
 
 - Komutu veren kişinin sağ ve sol omzunun arkasına geçilir. Diğer personeller ise komutu veren kişinin sağ veya sol omzuna geçmiş kişilerin arkasına geçerler.
 
-11- Sağ Sütun ve Sol Sütun:
+     11- Sağ Sütun ve Sol Sütun:
 
 Çift Sütun formasyonunun aynısıdır. Tek farkı ‘’Sağ Sütun”dendiğinde sağa, " Sol Sütun " dendiğinde sol tarafa geçilir.
 ]])
@@ -481,64 +481,96 @@ local Section8 = Tab8:AddSection({
     Name = "- Eğitim Soruları -"
 })
 
+Tab8:AddParagraph("Kara Kuvvetleri Rütbeleri:", [[
+
+     + LR Rütbeleri:
+
+1) BAE              5) PAOB
+2) PAE              6) PAUOB
+3) PAUE             7) PAB
+4) PAEB             8) PAUB
+
+
+     + MR Rütbeleri:
+
+9)  EDOK-H           11) KO
+10) KK-H             12) TBKO
+         - KK-OH
+
+
+     + HR Rütbeleri:
+
+13) Alay Komutanı    14) Tugay Komutanı
+      15) Kara Kuvvetleri Kurmay Başkanı
+
+
+     + HC Rütbeleri:
+
+16) Tümen Komutanı      17) Kolordu Komutanı
+       18) Kara Kuvvetleri Komutanı
+]])
+
+
+
+
 Tab8:AddParagraph("Eğitim Soruları Nelerdir?", [[
 
 1)  + TA'da ilk 5000 üye olan, şu anda da en büyük branş olarak geçen branşın adı nedir?
 
-→ KKK
+- KKK
 
 2) + TA'da en büyük birime ev sahipliği yapan branş hangisidir?
 
-→ KKK
+- KKK
 
 3) + KK Komutanı kimdir?
 
-→ emrcn56
+- emrcn56
 
 4) + KK Yönetimi'nden bir isme örnek veriniz.
 
-→ Sheader_1
+- Sheader_1
 
 5) + KK kurallarına örnek veriniz.
 
-→ Man Face zorunludur.
+- Man Face zorunludur.
 
 
 6) + Kirpi aracını kimlerin ne şartlarla sürebildiğini açıklayınız.
 
-→ P@EB+ ehliyeti olmak şartıyla sürebilir.
+- PAB+ ehliyeti olmak şartıyla sürebilir.
 
 7) + KK birimlerini sayınız.
 
-→ • Zırhlı Birlikler
-→ • Börü
-→ • Komando Harp Okulu (KHO)
+- • Zırhlı Birlikler
+- • Börü
+- • Komando Harp Okulu (KHO)
 
 8) + Komando Harp Okulu (KHO)'nun bir görevinden bahsediniz.
 
-→ KK eğitimlerini ve etkinliklerini korur.
+- KK eğitimlerini ve etkinliklerini korur.
 
 9) + Zırhlı Birlikerin bir görevinden behsediniz.
 
-→ 
+-
 
 10) + Börü Timi'nin bir görevinden bahsediniz.
 
-→ • Denetimlerde Kara Kuvvetlerini korur.
-→ • Kara Kuvvtleri Yönetimi için raporlama yapar.
+- • Denetimlerde Kara Kuvvetlerini korur.
+- • Kara Kuvvtleri Yönetimi için raporlama yapar.
 
 11) + Araç kurallarından 2 tanesine örnek veriniz.
 
-→ • Hız sınırını aşmayınız.
-→ • Aracı sürerken hiçbir yere çarpmayınız.
+- • Hız sınırını aşmayınız.
+- • Aracı sürerken hiçbir yere çarpmayınız.
 
 12) + Birim liderimizin birinin adını söyleyiniz
 
-→ RANDOWTR
+- RANDOWTR
 
-13) + TA'nın şu anki m@reşali kimdir?
+13) + TA'nın şu anki Mareşali kimdir?
 
-→ OzgunFriztche
+- OzgunFriztche
 
 ]])
 
