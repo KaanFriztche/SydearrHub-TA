@@ -466,6 +466,153 @@ Tab4:AddButton({
     end
 })
 
+
+
+-- Tab 7 oluşturuluyor
+local Tab7 = Window:MakeTab({
+    Name = "Troll",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+-- Tab 7'e bölüm ekleniyor
+local Section7 = Tab7:AddSection({
+    Name = "- Troll Scriptleri -"
+})
+
+
+-- Add TSK BASE button to Tab 3
+Tab7:AddButton({
+    Name = "Safe Zone",
+    Callback = function()
+        local teleportLocations = {
+            TPart = Vector3.new(2656.32, 31.82, 199.26)
+        }
+
+        -- Karakter ve HumanoidRootPart'ı kontrol et
+        local character = player.Character or player.CharacterAdded:Wait()
+        local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+
+        local function teleportTo(locationName)
+            local destination = teleportLocations[locationName]
+            if destination then
+                humanoidRootPart.CFrame = CFrame.new(destination)
+            else
+                warn("Geçersiz konum: " .. tostring(locationName))
+            end
+        end
+
+        teleportTo("TPart")
+    end
+})
+
+Tab7:AddButton({
+    Name = "R6 Jerk Off Tool FE",
+    Callback = function()
+        -- İnfinite Yield scriptini CodeX ile çalıştırmak için
+        local scriptUrl = "https://pastefy.app/wa3v2vgm/raw"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab7:AddButton({
+    Name = "R6 Bang FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/aPSHMV6K"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+Tab7:AddButton({
+    Name = "R6 Get Banged FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/zHbw7ND1"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab7:AddButton({
+    Name = "R6 Suck FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/SymCfnAW"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab7:AddButton({
+    Name = "R6 Get Sucked FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/FPu4e2Qh"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
 -- Tab 4 oluşturuluyor
 local Tab5 = Window:MakeTab({
     Name = "Diğer",
@@ -549,6 +696,7 @@ Tab5:AddButton({
     end
 })
 
+
 Tab5:AddButton({
     Name = "FPS Booster (Potato Graphics)",
     Callback = function()
@@ -599,4 +747,5 @@ Tab5:AddButton({
         })
     end
 })
+
 
