@@ -531,7 +531,7 @@ Tab7:AddButton({
 Tab7:AddButton({
     Name = "R6 Bang FE",
     Callback = function()
-        local scriptUrl = "https://pastebin.com/raw/38Jra00x"
+        local scriptUrl = "https://pastebin.com/raw/1yNtLtW1"
         
         -- HttpGet komutu ile scripti almak
         local success, response = pcall(function()
