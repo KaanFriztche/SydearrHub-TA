@@ -507,7 +507,7 @@ Tab7:AddButton({
 })
 
 Tab7:AddButton({
-    Name = "R6 Jerk Off Tool FE",
+    Name = "Jerk Off Tool (31 Çek)",
     Callback = function()
         -- İnfinite Yield scriptini CodeX ile çalıştırmak için
         local scriptUrl = "https://pastefy.app/wa3v2vgm/raw"
@@ -551,7 +551,7 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
-    Name = "R6 Get Banged FE",
+    Name = "R6 Get Fucked FE",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/zHbw7ND1"
         
@@ -572,7 +572,7 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
-    Name = "R6 Get Sucked FE",
+    Name = "R6 Suck Dick FE",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/FPu4e2Qh"
         
