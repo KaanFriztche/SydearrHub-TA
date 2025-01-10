@@ -80,7 +80,7 @@ OrionLib:MakeNotification({
 
 -- Add buttons to the tab
 Tab2:AddButton({
-    Name = "20 JJ ÇEK!",
+    Name = "• 20 JJ ÇEK!",
     Callback = function()
         local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
             "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
@@ -93,7 +93,7 @@ Tab2:AddButton({
 })
 
 Tab2:AddButton({
-    Name = "30 JJ ÇEK!",
+    Name = "• 30 JJ ÇEK!",
     Callback = function()
         local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
             "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
@@ -106,7 +106,7 @@ Tab2:AddButton({
 })
 
 Tab2:AddButton({
-    Name = "40 JJ ÇEK!",
+    Name = "• 40 JJ ÇEK!",
     Callback = function()
         local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
             "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
@@ -120,7 +120,7 @@ Tab2:AddButton({
 })
 
 Tab2:AddButton({
-    Name = "50 JJ ÇEK!",
+    Name = "• 50 JJ ÇEK!",
     Callback = function()
 local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
         "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
@@ -135,7 +135,7 @@ local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SE
 })
 
 Tab2:AddButton({
-    Name = "100 JJ ÇEK!",
+    Name = "• 100 JJ ÇEK!",
     Callback = function()
 local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
         "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
@@ -170,7 +170,7 @@ local Section3 = Tab3:AddSection({
 
 -- Add buttons to the tab
 Tab3:AddButton({
-    Name = "20 GJ ÇEK!",
+    Name = "• 20 GJ ÇEK!",
     Callback = function()
         local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi.", "Sekiz.", "Dokuz.", "On.",
  "On bir.", "On iki.", "On üç.", "On dört.", "On beş.",
@@ -183,7 +183,7 @@ Tab3:AddButton({
 })
 
 Tab3:AddButton({
-    Name = "30 GJ ÇEK!",
+    Name = "• 30 GJ ÇEK!",
     Callback = function()
         local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi.", "Sekiz.", "Dokuz.", "On.",
  "On bir.", "On iki.", "On üç.", "On dört.", "On beş.",
@@ -198,7 +198,7 @@ Tab3:AddButton({
 })
 
 Tab3:AddButton({
-    Name = "40 GJ ÇEK!",
+    Name = "• 40 GJ ÇEK!",
     Callback = function()
         local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi.", "Sekiz.", "Dokuz.", "On.",
  "On bir.", "On iki.", "On üç.", "On dört.", "On beş.",
@@ -215,7 +215,7 @@ Tab3:AddButton({
 })
 
 Tab3:AddButton({
-    Name = "50 GJ ÇEK!",
+    Name = "• 50 GJ ÇEK!",
     Callback = function()
 local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi.", "Sekiz.", "Dokuz.", "On.",
  "On bir.", "On iki.", "On üç.", "On dört.", "On beş.",
@@ -234,7 +234,7 @@ local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi."
 })
 
 Tab3:AddButton({
-    Name = "100 GJ ÇEK!",
+    Name = "• 100 GJ ÇEK!",
     Callback = function()
 local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi.", "Sekiz.", "Dokuz.", "On.",
  "On bir.", "On iki.", "On üç.", "On dört.", "On beş.",
@@ -275,7 +275,7 @@ local Section6 = Tab6:AddSection({
 })
 
 Tab6:AddButton({
-    Name = "3 HJ ÇEK!",
+    Name = "• 3 HJ ÇEK!",
     Callback = function()
         local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ"}
         for _, message in ipairs(messages) do
@@ -286,7 +286,7 @@ Tab6:AddButton({
 })
 
 Tab6:AddButton({
-    Name = "4 HJ ÇEK!",
+    Name = "• 4 HJ ÇEK!",
     Callback = function()
         local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT"}   
 for _, message in ipairs(messages) do
@@ -297,7 +297,7 @@ for _, message in ipairs(messages) do
 })
 
 Tab6:AddButton({
-    Name = "5 HJ ÇEK!",
+    Name = "• 5 HJ ÇEK!",
     Callback = function()
         local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT", "B", "E", "Ş", "BEŞ"}
         for _, message in ipairs(messages) do
@@ -308,7 +308,7 @@ Tab6:AddButton({
 })
 
 Tab6:AddButton({
-    Name = "6 HJ ÇEK!",
+    Name = "• 6 HJ ÇEK!",
     Callback = function()
         local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT", "B", "E", "Ş", "BEŞ", "A", "L", "T", "I", "ALTI"}
         for _, message in ipairs(messages) do
@@ -319,7 +319,7 @@ Tab6:AddButton({
 })
 
 Tab6:AddButton({
-    Name = "7 HJ ÇEK!",
+    Name = "• 7 HJ ÇEK!",
     Callback = function()
         local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT", "B", "E", "Ş", "BEŞ", "A", "L", "T", "I", "ALTI", "Y", "E", "D", "İ"}
         for _, message in ipairs(messages) do
@@ -343,7 +343,7 @@ local Section4 = Tab4:AddSection({
 
 -- Add TSK BASE button to Tab 3
 Tab4:AddButton({
-    Name = "TSK Base",
+    Name = "• TSK Base",
     Callback = function()
         local teleportLocations = {
             MetroDoor = Vector3.new(3077.62, 34.01, -252.62)
@@ -368,7 +368,7 @@ Tab4:AddButton({
 
 -- Add TSK BASE button to Tab 3
 Tab4:AddButton({
-    Name = "Denetim Alanı",
+    Name = "• Denetim Alanı",
     Callback = function()
         local teleportLocations = {
             MetroDoor1 = Vector3.new(1143.87, 13.76, -253.43)
@@ -393,7 +393,7 @@ Tab4:AddButton({
 
 -- Add TSK BASE button to Tab 3
 Tab4:AddButton({
-    Name = "HKK Base",
+    Name = "• HKK Base",
     Callback = function()
         local teleportLocations = {
             MetroDoor2 = Vector3.new(1278.45, 33.45, 1510.48)
@@ -418,7 +418,7 @@ Tab4:AddButton({
 
 -- Add TSK BASE button to Tab 3
 Tab4:AddButton({
-    Name = "Kafeterya",
+    Name = "• Kafeterya",
     Callback = function()
         local teleportLocations = {
             MetroDoor3 = Vector3.new(2927.18, 105.48, 536.67)
@@ -443,7 +443,7 @@ Tab4:AddButton({
 
 -- Add TSK BASE button to Tab 3
 Tab4:AddButton({
-    Name = "Düşman Adası",
+    Name = "• Düşman Adası",
     Callback = function()
         local teleportLocations = {
             MetroDoor4 = Vector3.new(-2037.29, 17.98, -364.72)
@@ -483,7 +483,7 @@ local Section7 = Tab7:AddSection({
 
 -- Add TSK BASE button to Tab 3
 Tab7:AddButton({
-    Name = "Safe Zone",
+    Name = "• Safe Zone",
     Callback = function()
         local teleportLocations = {
             TPart = Vector3.new(2656.32, 31.82, 199.26)
@@ -507,7 +507,7 @@ Tab7:AddButton({
 })
 
 Tab7:AddButton({
-    Name = "Jerk Off Tool (31 Çek)",
+    Name = "• Jerk Off Tool (31 Çek)",
     Callback = function()
         -- İnfinite Yield scriptini CodeX ile çalıştırmak için
         local scriptUrl = "https://pastefy.app/wa3v2vgm/raw"
@@ -529,7 +529,7 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
-    Name = "R6 Bang FE",
+    Name = "• R6 Bang FE",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/aPSHMV6K"
         
@@ -551,7 +551,7 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
-    Name = "R6 Get Fucked FE",
+    Name = "• R6 Get Fucked FE",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/zHbw7ND1"
         
@@ -572,7 +572,7 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
-    Name = "R6 Suck Dick FE",
+    Name = "• R6 Suck Dick FE",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/FPu4e2Qh"
         
@@ -607,7 +607,7 @@ local Section5 = Tab5:AddSection({
 
 -- Infinite Yield admin butonunu ekliyoruz
 Tab5:AddButton({
-    Name = "İnfinite Yield Admin",
+    Name = "• İnfinite Yield Admin",
     Callback = function()
         -- İnfinite Yield scriptini CodeX ile çalıştırmak için
         local scriptUrl = "https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"
@@ -629,7 +629,7 @@ Tab5:AddButton({
 
 
 Tab5:AddButton({
-    Name = "Rejoin Server",
+    Name = "• Rejoin Server",
     Callback = function()
 local TeleportService = game:GetService("TeleportService")
 local Player = game.Players.LocalPlayer
@@ -640,7 +640,7 @@ end
 })
 
 Tab5:AddButton({
-    Name = "Infinite Jump",
+    Name = "• Infinite Jump",
     Callback = function()
         local InfiniteJumpEnabled = true
         game:GetService("UserInputService").JumpRequest:Connect(function()
@@ -655,7 +655,7 @@ Tab5:AddButton({
 })
 
 Tab5:AddButton({
-    Name = "Teleport Tool",
+    Name = "• Teleport Tool",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/j5RJ3PQZ"
         
@@ -678,7 +678,7 @@ Tab5:AddButton({
 
 
 Tab5:AddButton({
-    Name = "Anti-AFK",
+    Name = "• Anti-AFK",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/cfdJvuSz"
         
@@ -699,7 +699,7 @@ Tab5:AddButton({
 
 -- Infinite Yield admin butonunu ekliyoruz
 Tab5:AddButton({
-    Name = "Sydearr Mobile Aim Menü",
+    Name = "• Sydearr Mobile Aim Menü",
     Callback = function()
         -- İnfinite Yield scriptini CodeX ile çalıştırmak için
         local scriptUrl = "https://pastebin.com/raw/9wj1EWCQ"
@@ -721,7 +721,7 @@ Tab5:AddButton({
 
 
 Tab5:AddButton({
-    Name = "FPS Booster (Potato Graphics)",
+    Name = "• FPS Booster (Potato Graphics)",
     Callback = function()
         -- Grafik düşürme fonksiyonu
         local function optimizeGraphics()
