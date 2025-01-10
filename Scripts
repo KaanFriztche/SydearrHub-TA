@@ -676,6 +676,27 @@ Tab5:AddButton({
 
 
 
+
+Tab5:AddButton({
+    Name = "Anti-AFK",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/cfdJvuSz"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+            -- Hata durumunda kullanıcıya uyarı veriyoruz
+            warn("Script yüklenemedi!")
+        end
+    end
+})
+
 -- Infinite Yield admin butonunu ekliyoruz
 Tab5:AddButton({
     Name = "Sydearr Mobile Aim Menü",
