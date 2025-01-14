@@ -1,5 +1,55 @@
-local player = game.Players.LocalPlayer
-local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/newfile.lua'))()
+local correctKey = "SydearrNewKey2025" -- Geçerli key
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({
+    Name = "Sydearr Hub - Key Doğrulama",
+    HidePremium = false,
+    SaveConfig = false,
+    ConfigFolder = "SydearrKeySystem"
+})
+
+local keyVerified = false -- Doğrulama durumu
+
+local Tab = Window:MakeTab({
+    Name = "Key Doğrulama",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+Tab:AddTextbox({
+    Name = "Key Girin",
+    Default = "",
+    TextDisappear = true,
+    Callback = function(input)
+        if input == correctKey then
+            keyVerified = true
+            OrionLib:MakeNotification({
+                Name = "Başarılı!",
+                Content = "Key doğrulandı! Hoş geldiniz.",
+                Time = 5
+            })
+        else
+            OrionLib:MakeNotification({
+                Name = "Hata!",
+                Content = "Yanlış key girdiniz.",
+                Time = 5
+            })
+        end
+    end
+})
+
+OrionLib:Init()
+
+-- Doğrulama kontrolü
+while not keyVerified do
+    wait(1) -- Kullanıcı doğru key girene kadar bekle
+end
+
+print("Key doğrulandı! Script başlatılıyor...")
+
+
+
 
 local Window = OrionLib:MakeWindow({
     Name = "Sydearr Hub - TA",
