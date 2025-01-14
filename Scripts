@@ -894,7 +894,6 @@ Tab5:AddButton({
             Duration = 5
         })
     end
-})
 
 createKeySystem()
 
