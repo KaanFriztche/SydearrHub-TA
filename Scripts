@@ -79,46 +79,6 @@ TabTA:AddButton({
         end
     end
 })
-
-    -- TA Menüsü oluşturuluyor
-    local TAMenuTab = Window:MakeTab({
-        Name = "Sydearr Hub - TA",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-    })
-
-    TAMenuTab:AddSection({
-        Name = "TA Menüsüne hoş geldiniz!"
-    })
-
-    TAMenuTab:AddParagraph("Sydearr Hub Sunar:", [[
-        - TA Menüsü için başarıyla doğrulama yaptınız!
-        - Discord sunucumuza katılmayı unutmayın: https://discord.gg/xTafcNjWcd
-    ]])
-
-    OrionLib:MakeNotification({
-        Name = "Başarılı!",
-        Content = "TA Menüsü açıldı!",
-        Time = 5
-    })
-end
-
--- Doğrulama Butonu
-TabTA:AddButton({
-    Name = "TA Menü Key Doğrula",
-    Callback = function()
-        if inputKeyTA == validKeyTA then
-            TAMenuVerified = true
-            openTAMenu()
-        else
-            OrionLib:MakeNotification({
-                Name = "Hata!",
-                Content = "Yanlış key girdiniz. Lütfen tekrar deneyin.",
-                Time = 5
-            })
-        end
-    end
-})
 -- Orion Library yükleniyor
 local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
 
