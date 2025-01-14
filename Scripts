@@ -57,23 +57,9 @@ SubmitButton.MouseButton1Click:Connect(function()
     if TextBox.Text == correctKey then
         ScreenGui:Destroy() -- Key UI'yi kapat
         
-        -- OrionLib ve GUI'yi burada başlatın
-        local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/newfile.lua'))()
+    
 
-        local Window = OrionLib:MakeWindow({
-            Name = "Sydearr Hub - TA",
-            HidePremium = false,
-            SaveConfig = true,
-            ConfigFolder = "OrionTest"
-        })
-
-        -- Buraya diğer GUI kodlarınızı ekleyin
-    else
-        NotificationLabel.Text = "Incorrect Key! Please try again."
-        wait(2)
-        NotificationLabel.Text = ""
-    end
-end)
+    
 
 
 
@@ -904,5 +890,10 @@ Tab5:AddButton({
     end
 })
 
-
+else
+        NotificationLabel.Text = "Incorrect Key! Please try again."
+        wait(2)
+        NotificationLabel.Text = ""
+    end
+end)
 
