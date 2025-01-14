@@ -1,8 +1,10 @@
 -- Key System (Şifre Girişi)
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
 local TextBox = Instance.new("TextBox")
 local SubmitButton = Instance.new("TextButton")
+local GetKeyButton = Instance.new("TextButton")
 local NotificationLabel = Instance.new("TextLabel")
 
 -- Ebeveyn ayarları
@@ -13,15 +15,29 @@ ScreenGui.ResetOnSpawn = false
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0.5, 0, 0.5, 0) -- Ekranın tam ortasına yerleştirme
-Frame.Size = UDim2.new(0, 300, 0, 150)
+Frame.Position = UDim2.new(0.5, 0, 1, 0) -- Animasyon için başlangıç pozisyonu
+Frame.Size = UDim2.new(0, 350, 0, 200)
 Frame.AnchorPoint = Vector2.new(0.5, 0.5)
+Frame.Visible = true
 
--- TextBox (şifre giriş yeri)
+-- Animasyonlu açılış
+Frame:TweenPosition(UDim2.new(0.5, 0, 0.5, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quint, 1, true)
+
+-- Title (Başlık)
+Title.Parent = Frame
+Title.BackgroundTransparency = 1
+Title.Position = UDim2.new(0.1, 0, 0, 5)
+Title.Size = UDim2.new(0.8, 0, 0.2, 0)
+Title.Font = Enum.Font.SourceSansBold
+Title.Text = "Sydearr | Key System"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 24
+
+-- TextBox (Şifre giriş yeri)
 TextBox.Parent = Frame
 TextBox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 TextBox.BorderSizePixel = 0
-TextBox.Position = UDim2.new(0.1, 0, 0.2, 0)
+TextBox.Position = UDim2.new(0.1, 0, 0.3, 0)
 TextBox.Size = UDim2.new(0.8, 0, 0.2, 0)
 TextBox.Font = Enum.Font.SourceSans
 TextBox.PlaceholderText = "Enter Key Here"
@@ -29,46 +45,65 @@ TextBox.Text = ""
 TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextBox.TextSize = 18
 
--- Submit Button (onay butonu)
+-- Submit Button (Key Onay Butonu)
 SubmitButton.Parent = Frame
 SubmitButton.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
 SubmitButton.BorderSizePixel = 0
-SubmitButton.Position = UDim2.new(0.1, 0, 0.5, 0)
+SubmitButton.Position = UDim2.new(0.1, 0, 0.55, 0)
 SubmitButton.Size = UDim2.new(0.8, 0, 0.2, 0)
 SubmitButton.Font = Enum.Font.SourceSans
 SubmitButton.Text = "Submit Key"
 SubmitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 SubmitButton.TextSize = 18
 
--- Notification Label (yanlış şifre bildirimi)
+-- Get Key Button
+GetKeyButton.Parent = Frame
+GetKeyButton.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+GetKeyButton.BorderSizePixel = 0
+GetKeyButton.Position = UDim2.new(0.1, 0, 0.8, 0)
+GetKeyButton.Size = UDim2.new(0.8, 0, 0.15, 0)
+GetKeyButton.Font = Enum.Font.SourceSans
+GetKeyButton.Text = "Get Key"
+GetKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+GetKeyButton.TextSize = 18
+
+-- Notification Label (Yanlış Şifre Bildirimi)
 NotificationLabel.Parent = Frame
 NotificationLabel.BackgroundTransparency = 1
-NotificationLabel.Position = UDim2.new(0.1, 0, 0.8, 0)
+NotificationLabel.Position = UDim2.new(0.1, 0, 0.7, 0)
 NotificationLabel.Size = UDim2.new(0.8, 0, 0.1, 0)
 NotificationLabel.Font = Enum.Font.SourceSans
 NotificationLabel.Text = ""
 NotificationLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
 NotificationLabel.TextSize = 14
 
--- Doğru key kontrolü
+-- Doğru Key Kontrolü
 local correctKey = "SydearrHubNewKey2025"
 
 SubmitButton.MouseButton1Click:Connect(function()
     if TextBox.Text == correctKey then
-        ScreenGui:Destroy() -- Key UI'yi kapat
-        
-    
+        Frame:TweenPosition(UDim2.new(0.5, 0, -1, 0), Enum.EasingDirection.In, Enum.EasingStyle.Quint, 1, true)
+        wait(1)
+        ScreenGui:Destroy() -- Key System kapatıldı
 
-    
+        -- Sydearr Hub TA GUI buradan başlatılır
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/newfile.lua'))()
+    else
+        NotificationLabel.Text = "Incorrect Key! Please try again."
+        wait(2)
+        NotificationLabel.Text = ""
+    end
+end)
 
-
-
-
-
-
-
-local player = game.Players.LocalPlayer
-local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/newfile.lua'))()
+-- Get Key Button Click Functionality
+GetKeyButton.MouseButton1Click:Connect(function()
+    setclipboard("https://shrinkme.ink/SydearrKey")
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Key Kopyalandı!",
+        Text = "Bağlantı başarıyla kopyalandı.",
+        Duration = 5
+    })
+end)
 
 local Window = OrionLib:MakeWindow({
     Name = "Sydearr Hub - TA",
