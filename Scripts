@@ -36,15 +36,6 @@ TabTA:AddTextbox({
 
 -- TA Menüsü Fonksiyonu
 local function openTAMenu()
-    if not TAMenuVerified then
-        OrionLib:MakeNotification({
-            Name = "Erişim Engellendi",
-            Content = "Key doğrulaması yapılmadan TA Menüsüne erişemezsiniz.",
-            Time = 5
-        })
-        return
-    end
-
     -- TA Menüsü oluşturuluyor
     local TAMenuTab = Window:MakeTab({
         Name = "Sydearr Hub - TA",
@@ -55,6 +46,11 @@ local function openTAMenu()
     TAMenuTab:AddSection({
         Name = "TA Menüsüne hoş geldiniz!"
     })
+
+    TAMenuTab:AddParagraph("Sydearr Hub Sunar:", [[
+        - TA Menüsü için başarıyla doğrulama yaptınız!
+        - Discord sunucumuza katılmayı unutmayın: https://discord.gg/xTafcNjWcd
+    ]])
 
     OrionLib:MakeNotification({
         Name = "Başarılı!",
@@ -69,6 +65,13 @@ TabTA:AddButton({
     Callback = function()
         if inputKeyTA == validKeyTA then
             TAMenuVerified = true
+            OrionLib:MakeNotification({
+                Name = "Başarılı!",
+                Content = "Doğru key! TA Menüsü açılıyor...",
+                Time = 5
+            })
+            -- Mevcut sekmeyi kapatarak TA Menüsünü aç
+            Window:Destroy() -- Pencereyi yeniden oluştur
             openTAMenu()
         else
             OrionLib:MakeNotification({
