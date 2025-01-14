@@ -24,7 +24,7 @@ TabTA:AddSection({
 })
 
 -- Kullanıcıdan Key girişi
-local inputKeyTA = ""
+local inputKeyTA = "31"
 TabTA:AddTextbox({
     Name = "TA Menü Key",
     Default = "",
