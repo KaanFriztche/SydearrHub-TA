@@ -1,20 +1,3 @@
-Key System'in ekranın tam ortasında olması ve menü açılmadan önce düzgün çalışması için yapmanız gerekenler şunlardır:
-
-1. Sorunun Nedeni
-Şu anda script'te OrionLib ve GUI hemen yükleniyor. Key System mekanizmasını önce çalıştırmamız gerekiyor. Eğer şifre doğru değilse diğer GUI'ler kesinlikle yüklenmemelidir.
-
-
-2. Çözüm
-
-OrionLib ve GUI kodlarınızı şifre doğrulandıktan sonra çalıştırın.
-
-Key System arayüzünü ekranın ortasına yerleştirin.
-
-
-
-
-Güncellenmiş Kod:
-
 -- Key System (Şifre Girişi)
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
