@@ -1,5 +1,6 @@
 local validKeyTA = "SydearrHubKeyTA2025" -- TA Menüsü için geçerli Key
 local TAMenuVerified = false -- TA Menüsü doğrulama durumu
+local keySystemInitialized = false -- Key sisteminin bir kez açılmasını sağlamak için kontrol
 
 -- Orion Library yükleniyor
 local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
@@ -12,32 +13,65 @@ local Window = OrionLib:MakeWindow({
     ConfigFolder = "SydearrTAKeySystem"
 })
 
--- TA Menü Key Doğrulama Sekmesi
-local TabTA = Window:MakeTab({
-    Name = "TA Menü Doğrulama",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
+-- Key doğrulama menüsü oluşturma fonksiyonu
+local function createKeySystem()
+    if keySystemInitialized then return end -- Eğer zaten oluşturulmuşsa tekrar oluşturma
+    keySystemInitialized = true -- Key sisteminin bir kez oluşturulmasını sağla
 
-TabTA:AddSection({
-    Name = "Lütfen TA Menüsü için geçerli keyinizi girin:"
-})
+    local TabTA = Window:MakeTab({
+        Name = "TA Menü Doğrulama",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
 
--- Kullanıcıdan Key girişi
-local inputKeyTA = ""
-TabTA:AddTextbox({
-    Name = "TA Menü Key",
-    Default = "",
-    TextDisappear = true,
-    Callback = function(value)
-        inputKeyTA = value
-    end
-})
+    TabTA:AddSection({
+        Name = "Lütfen TA Menüsü için geçerli keyinizi girin:"
+    })
+
+    -- Kullanıcıdan Key girişi
+    local inputKeyTA = ""
+    TabTA:AddTextbox({
+        Name = "TA Menü Key",
+        Default = "",
+        TextDisappear = true,
+        Callback = function(value)
+            inputKeyTA = value
+        end
+    })
+
+    -- Doğrulama Butonu
+    TabTA:AddButton({
+        Name = "TA Menü Key Doğrula",
+        Callback = function()
+            if inputKeyTA == validKeyTA then
+                TAMenuVerified = true
+                OrionLib:MakeNotification({
+                    Name = "Başarılı!",
+                    Content = "Doğru key! TA Menüsü açılıyor...",
+                    Time = 5
+                })
+                openTAMenu()
+            else
+                OrionLib:MakeNotification({
+                    Name = "Hata!",
+                    Content = "Yanlış key girdiniz. Lütfen tekrar deneyin.",
+                    Time = 5
+                })
+            end
+        end
+    })
+end
 
 -- TA Menüsü Fonksiyonu
 local function openTAMenu()
-    -- Menü zaten açıldıysa tekrar oluşturulmasını engelle
-    if TAMenuVerified then return end
+    if not TAMenuVerified then
+        OrionLib:MakeNotification({
+            Name = "Erişim Engellendi",
+            Content = "Key doğrulaması yapılmadan TA Menüsüne erişemezsiniz.",
+            Time = 5
+        })
+        return
+    end
 
     -- TA Menüsü oluşturuluyor
     local TAMenuTab = Window:MakeTab({
@@ -60,124 +94,8 @@ local function openTAMenu()
         Content = "TA Menüsü açıldı!",
         Time = 5
     })
-
-    -- Menü doğrulandı, tekrar açılmasını engelle
-    TAMenuVerified = true
 end
 
--- Doğrulama Butonu
-TabTA:AddButton({
-    Name = "TA Menü Key Doğrula",
-    Callback = function()
-        if inputKeyTA == validKeyTA then
-            OrionLib:MakeNotification({
-                Name = "Başarılı!",
-                Content = "Doğru key! TA Menüsü açılıyor...",
-                Time = 5
-            })
-            openTAMenu() -- Menü açılıyor
-        else
-            OrionLib:MakeNotification({
-                Name = "Hata!",
-                Content = "Yanlış key girdiniz. Lütfen tekrar deneyin.",
-                Time = 5
-            })
-        end
-    end
-})
--- Orion Library yükleniyor
-local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
-
--- Pencere oluşturuluyor
-local Window = OrionLib:MakeWindow({
-    Name = "Sydearr Hub - Key Doğrulama",
-    HidePremium = false,
-    SaveConfig = true,
-    ConfigFolder = "SydearrKeySystem"
-})
-
--- Key doğrulama sekmesi
-local Tab = Window:MakeTab({
-    Name = "Key Doğrulama",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
-
-Tab:AddSection({
-    Name = "Lütfen Geçerli Keyinizi Girin:"
-})
-
--- Kullanıcıdan Key girişi
-local inputKey = ""
-Tab:AddTextbox({
-    Name = "Keyinizi Girin",
-    Default = "",
-    TextDisappear = true,
-    Callback = function(value)
-        inputKey = value
-    end
-})
-
--- Ana Menü fonksiyonu
-local function openMainMenu()
-    if not keyVerified then
-        OrionLib:MakeNotification({
-            Name = "Erişim Engellendi",
-            Content = "Key doğrulaması yapılmadan bu menüye erişemezsiniz.",
-            Time = 5
-        })
-        return -- Key doğrulaması yapılmadan hiçbir işlem yapılmaz
-    end
-
-    -- Ana menüye erişim sağlanır
-    local MainMenuTab = Window:MakeTab({
-        Name = "Ana Menü",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-    })
-
-    MainMenuTab:AddSection({
-        Name = "Ana menüye hoş geldiniz!"
-    })
-
-    OrionLib:MakeNotification({
-        Name = "Başarılı!",
-        Content = "Ana menüye yönlendirildiniz.",
-        Time = 5
-    })
-end
-
--- Doğrulama Butonu
-Tab:AddButton({
-    Name = "Key Doğrula",
-    Callback = function()
-        if inputKey == validKey then
-            keyVerified = true
-            OrionLib:MakeNotification({
-                Name = "Başarılı!",
-                Content = "Doğru key! Ana menüye yönlendiriliyorsunuz.",
-                Time = 5
-            })
-            openMainMenu()
-        else
-            OrionLib:MakeNotification({
-                Name = "Hata!",
-                Content = "Yanlış key girdiniz! Lütfen tekrar deneyin.",
-                Time = 5
-            })
-        end
-    end
-})
-
--- Genel kontrol: Key doğrulaması olmadan script çalışmasın
-if not keyVerified then
-    OrionLib:MakeNotification({
-        Name = "Erişim Engellendi",
-        Content = "Key doğrulaması yapılmadan Sydearr Hub'a erişemezsiniz.",
-        Time = 5
-    })
-    return -- Tüm scripti durdur
-end
 
 
 
@@ -1002,3 +920,6 @@ Tab5:AddButton({
         })
     end
 })
+
+
+createKeySystem()
