@@ -1,78 +1,68 @@
-local correctKey = "SydearrNewKey2025" -- Geçerli key
+local validKey = "SydearrHubNewKey2025"
+local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/newfile.lua'))()
 
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-
-local Window = OrionLib:MakeWindow({
-    Name = "Sydearr Hub - Key Doğrulama",
-    HidePremium = false,
-    SaveConfig = false,
-    ConfigFolder = "SydearrKeySystem"
-})
-
-local keyVerified = false -- Doğrulama durumu
-
-local Tab = Window:MakeTab({
-    Name = "Key Doğrulama",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
-
--- Key Girme TextBox'u
-Tab:AddTextbox({
-    Name = "Key Girin",
-    Default = "",
-    TextDisappear = true,
-    Callback = function(input)
-        if input == correctKey then
-            keyVerified = true
-            OrionLib:MakeNotification({
-                Name = "Başarılı!",
-                Content = "Key doğrulandı! Hoş geldiniz.",
-                Time = 5
-            })
-        else
-            OrionLib:MakeNotification({
-                Name = "Hata!",
-                Content = "Yanlış key girdiniz.",
-                Time = 5
-            })
-        end
-    end
-})
-
--- "Get Key" Butonu
-Tab:AddButton({
-    Name = "Get Key",
-    Callback = function()
-        -- Linki kopyalama işlemi
-        setclipboard("https://shrinkme.ink/SydearrKey")
-        OrionLib:MakeNotification({
-            Name = "Key Kopyalandı!",
-            Content = "Key bağlantısı panoya kopyalandı.",
-            Time = 5
-        })
-    end
-})
-
-OrionLib:Init()
-
--- Doğrulama kontrolü
-while not keyVerified do
-    wait(1) -- Kullanıcı doğru key girene kadar bekle
-end
-
-print("Key doğrulandı! Script başlatılıyor...")
-
--- Ana script burada çalıştırılacak
-local function mainScript()
-    local Window = OrionLib:MakeWindow({
-        Name = "Sydearr Hub - TA",
-        HidePremium = false,
-        SaveConfig = true,
-        ConfigFolder = "OrionTest"
+local function requestKey()
+    local userInput = OrionLib:MakeWindow({
+        Name = "Key Giriş Sistemi",
+        HidePremium = true,
+        SaveConfig = false,
+        ConfigFolder = "KeySystem"
     })
 
-    
+    local Tab = userInput:MakeTab({
+        Name = "Key Doğrulama",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
+
+    Tab:AddSection({ Name = "Lütfen Keyinizi Girin:" })
+
+    local inputKey = ""
+    Tab:AddTextbox({
+        Name = "Keyinizi Girin",
+        Default = "",
+        TextDisappear = true,
+        Callback = function(value)
+            inputKey = value
+        end
+    })
+
+    Tab:AddButton({
+        Name = "Doğrula",
+        Callback = function()
+            if inputKey == validKey then
+                OrionLib:MakeNotification({
+                    Name = "Başarılı!",
+                    Content = "Doğru key! Menü açılıyor...",
+                    Image = "rbxassetid://4483345998",
+                    Time = 5
+                })
+                userInput:Destroy()
+                mainScript()
+            else
+                OrionLib:MakeNotification({
+                    Name = "Hata!",
+                    Content = "Yanlış key! Tekrar deneyin.",
+                    Image = "rbxassetid://4483345998",
+                    Time = 5
+                })
+            end
+        end
+    })
+end
+
+
+
+
+local player = game.Players.LocalPlayer
+local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/newfile.lua'))()
+
+local Window = OrionLib:MakeWindow({
+    Name = "Sydearr Hub - TA",
+    HidePremium = false,
+    SaveConfig = true,
+    ConfigFolder = "OrionTest"
+})
 
 -- Create a tab
 local Tab1 = Window:MakeTab({
@@ -618,8 +608,6 @@ Tab7:AddButton({
     end
 })
 
-
-
 Tab7:AddButton({
     Name = "• R6 Get Fucked FE",
     Callback = function()
@@ -884,3 +872,5 @@ Tab5:AddButton({
             Text = "Grafikler başarıyla düşürüldü.",
             Duration = 5
         })
+    end
+})
