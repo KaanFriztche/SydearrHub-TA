@@ -1,22 +1,86 @@
 local player = game.Players.LocalPlayer
-local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/newfile.lua'))()
+local StarterGui = game:GetService("StarterGui")
 
-local Window = OrionLib:MakeWindow({
-    Name = "Sydearr Hub - TA",
-    HidePremium = false,
-    SaveConfig = true,
-    ConfigFolder = "OrionTest"
-})
+-- Key Sistemi Penceresi
+local function createKeySystem()
+    local ScreenGui = Instance.new("ScreenGui")
+    local Frame = Instance.new("Frame")
+    local TextBox = Instance.new("TextBox")
+    local EnterButton = Instance.new("TextButton")
+    local GetKeyButton = Instance.new("TextButton")
 
+    ScreenGui.Name = "KeySystem"
+    ScreenGui.Parent = player:WaitForChild("PlayerGui")
 
+    Frame.Name = "KeyFrame"
+    Frame.Parent = ScreenGui
+    Frame.Size = UDim2.new(0, 300, 0, 200)
+    Frame.Position = UDim2.new(0.5, -150, 0.5, -100)
+    Frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    Frame.BorderSizePixel = 0
 
+    TextBox.Name = "KeyBox"
+    TextBox.Parent = Frame
+    TextBox.Size = UDim2.new(0, 250, 0, 50)
+    TextBox.Position = UDim2.new(0.5, -125, 0.3, 0)
+    TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TextBox.PlaceholderText = "Keyinizi Giriniz"
 
-local Window = OrionLib:MakeWindow({
-    Name = "Sydearr Hub - TA",
-    HidePremium = false,
-    SaveConfig = true,
-    ConfigFolder = "OrionTest"
-})
+    EnterButton.Name = "EnterKey"
+    EnterButton.Parent = Frame
+    EnterButton.Size = UDim2.new(0, 100, 0, 50)
+    EnterButton.Position = UDim2.new(0.5, -125, 0.65, 0)
+    EnterButton.Text = "Keyi Gir"
+    EnterButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+
+    GetKeyButton.Name = "GetKey"
+    GetKeyButton.Parent = Frame
+    GetKeyButton.Size = UDim2.new(0, 100, 0, 50)
+    GetKeyButton.Position = UDim2.new(0.5, 25, 0.65, 0)
+    GetKeyButton.Text = "Get Key"
+    GetKeyButton.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
+
+    local correctKey = "SydearrNewKey2025"
+
+    EnterButton.MouseButton1Click:Connect(function()
+        if TextBox.Text == correctKey then
+            ScreenGui:Destroy()
+            StarterGui:SetCore("SendNotification", {
+                Title = "Başarılı!",
+                Text = "Doğru Key. Menü Açılıyor.",
+                Duration = 3
+            })
+            -- Sydearr Hub açma komutları
+            local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/newfile.lua'))()
+
+            local Window = OrionLib:MakeWindow({
+                Name = "Sydearr Hub - TA",
+                HidePremium = false,
+                SaveConfig = true,
+                ConfigFolder = "OrionTest"
+            })
+
+            -- Burada diğer GUI sekmelerini ekleyin
+        else
+            StarterGui:SetCore("SendNotification", {
+                Title = "Hata!",
+                Text = "Girdiğiniz Key yanlış.",
+                Duration = 3
+            })
+        end
+    end)
+
+    GetKeyButton.MouseButton1Click:Connect(function()
+        setclipboard("https://shrinkme.ink/SydearrKey")
+        StarterGui:SetCore("SendNotification", {
+            Title = "Bağlantı Kopyalandı!",
+            Text = "Key bağlantısı kopyalandı.",
+            Duration = 3
+        })
+    end)
+end
+
+createKeySystem()
 
 -- Create a tab
 local Tab1 = Window:MakeTab({
