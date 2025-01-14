@@ -36,30 +36,31 @@ Tab:AddTextbox({
 
 -- Ana Menü fonksiyonu
 local function openMainMenu()
-    if keyVerified then
-        -- Ana menüye geçiş kodları burada yer alır
-        local MainMenuTab = Window:MakeTab({
-            Name = "Ana Menü",
-            Icon = "rbxassetid://4483345998",
-            PremiumOnly = false
-        })
-
-        MainMenuTab:AddSection({
-            Name = "Ana menüye hoş geldiniz!"
-        })
-
+    if not keyVerified then
         OrionLib:MakeNotification({
-            Name = "Başarılı!",
-            Content = "Ana menüye yönlendirildiniz.",
+            Name = "Erişim Engellendi",
+            Content = "Key doğrulaması yapılmadan bu menüye erişemezsiniz.",
             Time = 5
         })
-    else
-        OrionLib:MakeNotification({
-            Name = "Hata!",
-            Content = "Key doğrulaması yapılmadan ana menüye erişemezsiniz.",
-            Time = 5
-        })
+        return -- Key doğrulaması yapılmadan hiçbir işlem yapılmaz
     end
+
+    -- Ana menü kodları burada yer alır
+    local MainMenuTab = Window:MakeTab({
+        Name = "Ana Menü",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
+
+    MainMenuTab:AddSection({
+        Name = "Ana menüye hoş geldiniz!"
+    })
+
+    OrionLib:MakeNotification({
+        Name = "Başarılı!",
+        Content = "Ana menüye yönlendirildiniz.",
+        Time = 5
+    })
 end
 
 -- Doğrulama Butonu
@@ -104,6 +105,14 @@ Tab:AddButton({
         end
     end
 })
+
+-- Tüm diğer menüler burada kontrol ediliyor
+if not keyVerified then
+    OrionLib:MakeNotification({
+        Name = "Erişim Engellendi",
+        Content = "Key doğrulaması yapılmadan hiçbir menüye erişemezsiniz.",
+        Time = 5
+    })
 
 
 
