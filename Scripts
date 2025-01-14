@@ -15,11 +15,9 @@ local function requestKey()
         PremiumOnly = false
     })
 
-    local Section = Tab:AddSection({
-        Name = "Key Giriş"
-    })
+    Tab:AddSection({ Name = "Lütfen Keyinizi Girin:" })
 
-    local inputKey
+    local inputKey = ""
     Tab:AddTextbox({
         Name = "Keyinizi Girin",
         Default = "",
@@ -35,7 +33,7 @@ local function requestKey()
             if inputKey == validKey then
                 OrionLib:MakeNotification({
                     Name = "Başarılı!",
-                    Content = "Doğru key! Script çalıştırılıyor...",
+                    Content = "Doğru key! Menü açılıyor...",
                     Image = "rbxassetid://4483345998",
                     Time = 5
                 })
@@ -44,7 +42,7 @@ local function requestKey()
             else
                 OrionLib:MakeNotification({
                     Name = "Hata!",
-                    Content = "Yanlış key! Lütfen tekrar deneyin.",
+                    Content = "Yanlış key! Tekrar deneyin.",
                     Image = "rbxassetid://4483345998",
                     Time = 5
                 })
@@ -53,13 +51,16 @@ local function requestKey()
     })
 end
 
+-- Ana script burada çalıştırılacak
+local function mainScript()
+    local Window = OrionLib:MakeWindow({
+        Name = "Sydearr Hub - TA",
+        HidePremium = false,
+        SaveConfig = true,
+        ConfigFolder = "OrionTest"
+    })
 
-local Window = OrionLib:MakeWindow({
-    Name = "Sydearr Hub - TA",
-    HidePremium = false,
-    SaveConfig = true,
-    ConfigFolder = "OrionTest"
-})
+    
 
 -- Create a tab
 local Tab1 = Window:MakeTab({
