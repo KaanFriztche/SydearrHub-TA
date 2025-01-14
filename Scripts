@@ -925,10 +925,3 @@ Tab5:AddButton({
     end
 })
 
-else
-        NotificationLabel.Text = "Incorrect Key! Please try again."
-        wait(2)
-        NotificationLabel.Text = ""
-    end
-end)
-
