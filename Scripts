@@ -17,6 +17,7 @@ local Tab = Window:MakeTab({
     PremiumOnly = false
 })
 
+-- Key Girme TextBox'u
 Tab:AddTextbox({
     Name = "Key Girin",
     Default = "",
@@ -36,6 +37,20 @@ Tab:AddTextbox({
                 Time = 5
             })
         end
+    end
+})
+
+-- "Get Key" Butonu
+Tab:AddButton({
+    Name = "Get Key",
+    Callback = function()
+        -- Linki kopyalama işlemi
+        setclipboard("https://shrinkme.ink/SydearrKey")
+        OrionLib:MakeNotification({
+            Name = "Key Kopyalandı!",
+            Content = "Key bağlantısı panoya kopyalandı.",
+            Time = 5
+        })
     end
 })
 
