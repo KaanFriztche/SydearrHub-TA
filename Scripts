@@ -64,6 +64,72 @@ local function openMainMenu()
 end
 
 -- Doğrulama Butonu
+local validKey = "SydearrHubNewKey2025" -- Geçerli Key
+local keyVerified = false -- Key doğrulama durumu
+
+-- Orion Library yükleniyor
+local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
+
+-- Pencere oluşturuluyor
+local Window = OrionLib:MakeWindow({
+    Name = "Sydearr Hub - Key Doğrulama",
+    HidePremium = false,
+    SaveConfig = true,
+    ConfigFolder = "SydearrKeySystem"
+})
+
+-- Key doğrulama sekmesi
+local Tab = Window:MakeTab({
+    Name = "Key Doğrulama",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
+
+Tab:AddSection({
+    Name = "Lütfen Geçerli Keyinizi Girin:"
+})
+
+-- Kullanıcıdan Key girişi
+local inputKey = ""
+Tab:AddTextbox({
+    Name = "Keyinizi Girin",
+    Default = "",
+    TextDisappear = true,
+    Callback = function(value)
+        inputKey = value
+    end
+})
+
+-- Ana Menü fonksiyonu
+local function openMainMenu()
+    if not keyVerified then
+        OrionLib:MakeNotification({
+            Name = "Erişim Engellendi",
+            Content = "Key doğrulaması yapılmadan bu menüye erişemezsiniz.",
+            Time = 5
+        })
+        return -- Key doğrulaması yapılmadan hiçbir işlem yapılmaz
+    end
+
+    -- Ana menüye erişim sağlanır
+    local MainMenuTab = Window:MakeTab({
+        Name = "Ana Menü",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
+
+    MainMenuTab:AddSection({
+        Name = "Ana menüye hoş geldiniz!"
+    })
+
+    OrionLib:MakeNotification({
+        Name = "Başarılı!",
+        Content = "Ana menüye yönlendirildiniz.",
+        Time = 5
+    })
+end
+
+-- Doğrulama Butonu
 Tab:AddButton({
     Name = "Key Doğrula",
     Callback = function()
@@ -85,16 +151,15 @@ Tab:AddButton({
     end
 })
 
--- Sydearr Hub TA Menüsü (Key doğrulaması olmadan erişilemez)
-if keyVerified then
-    local player = game.Players.LocalPlayer
-
-    local TAWindow = OrionLib:MakeWindow({
-        Name = "Sydearr Hub - TA",
-        HidePremium = false,
-        SaveConfig = true,
-        ConfigFolder = "OrionTest"
+-- Genel kontrol: Key doğrulaması olmadan script çalışmasın
+if not keyVerified then
+    OrionLib:MakeNotification({
+        Name = "Erişim Engellendi",
+        Content = "Key doğrulaması yapılmadan Sydearr Hub'a erişemezsiniz.",
+        Time = 5
     })
+    return -- Tüm scripti durdur
+end
 
 
 
