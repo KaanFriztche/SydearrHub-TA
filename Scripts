@@ -45,7 +45,7 @@ local function openMainMenu()
         return -- Key doğrulaması yapılmadan hiçbir işlem yapılmaz
     end
 
-    -- Ana menü kodları burada yer alır
+    -- Ana menüye erişim sağlanır
     local MainMenuTab = Window:MakeTab({
         Name = "Ana Menü",
         Icon = "rbxassetid://4483345998",
@@ -85,33 +85,15 @@ Tab:AddButton({
     end
 })
 
--- Key alma butonu
-Tab:AddButton({
-    Name = "Get Key",
-    Callback = function()
-        if setclipboard then
-            setclipboard("https://shrinkme.ink/SydearrKey")
-            OrionLib:MakeNotification({
-                Name = "Key Kopyalandı!",
-                Content = "Key bağlantısı panoya kopyalandı.",
-                Time = 5
-            })
-        else
-            OrionLib:MakeNotification({
-                Name = "Hata!",
-                Content = "setclipboard desteklenmiyor. Manuel olarak kopyalayın.",
-                Time = 5
-            })
-        end
-    end
-})
+-- Sydearr Hub TA Menüsü (Key doğrulaması olmadan erişilemez)
+if keyVerified then
+    local player = game.Players.LocalPlayer
 
--- Tüm diğer menüler burada kontrol ediliyor
-if not keyVerified then
-    OrionLib:MakeNotification({
-        Name = "Erişim Engellendi",
-        Content = "Key doğrulaması yapılmadan hiçbir menüye erişemezsiniz.",
-        Time = 5
+    local TAWindow = OrionLib:MakeWindow({
+        Name = "Sydearr Hub - TA",
+        HidePremium = false,
+        SaveConfig = true,
+        ConfigFolder = "OrionTest"
     })
 
 
