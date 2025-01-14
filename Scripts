@@ -1,55 +1,82 @@
-local validKey = "SydearrHubNewKey2025"
-local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/newfile.lua'))()
+local validKey = "SydearrHubNewKey2025" -- Geçerli Key
+local keyVerified = false -- Key doğrulama durumu
 
-local function requestKey()
-    local userInput = OrionLib:MakeWindow({
-        Name = "Key Giriş Sistemi",
-        HidePremium = true,
-        SaveConfig = false,
-        ConfigFolder = "KeySystem"
-    })
+-- Orion Library yükleniyor
+local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
 
-    local Tab = userInput:MakeTab({
-        Name = "Key Doğrulama",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-    })
+-- Pencere oluşturuluyor
+local Window = OrionLib:MakeWindow({
+    Name = "Sydearr Hub - Key Doğrulama",
+    HidePremium = false,
+    SaveConfig = true,
+    ConfigFolder = "SydearrKeySystem"
+})
 
-    Tab:AddSection({ Name = "Lütfen Keyinizi Girin:" })
+-- Key doğrulama sekmesi
+local Tab = Window:MakeTab({
+    Name = "Key Doğrulama",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
 
-    local inputKey = ""
-    Tab:AddTextbox({
-        Name = "Keyinizi Girin",
-        Default = "",
-        TextDisappear = true,
-        Callback = function(value)
-            inputKey = value
+Tab:AddSection({
+    Name = "Lütfen Geçerli Keyinizi Girin:"
+})
+
+-- Kullanıcıdan Key girişi
+local inputKey = ""
+Tab:AddTextbox({
+    Name = "Keyinizi Girin",
+    Default = "",
+    TextDisappear = true,
+    Callback = function(value)
+        inputKey = value
+    end
+})
+
+-- Doğrulama Butonu
+Tab:AddButton({
+    Name = "Key Doğrula",
+    Callback = function()
+        if inputKey == validKey then
+            keyVerified = true
+            OrionLib:MakeNotification({
+                Name = "Başarılı!",
+                Content = "Doğru key! Ana menüye yönlendiriliyorsunuz.",
+                Time = 5
+            })
+            -- Ana Menüye geçiş
+            openMainMenu()
+        else
+            OrionLib:MakeNotification({
+                Name = "Hata!",
+                Content = "Yanlış key girdiniz! Lütfen tekrar deneyin.",
+                Time = 5
+            })
         end
-    })
+    end
+})
 
-    Tab:AddButton({
-        Name = "Doğrula",
-        Callback = function()
-            if inputKey == validKey then
-                OrionLib:MakeNotification({
-                    Name = "Başarılı!",
-                    Content = "Doğru key! Menü açılıyor...",
-                    Image = "rbxassetid://4483345998",
-                    Time = 5
-                })
-                userInput:Destroy()
-                mainScript()
-            else
-                OrionLib:MakeNotification({
-                    Name = "Hata!",
-                    Content = "Yanlış key! Tekrar deneyin.",
-                    Image = "rbxassetid://4483345998",
-                    Time = 5
-                })
-            end
+-- Key alma butonu
+Tab:AddButton({
+    Name = "Get Key",
+    Callback = function()
+        if setclipboard then
+            setclipboard("https://shrinkme.ink/SydearrKey")
+            OrionLib:MakeNotification({
+                Name = "Key Kopyalandı!",
+                Content = "Key bağlantısı panoya kopyalandı.",
+                Time = 5
+            })
+        else
+            OrionLib:MakeNotification({
+                Name = "Hata!",
+                Content = "setclipboard desteklenmiyor. Manuel olarak kopyalayın.",
+                Time = 5
+            })
         end
-    })
-end
+    end
+})
 
 
 
