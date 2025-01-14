@@ -53,8 +53,6 @@ local function requestKey()
     })
 end
 
-local function mainScript()
-
 
 local Window = OrionLib:MakeWindow({
     Name = "Sydearr Hub - TA",
