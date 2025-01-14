@@ -24,7 +24,7 @@ TabTA:AddSection({
 })
 
 -- Kullanıcıdan Key girişi
-local inputKeyTA = "31"
+local inputKeyTA = ""
 TabTA:AddTextbox({
     Name = "TA Menü Key",
     Default = "",
@@ -36,6 +36,9 @@ TabTA:AddTextbox({
 
 -- TA Menüsü Fonksiyonu
 local function openTAMenu()
+    -- Menü zaten açıldıysa tekrar oluşturulmasını engelle
+    if TAMenuVerified then return end
+
     -- TA Menüsü oluşturuluyor
     local TAMenuTab = Window:MakeTab({
         Name = "Sydearr Hub - TA",
@@ -57,6 +60,9 @@ local function openTAMenu()
         Content = "TA Menüsü açıldı!",
         Time = 5
     })
+
+    -- Menü doğrulandı, tekrar açılmasını engelle
+    TAMenuVerified = true
 end
 
 -- Doğrulama Butonu
@@ -64,15 +70,12 @@ TabTA:AddButton({
     Name = "TA Menü Key Doğrula",
     Callback = function()
         if inputKeyTA == validKeyTA then
-            TAMenuVerified = true
             OrionLib:MakeNotification({
                 Name = "Başarılı!",
                 Content = "Doğru key! TA Menüsü açılıyor...",
                 Time = 5
             })
-            -- Mevcut sekmeyi kapatarak TA Menüsünü aç
-            Window:Destroy() -- Pencereyi yeniden oluştur
-            openTAMenu()
+            openTAMenu() -- Menü açılıyor
         else
             OrionLib:MakeNotification({
                 Name = "Hata!",
