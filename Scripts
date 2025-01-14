@@ -72,7 +72,6 @@ SubmitButton.MouseButton1Click:Connect(function()
 
 
 
-
 -- Create a tab
 local Tab1 = Window:MakeTab({
     Name = "Anasayfa",
@@ -885,6 +884,7 @@ Tab5:AddButton({
         })
     end
 })
+
 
 
 else
