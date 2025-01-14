@@ -1,5 +1,60 @@
-local player = game.Players.LocalPlayer
+local validKey = "SydearrHubNewKey2025"
 local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/newfile.lua'))()
+
+local function requestKey()
+    local userInput = OrionLib:MakeWindow({
+        Name = "Key Giriş Sistemi",
+        HidePremium = true,
+        SaveConfig = false,
+        ConfigFolder = "KeySystem"
+    })
+
+    local Tab = userInput:MakeTab({
+        Name = "Key Doğrulama",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
+
+    local Section = Tab:AddSection({
+        Name = "Key Giriş"
+    })
+
+    local inputKey
+    Tab:AddTextbox({
+        Name = "Keyinizi Girin",
+        Default = "",
+        TextDisappear = true,
+        Callback = function(value)
+            inputKey = value
+        end
+    })
+
+    Tab:AddButton({
+        Name = "Doğrula",
+        Callback = function()
+            if inputKey == validKey then
+                OrionLib:MakeNotification({
+                    Name = "Başarılı!",
+                    Content = "Doğru key! Script çalıştırılıyor...",
+                    Image = "rbxassetid://4483345998",
+                    Time = 5
+                })
+                userInput:Destroy()
+                mainScript()
+            else
+                OrionLib:MakeNotification({
+                    Name = "Hata!",
+                    Content = "Yanlış key! Lütfen tekrar deneyin.",
+                    Image = "rbxassetid://4483345998",
+                    Time = 5
+                })
+            end
+        end
+    })
+end
+
+local function mainScript()
+
 
 local Window = OrionLib:MakeWindow({
     Name = "Sydearr Hub - TA",
@@ -818,5 +873,7 @@ Tab5:AddButton({
             Text = "Grafikler başarıyla düşürüldü.",
             Duration = 5
         })
+
+requestKey()
     end
 })
