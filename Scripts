@@ -1,56 +1,3 @@
-local validKey = "SydearrHubNewKey2025" -- Geçerli Key
-local keyVerified = false -- Key doğrulama durumu
-
--- Orion Library yükleniyor
-local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Orion/main/source'))()
-
--- Pencere oluşturuluyor
-local Window = OrionLib:MakeWindow({
-    Name = "Sydearr Hub - Key Doğrulama",
-    HidePremium = false,
-    SaveConfig = true,
-    ConfigFolder = "SydearrKeySystem"
-})
-
--- Key doğrulama sekmesi
-local Tab = Window:MakeTab({
-    Name = "Key Doğrulama",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
-
-Tab:AddSection({
-    Name = "Lütfen Geçerli Keyinizi Girin:"
-})
-
--- Kullanıcıdan Key girişi
-local inputKey = ""
-Tab:AddTextbox({
-    Name = "Keyinizi Girin",
-    Default = "",
-    TextDisappear = true,
-    Callback = function(value)
-        inputKey = value
-    end
-})
-
--- Ana Menü fonksiyonu
-local function openMainMenu()
-    if not keyVerified then
-        OrionLib:MakeNotification({
-            Name = "Erişim Engellendi",
-            Content = "Key doğrulaması yapılmadan bu menüye erişemezsiniz.",
-            Time = 5
-        })
-        return -- Key doğrulaması yapılmadan hiçbir işlem yapılmaz
-    end
-
-    -- Ana menüye erişim sağlanır
-    local MainMenuTab = Window:MakeTab({
-        Name = "Ana Menü",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-    })
 local validKeyTA = "SydearrHubKeyTA2025" -- TA Menüsü için geçerli Key
 local TAMenuVerified = false -- TA Menüsü doğrulama durumu
 
@@ -97,6 +44,41 @@ local function openTAMenu()
         })
         return
     end
+
+    -- TA Menüsü oluşturuluyor
+    local TAMenuTab = Window:MakeTab({
+        Name = "Sydearr Hub - TA",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
+
+    TAMenuTab:AddSection({
+        Name = "TA Menüsüne hoş geldiniz!"
+    })
+
+    OrionLib:MakeNotification({
+        Name = "Başarılı!",
+        Content = "TA Menüsü açıldı!",
+        Time = 5
+    })
+end
+
+-- Doğrulama Butonu
+TabTA:AddButton({
+    Name = "TA Menü Key Doğrula",
+    Callback = function()
+        if inputKeyTA == validKeyTA then
+            TAMenuVerified = true
+            openTAMenu()
+        else
+            OrionLib:MakeNotification({
+                Name = "Hata!",
+                Content = "Yanlış key girdiniz. Lütfen tekrar deneyin.",
+                Time = 5
+            })
+        end
+    end
+})
 
     -- TA Menüsü oluşturuluyor
     local TAMenuTab = Window:MakeTab({
