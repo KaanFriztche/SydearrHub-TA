@@ -3,7 +3,7 @@ local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local TextBox = Instance.new("TextBox")
 local SubmitButton = Instance.new("TextButton")
-local GetKeyButton = Instance.new("TextButton") -- Get Key butonu
+local GetKeyButton = Instance.new("TextButton")
 local NotificationLabel = Instance.new("TextLabel")
 
 -- Ebeveyn ayarları
@@ -14,8 +14,8 @@ ScreenGui.ResetOnSpawn = false
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0.5, 0, 0.5, 0) -- Ekranın tam ortasına yerleştirme
-Frame.Size = UDim2.new(0, 300, 0, 200) -- Boyut artırıldı
+Frame.Position = UDim2.new(0.5, 0, 0.5, 0) -- Ortala
+Frame.Size = UDim2.new(0, 300, 0, 200)
 Frame.AnchorPoint = Vector2.new(0.5, 0.5)
 
 -- TextBox (şifre giriş yeri)
@@ -30,7 +30,7 @@ TextBox.Text = ""
 TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextBox.TextSize = 18
 
--- Submit Button (onay butonu)
+-- Submit Button (şifreyi onaylama butonu)
 SubmitButton.Parent = Frame
 SubmitButton.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
 SubmitButton.BorderSizePixel = 0
@@ -41,7 +41,7 @@ SubmitButton.Text = "Submit Key"
 SubmitButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 SubmitButton.TextSize = 18
 
--- Get Key Button (anahtar alma butonu)
+-- Get Key Button (şifre alma butonu)
 GetKeyButton.Parent = Frame
 GetKeyButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 GetKeyButton.BorderSizePixel = 0
@@ -52,7 +52,7 @@ GetKeyButton.Text = "Get Key"
 GetKeyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 GetKeyButton.TextSize = 18
 
--- Notification Label (yanlış şifre bildirimi)
+-- Notification Label (geri bildirim alanı)
 NotificationLabel.Parent = Frame
 NotificationLabel.BackgroundTransparency = 1
 NotificationLabel.Position = UDim2.new(0.1, 0, 0.9, 0)
@@ -62,14 +62,30 @@ NotificationLabel.Text = ""
 NotificationLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
 NotificationLabel.TextSize = 14
 
--- Doğru key kontrolü
+-- Doğru şifre
 local correctKey = "SydearrHubNewKey2025"
 
+-- Submit Button işlevi
 SubmitButton.MouseButton1Click:Connect(function()
     if TextBox.Text == correctKey then
-        ScreenGui:Destroy() -- Key UI'yi kapat
-        -- OrionLib ve GUI'yi burada başlatın
-        print("Doğru anahtar girildi.")
+        ScreenGui:Destroy() -- UI'yi kapat
+        print("Doğru anahtar girildi.") -- Geliştiricilere bildirim
+        
+        -- Başarılı giriş sonrası işlemler
+        local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/newfile.lua"))()
+        local Window = OrionLib:MakeWindow({
+            Name = "Sydearr Hub - TA",
+            HidePremium = false,
+            SaveConfig = true,
+            ConfigFolder = "OrionTest"
+        })
+
+        Window:MakeNotification({
+            Name = "Başarılı!",
+            Content = "Anahtarı başarıyla onayladınız!",
+            Image = "rbxassetid://4483345998",
+            Time = 5
+        })
     else
         NotificationLabel.Text = "Incorrect Key! Please try again."
         wait(2)
@@ -79,37 +95,27 @@ end)
 
 -- Get Key Button işlevi
 GetKeyButton.MouseButton1Click:Connect(function()
-    -- Anahtar bağlantısını kopyala
+    -- Kopyalama işlemi
     local success, err = pcall(function()
         setclipboard("https://shrinkme.ink/SydearrKey")
     end)
 
     if success then
-        -- Bildirim göster
+        -- Kopyalama başarılı
         game:GetService("StarterGui"):SetCore("SendNotification", {
             Title = "Key Kopyalandı",
-            Text = "Key bağlantısı kopyalandı!",
+            Text = "Key bağlantısı başarıyla kopyalandı!",
             Duration = 3
         })
     else
-        -- Desteklenmediğinde hata bildirimi
+        -- Kopyalama başarısız
         game:GetService("StarterGui"):SetCore("SendNotification", {
             Title = "Hata!",
-            Text = "Key bağlantısını kopyalama desteklenmiyor.",
+            Text = "Kopyalama işlemi desteklenmiyor.",
             Duration = 3
         })
     end
 end)
-        
-        -- OrionLib ve GUI'yi burada başlatın
-        local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/newfile.lua'))()
-
-        local Window = OrionLib:MakeWindow({
-            Name = "Sydearr Hub - TA",
-            HidePremium = false,
-            SaveConfig = true,
-            ConfigFolder = "OrionTest"
-        })
 
 
 
