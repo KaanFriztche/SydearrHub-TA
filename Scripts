@@ -34,6 +34,34 @@ Tab:AddTextbox({
     end
 })
 
+-- Ana Menü fonksiyonu
+local function openMainMenu()
+    if keyVerified then
+        -- Ana menüye geçiş kodları burada yer alır
+        local MainMenuTab = Window:MakeTab({
+            Name = "Ana Menü",
+            Icon = "rbxassetid://4483345998",
+            PremiumOnly = false
+        })
+
+        MainMenuTab:AddSection({
+            Name = "Ana menüye hoş geldiniz!"
+        })
+
+        OrionLib:MakeNotification({
+            Name = "Başarılı!",
+            Content = "Ana menüye yönlendirildiniz.",
+            Time = 5
+        })
+    else
+        OrionLib:MakeNotification({
+            Name = "Hata!",
+            Content = "Key doğrulaması yapılmadan ana menüye erişemezsiniz.",
+            Time = 5
+        })
+    end
+end
+
 -- Doğrulama Butonu
 Tab:AddButton({
     Name = "Key Doğrula",
@@ -45,7 +73,6 @@ Tab:AddButton({
                 Content = "Doğru key! Ana menüye yönlendiriliyorsunuz.",
                 Time = 5
             })
-            -- Ana Menüye geçiş
             openMainMenu()
         else
             OrionLib:MakeNotification({
