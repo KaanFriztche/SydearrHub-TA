@@ -89,6 +89,7 @@ function loadGUI()
     })
 
 
+
 -- Add a section to the tab
 local Section1 = Tab1:AddSection({
     Name = "- GUI Anasayfası -"
@@ -894,5 +895,7 @@ Tab5:AddButton({
         })
     end
 })
+
+createKeySystem()
 
 
