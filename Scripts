@@ -596,6 +596,48 @@ Tab7:AddButton({
 })
 
 
+Tab7:AddButton({
+    Name = "• R6 SCP-096",
+    Callback = function()
+        local scriptUrl = "https://pastefy.app/YsJgITXR/raw"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+Tab7:AddButton({
+    Name = "• R6 Fighter ( Punch & Defense)",
+    Callback = function()
+        local scriptUrl = "https://pastefy.app/wxVAgZpT/raw"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
+
+
 
 
 Tab7:AddButton({
