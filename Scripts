@@ -789,7 +789,7 @@ Tab5:AddButton({
 
 -- Infinite Yield admin butonunu ekliyoruz
 Tab5:AddButton({
-    Name = "• Sydearr Mobile Aim Menü",
+    Name = "• Sydearr Aim Menü",
     Callback = function()
         -- İnfinite Yield scriptini CodeX ile çalıştırmak için
         local scriptUrl = "https://pastebin.com/raw/9wj1EWCQ"
