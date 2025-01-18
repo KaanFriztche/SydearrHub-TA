@@ -93,11 +93,40 @@ Tab2:AddButton({
 })
 
 Tab2:AddButton({
+    Name = "• 25 JJ ÇEK!",
+    Callback = function()
+        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
+            "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+
+
+Tab2:AddButton({
     Name = "• 30 JJ ÇEK!",
     Callback = function()
         local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
             "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
             "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+
+Tab2:AddButton({
+    Name = "• 35 JJ ÇEK!",
+    Callback = function()
+        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
+            "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ", "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ"}
         for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
             task.wait(2)
@@ -118,6 +147,22 @@ Tab2:AddButton({
         end
     end
 })
+
+Tab2:AddButton({
+    Name = "• 45 JJ ÇEK!",
+    Callback = function()
+local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+        "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
+        "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ",
+        "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK",
+        "KIRK BİR", "KIRK İKİ", "KIRK ÜÇ", "KIRK DÖRT", "KIRK BEŞ"}
+    for _, message in ipairs(messages) do
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+        wait(2)
+       end
+    end
+})
+
 
 Tab2:AddButton({
     Name = "• 50 JJ ÇEK!",
@@ -183,6 +228,20 @@ Tab3:AddButton({
 })
 
 Tab3:AddButton({
+    Name = "• 25 GJ ÇEK!",
+    Callback = function()
+        local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi.", "Sekiz.", "Dokuz.", "On.",
+ "On bir.", "On iki.", "On üç.", "On dört.", "On beş.",
+ "On altı.", "On yedi.", "On sekiz.", "On dokuz.", "Yirmi.",
+ "Yirmi bir.", "Yirmi iki.", "Yirmi üç.", "Yirmi dört.", "Yirmi beş."}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+Tab3:AddButton({
     Name = "• 30 GJ ÇEK!",
     Callback = function()
         local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi.", "Sekiz.", "Dokuz.", "On.",
@@ -190,6 +249,22 @@ Tab3:AddButton({
  "On altı.", "On yedi.", "On sekiz.", "On dokuz.", "Yirmi.",
  "Yirmi bir.", "Yirmi iki.", "Yirmi üç.", "Yirmi dört.", "Yirmi beş.",
  "Yirmi altı.", "Yirmi yedi.", "Yirmi sekiz.", "Yirmi dokuz.", "Otuz."}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+Tab3:AddButton({
+    Name = "• 35 GJ ÇEK!",
+    Callback = function()
+        local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi.", "Sekiz.", "Dokuz.", "On.",
+ "On bir.", "On iki.", "On üç.", "On dört.", "On beş.",
+ "On altı.", "On yedi.", "On sekiz.", "On dokuz.", "Yirmi.",
+ "Yirmi bir.", "Yirmi iki.", "Yirmi üç.", "Yirmi dört.", "Yirmi beş.",
+ "Yirmi altı.", "Yirmi yedi.", "Yirmi sekiz.", "Yirmi dokuz.", "Otuz.",
+ "Otuz bir.", "Otuz iki.", "Otuz üç.", "Otuz dört.", "Otuz beş."}
         for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
             task.wait(2)
@@ -211,6 +286,24 @@ Tab3:AddButton({
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
             task.wait(2)
         end
+    end
+})
+
+Tab3:AddButton({
+    Name = "• 45 GJ ÇEK!",
+    Callback = function()
+local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi.", "Sekiz.", "Dokuz.", "On.",
+ "On bir.", "On iki.", "On üç.", "On dört.", "On beş.",
+ "On altı.", "On yedi.", "On sekiz.", "On dokuz.", "Yirmi.",
+ "Yirmi bir.", "Yirmi iki.", "Yirmi üç.", "Yirmi dört.", "Yirmi beş.",
+ "Yirmi altı.", "Yirmi yedi.", "Yirmi sekiz.", "Yirmi dokuz.", "Otuz.",
+ "Otuz bir.", "Otuz iki.", "Otuz üç.", "Otuz dört.", "Otuz beş.",
+ "Otuz altı.", "Otuz yedi.", "Otuz sekiz.", "Otuz dokuz.", "Kırk.",
+ "Kırk bir.", "Kırk iki.", "Kırk üç.", "Kırk dört.", "Kırk beş."}
+    for _, message in ipairs(messages) do
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+        wait(2)
+       end
     end
 })
 
@@ -321,7 +414,7 @@ Tab6:AddButton({
 Tab6:AddButton({
     Name = "• 7 HJ ÇEK!",
     Callback = function()
-        local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT", "B", "E", "Ş", "BEŞ", "A", "L", "T", "I", "ALTI", "Y", "E", "D", "İ"}
+        local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT", "B", "E", "Ş", "BEŞ", "A", "L", "T", "I", "ALTI", "Y", "E", "D", "İ", "YEDİ"}
         for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
             task.wait(2)
