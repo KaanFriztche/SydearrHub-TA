@@ -78,16 +78,20 @@ OrionLib:MakeNotification({
     Time = 8
 })
 
--- Add buttons to the tab
 Tab2:AddButton({
     Name = "• 20 JJ ÇEK!",
     Callback = function()
         local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
-            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
-            "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"}
+                          "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"}
+        local ChatEvents = game:GetService("ReplicatedStorage"):FindFirstChild("DefaultChatSystemChatEvents")
+        if not ChatEvents or not ChatEvents:FindFirstChild("SayMessageRequest") then
+            warn("Chat sistemi bulunamadı!")
+            return
+        end
+        
         for _, message in ipairs(messages) do
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
+            ChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(0.5) -- Daha hızlı, ama güvenli gönderim
         end
     end
 })
