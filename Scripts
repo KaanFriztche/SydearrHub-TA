@@ -78,25 +78,26 @@ OrionLib:MakeNotification({
     Time = 8
 })
 
-local function sendMessages(messages, delay)
-    for _, message in ipairs(messages) do
-        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-        task.wait(delay)
+-- 20 JJ Butonu
+Tab2:AddButton({
+    Name = "• 20 JJ ÇEK!",
+    Callback = function()
+        -- Mesaj listesi ve gönderim fonksiyonu
+        local messages = {
+            "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ",
+            "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
+            "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"
+        }
+        local delay = 2 -- Mesajlar arasındaki bekleme süresi
+
+        -- Mesajları sırayla gönder
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(delay)
+        end
     end
-end
-
--- 20 JJ için mesaj listesi ve bekleme süresi
-local jjMessages = {
-    "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ",
-    "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
-    "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
-    "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"
-}
-local delayBetweenMessages = 2 -- Mesajlar arasındaki bekleme süresi
-
--- Mesajları gönder
-sendMessages(jjMessages, delayBetweenMessages)
-
+})
 
 
 Tab2:AddButton({
