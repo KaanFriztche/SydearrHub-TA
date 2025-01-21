@@ -1,6 +1,8 @@
+-- Local Player Tanımı
 local player = game.Players.LocalPlayer
 local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/newfile.lua'))()
 
+-- Pencere Tanımı
 local Window = OrionLib:MakeWindow({
     Name = "Sydearr Hub - TA",
     HidePremium = false,
@@ -8,116 +10,74 @@ local Window = OrionLib:MakeWindow({
     ConfigFolder = "OrionTest"
 })
 
--- Create a tab
-local Tab1 = Window:MakeTab({
-    Name = "Anasayfa",
-    Icon = "rbxassetid://4483345998",
-    PremiumOnly = false
-})
+-- Onay Sistemi
+local function onayliMesajGonder(butonAdi, mesajlar)
+    Tab2:AddButton({
+        Name = butonAdi,
+        Callback = function()
+            -- Onay için özel bir GUI penceresi oluştur
+            local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
+            local Frame = Instance.new("Frame", ScreenGui)
+            Frame.Size = UDim2.new(0, 300, 0, 150)
+            Frame.Position = UDim2.new(0.5, -150, 0.5, -75)
+            Frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 
--- Add a section to the tab
-local Section1 = Tab1:AddSection({
-    Name = "- GUI Anasayfası -"
-})
+            local Label = Instance.new("TextLabel", Frame)
+            Label.Text = "Bu işlemi başlatmak istiyor musunuz?"
+            Label.Size = UDim2.new(1, 0, 0.5, 0)
+            Label.BackgroundTransparency = 1
+            Label.TextColor3 = Color3.new(1, 1, 1)
+            Label.Font = Enum.Font.SourceSans
+            Label.TextScaled = true
 
-Tab1:AddParagraph("Sydearr Hub Sunar:", [[
- 
-- Yapılan ilk TA GUI hilesidir.
- 
-- Sunucumuza gelip GUI hakkında isteklerinizi belirtebilirsiniz.
- 
-- Discord sunucumuzda mümkün olduğunca güncelleme isteyebilirsiniz ama güncelleme'nin ne hakkında olması gerektiğini bildirmeniz gerekir.
- 
-- Teleport bölgeleri, siz yakalanmayın diye metro istasyonları olarak ayarlandı.
-]])
+            local YesButton = Instance.new("TextButton", Frame)
+            YesButton.Text = "Evet"
+            YesButton.Size = UDim2.new(0.4, 0, 0.3, 0)
+            YesButton.Position = UDim2.new(0.1, 0, 0.6, 0)
+            YesButton.BackgroundColor3 = Color3.new(0, 1, 0)
+            YesButton.Font = Enum.Font.SourceSans
+            YesButton.TextScaled = true
 
+            local NoButton = Instance.new("TextButton", Frame)
+            NoButton.Text = "Hayır"
+            NoButton.Size = UDim2.new(0.4, 0, 0.3, 0)
+            NoButton.Position = UDim2.new(0.5, 0, 0.6, 0)
+            NoButton.BackgroundColor3 = Color3.new(1, 0, 0)
+            NoButton.Font = Enum.Font.SourceSans
+            NoButton.TextScaled = true
 
-Tab1:AddParagraph("Discord Sunucularımız:", [[
+            -- "Evet" Butonu Tıklanınca
+            YesButton.MouseButton1Click:Connect(function()
+                ScreenGui:Destroy() -- Onay penceresini kapat
+                for _, mesaj in ipairs(mesajlar) do
+                    local success, err = pcall(function()
+                        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(mesaj, "All")
+                    end)
+                    if not success then
+                        warn("Mesaj Gönderme Hatası: " .. tostring(err))
+                    end
+                    task.wait(2)
+                end
+            end)
 
-- Ana Sunucumuz: https://discord.gg/xTafcNjWcd
+            -- "Hayır" Butonu Tıklanınca
+            NoButton.MouseButton1Click:Connect(function()
+                ScreenGui:Destroy() -- Onay penceresini kapat
+            end)
+        end
+    })
+end
 
-- Script Sunucumuz: https://discord.gg/AR2AeEnPDG
-]])
-
-Tab1:AddParagraph("GUI Developers:", [[
- 
-- @kaansfriztche
-
-- @ross_x1
-]])
-
-Tab1:AddParagraph("Content Finders:", [[
-
-- @ross_x1 
-
-- @rip_sigma_31
-
-- @rewaqz
-
-- @kaansfriztche
-]])
-
-
-
-
-
--- Create a tab
+-- JJ Tabını Tanımlama
 local Tab2 = Window:MakeTab({
     Name = "JJ",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
 
--- Add a section to the tab
-local Section2 = Tab2:AddSection({
-    Name = "- Jump Jackler -"
-})
-
--- Onaylı Mesaj Gönderim Fonksiyonu
-local function onayliMesajGonder(butonAdi, mesajlar)
-    Tab2:AddButton({
-        Name = butonAdi,
-        Callback = function()
-            -- Kullanıcıdan Onay Almak için Bildirim Göster
-            OrionLib:MakeNotification({
-                Name = "Onay Gerekli",
-                Content = butonAdi .. " işlemini başlatmak istediğinize emin misiniz?",
-                Image = "rbxassetid://4483345998", -- İsteğe bağlı ikon
-                Time = 5
-            })
-
-            -- Onay için buton ekleme
-            wait(1) -- Biraz bekleme ekliyoruz
-            OrionLib:MakeNotification({
-                Name = "Lütfen Seçin",
-                Content = "Evet için butona basın.",
-                Image = "rbxassetid://4483345998",
-                Time = 10
-            })
-
-            -- Onay Durumu
-            local onaylandi = true -- Burayı onay durumuna göre ayarlayın
-            if onaylandi then
-                for _, mesaj in ipairs(mesajlar) do
-                    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(mesaj, "All")
-                    task.wait(2)
-                end
-            else
-                OrionLib:MakeNotification({
-                    Name = "İşlem İptal Edildi",
-                    Content = butonAdi .. " işlemi iptal edildi.",
-                    Image = "rbxassetid://4483345998",
-                    Time = 5
-                })
-            end
-        end
-    })
-end
-
--- JJ Butonlarını Ekleyelim
+-- Butonlar
 onayliMesajGonder("• 15 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ"})
 onayliMesajGonder("• 20 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"})
-onayliMesajGonder("• 25 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ", "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ"})
 
 
 
