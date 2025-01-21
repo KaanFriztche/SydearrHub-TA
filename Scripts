@@ -222,7 +222,7 @@ Tab3:AddButton({
  "On altı.", "On yedi.", "On sekiz.", "On dokuz.", "Yirmi."}
         for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
+            task.wait(2.1)
         end
     end
 })
@@ -236,7 +236,7 @@ Tab3:AddButton({
  "Yirmi bir.", "Yirmi iki.", "Yirmi üç.", "Yirmi dört.", "Yirmi beş."}
         for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
+            task.wait(2.1)
         end
     end
 })
@@ -251,7 +251,7 @@ Tab3:AddButton({
  "Yirmi altı.", "Yirmi yedi.", "Yirmi sekiz.", "Yirmi dokuz.", "Otuz."}
         for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
+            task.wait(2.1)
         end
     end
 })
@@ -267,7 +267,7 @@ Tab3:AddButton({
  "Otuz bir.", "Otuz iki.", "Otuz üç.", "Otuz dört.", "Otuz beş."}
         for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
+            task.wait(2.1)
         end
     end
 })
@@ -302,7 +302,7 @@ local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi."
  "Kırk bir.", "Kırk iki.", "Kırk üç.", "Kırk dört.", "Kırk beş."}
     for _, message in ipairs(messages) do
         game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-        wait(2)
+        wait(2.1)
        end
     end
 })
@@ -321,7 +321,7 @@ local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi."
  "Kırk altı.", "Kırk yedi.", "Kırk sekiz.", "Kırk dokuz.", "Elli."}
     for _, message in ipairs(messages) do
         game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-        wait(2)
+        wait(2.1)
        end
     end
 })
@@ -350,7 +350,7 @@ local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi."
  "Doksan altı.", "Doksan yedi.", "Doksan sekiz.", "Doksan dokuz.", "Yüz."}
     for _, message in ipairs(messages) do
         game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-        wait(2)
+        wait(2.1)
        end
     end
 })
@@ -373,7 +373,7 @@ Tab6:AddButton({
         local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ"}
         for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
+            task.wait(2.2)
         end
     end
 })
@@ -384,7 +384,7 @@ Tab6:AddButton({
         local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT"}   
 for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
+            task.wait(2.2)
         end
     end
 })
@@ -395,7 +395,7 @@ Tab6:AddButton({
         local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT", "B", "E", "Ş", "BEŞ"}
         for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
+            task.wait(2.2)
         end
     end
 })
@@ -406,7 +406,7 @@ Tab6:AddButton({
         local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT", "B", "E", "Ş", "BEŞ", "A", "L", "T", "I", "ALTI"}
         for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
+            task.wait(2.2)
         end
     end
 })
@@ -417,7 +417,7 @@ Tab6:AddButton({
         local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT", "B", "E", "Ş", "BEŞ", "A", "L", "T", "I", "ALTI", "Y", "E", "D", "İ", "YEDİ"}
         for _, message in ipairs(messages) do
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
+            task.wait(2.2)
         end
     end
 })
