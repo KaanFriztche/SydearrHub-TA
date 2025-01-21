@@ -84,14 +84,16 @@ Tab2:AddButton({
         local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
                           "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"}
 
-        -- Oyuncu ve karakter bilgilerini al
-        local player = game.Players.LocalPlayer
-        local character = player.Character or player.CharacterAdded:Wait()
+        -- DefaultChatSystem üzerinden mesaj gönder
+        local ChatEvents = game:GetService("ReplicatedStorage"):FindFirstChild("DefaultChatSystemChatEvents")
+        if not ChatEvents or not ChatEvents:FindFirstChild("SayMessageRequest") then
+            warn("Chat sistemi mevcut değil!")
+            return
+        end
 
-        -- Mesajları sıralı olarak karakterden gönder
         for _, message in ipairs(messages) do
-            game:GetService("Chat"):Chat(character, message, Enum.ChatColor.Blue)
-            task.wait(2) -- Her mesaj arasında 2 saniye bekle
+            ChatEvents.SayMessageRequest:FireServer(message, "All") -- Mesaj gönder
+            task.wait(0.5) -- Mesajlar arasında bekleme süresi
         end
     end
 })
