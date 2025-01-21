@@ -78,6 +78,21 @@ OrionLib:MakeNotification({
     Time = 8
 })
 
+
+-- Add buttons to the tab
+Tab2:AddButton({
+    Name = "• 15 JJ ÇEK!",
+    Callback = function()
+        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+
 -- Add buttons to the tab
 Tab2:AddButton({
     Name = "• 20 JJ ÇEK!",
@@ -212,6 +227,21 @@ local Tab3 = Window:MakeTab({
 local Section3 = Tab3:AddSection({
     Name = "- Grammer Jackler -"
 })
+
+
+-- Add buttons to the tab
+Tab3:AddButton({
+    Name = "• 15 GJ ÇEK!",
+    Callback = function()
+        local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi.", "Sekiz.", "Dokuz.", "On.",
+ "On bir.", "On iki.", "On üç.", "On dört.", "On beş."}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
 
 -- Add buttons to the tab
 Tab3:AddButton({
@@ -367,6 +397,30 @@ local Section6 = Tab6:AddSection({
     Name = "- Hummer Jackler -"
 })
 
+
+Tab6:AddButton({
+    Name = "• 1 HJ ÇEK!",
+    Callback = function()
+        local messages = {"B", "İ", "R", "BİR"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+
+Tab6:AddButton({
+    Name = "• 2 HJ ÇEK!",
+    Callback = function()
+        local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
 Tab6:AddButton({
     Name = "• 3 HJ ÇEK!",
     Callback = function()
@@ -421,6 +475,41 @@ Tab6:AddButton({
         end
     end
 })
+
+Tab6:AddButton({
+    Name = "• 8 HJ ÇEK!",
+    Callback = function()
+        local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT", "B", "E", "Ş", "BEŞ", "A", "L", "T", "I", "ALTI", "Y", "E", "D", "İ", "YEDİ", "S", "E", "K", "İ", "Z", "SEKİZ"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+Tab6:AddButton({
+    Name = "• 9 HJ ÇEK!",
+    Callback = function()
+        local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT", "B", "E", "Ş", "BEŞ", "A", "L", "T", "I", "ALTI", "Y", "E", "D", "İ", "YEDİ", "S", "E", "K", "İ", "Z", "SEKİZ", "D", "O", "K", "U", "Z", "DOKUZ"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+Tab6:AddButton({
+    Name = "• 9 HJ ÇEK!",
+    Callback = function()
+        local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT", "B", "E", "Ş", "BEŞ", "A", "L", "T", "I", "ALTI", "Y", "E", "D", "İ", "YEDİ", "S", "E", "K", "İ", "Z", "SEKİZ", "D", "O", "K", "U", "Z", "DOKUZ", "O", "N", "ON"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+
 
 -- Create Tab 3
 local Tab4 = Window:MakeTab({
