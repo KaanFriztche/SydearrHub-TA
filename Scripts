@@ -79,27 +79,16 @@ OrionLib:MakeNotification({
 })
 
 -- Add buttons to the tab
-local player = game.Players.LocalPlayer
-
 Tab2:AddButton({
     Name = "• 20 JJ ÇEK!",
     Callback = function()
-        local ScreenGui = Instance.new("ScreenGui", player.PlayerGui)
-        local Label = Instance.new("TextLabel", ScreenGui)
-        Label.Size = UDim2.new(0.3, 0, 0.05, 0)
-        Label.Position = UDim2.new(0.35, 0, 0.9, 0)
-        Label.BackgroundColor3 = Color3.new(0, 0, 0)
-        Label.TextColor3 = Color3.new(1, 1, 1)
-        Label.Font = Enum.Font.SourceSans
-        Label.TextScaled = true
-
         local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
-            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"}
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
+            "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"}
         for _, message in ipairs(messages) do
-            Label.Text = message
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
             task.wait(2)
         end
-        Label:Destroy() -- İşlem tamamlandığında Label'ı sil
     end
 })
 
