@@ -84,8 +84,9 @@ Tab2:AddButton({
         local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
                           "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"}
 
+        -- RemoteEvent'i bul ve tetikleyin
         local ChatEvent = game:GetService("ReplicatedStorage"):WaitForChild("GlobalChatEvent")
-        ChatEvent:FireServer(messages)
+        ChatEvent:FireServer(messages) -- Sunucuya mesajları gönder
     end
 })
 
