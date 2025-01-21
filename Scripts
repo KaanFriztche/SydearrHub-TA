@@ -86,11 +86,14 @@ Tab2:AddButton({
             "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
             "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"}
         for _, message in ipairs(messages) do
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
-        end
+    local success, err = pcall(function()
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+    end)
+    if not success then
+        warn("Mesaj Gönderilemedi: " .. tostring(err))
     end
-})
+    task.wait(2)
+end
 
 Tab2:AddButton({
     Name = "• 25 JJ ÇEK!",
