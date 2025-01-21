@@ -58,6 +58,9 @@ Tab1:AddParagraph("Content Finders:", [[
 ]])
 
 
+
+
+
 -- Create a tab
 local Tab2 = Window:MakeTab({
     Name = "JJ",
@@ -70,151 +73,43 @@ local Section2 = Tab2:AddSection({
     Name = "- Jump Jackler -"
 })
 
--- Create a notification
-OrionLib:MakeNotification({
-    Name = "Hoşgeldin!",
-    Content = "Sydearr Hub'a Hoşgeldin!",
-    Image = "rbxassetid://4483345998",
-    Time = 8
-})
-
-
--- Add buttons to the tab
-Tab2:AddButton({
-    Name = "• 15 JJ ÇEK!",
-    Callback = function()
-        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
-            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ"}
-        for _, message in ipairs(messages) do
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
+-- Onaylı Mesaj Gönderim Fonksiyonu
+local function onayliMesajGonder(butonAdi, mesajlar)
+    Tab2:AddButton({
+        Name = butonAdi,
+        Callback = function()
+            OrionLib:MakePrompt({
+                Title = "Onay",
+                Content = butonAdi .. " işlemini başlatmak istediğinize emin misiniz?",
+                Actions = {
+                    Yes = function()
+                        for _, mesaj in ipairs(mesajlar) do
+                            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(mesaj, "All")
+                            task.wait(2)
+                        end
+                    end,
+                    No = function()
+                        OrionLib:MakeNotification({
+                            Name = "İşlem İptal Edildi",
+                            Content = butonAdi .. " işlemi iptal edildi.",
+                            Image = "rbxassetid://4483345998",
+                            Time = 5
+                        })
+                    end
+                }
+            })
         end
-    end
-})
+    })
+end
 
-
--- Add buttons to the tab
-Tab2:AddButton({
-    Name = "• 20 JJ ÇEK!",
-    Callback = function()
-        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
-            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
-            "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"}
-        for _, message in ipairs(messages) do
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
-        end
-    end
-})
-
-Tab2:AddButton({
-    Name = "• 25 JJ ÇEK!",
-    Callback = function()
-        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
-            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
-            "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ"}
-        for _, message in ipairs(messages) do
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
-        end
-    end
-})
-
-
-
-Tab2:AddButton({
-    Name = "• 30 JJ ÇEK!",
-    Callback = function()
-        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
-            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
-            "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ"}
-        for _, message in ipairs(messages) do
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
-        end
-    end
-})
-
-
-Tab2:AddButton({
-    Name = "• 35 JJ ÇEK!",
-    Callback = function()
-        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
-            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
-            "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ", "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ"}
-        for _, message in ipairs(messages) do
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
-        end
-    end
-})
-
-Tab2:AddButton({
-    Name = "• 40 JJ ÇEK!",
-    Callback = function()
-        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
-            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
-            "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ",
-            "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK"}
-        for _, message in ipairs(messages) do
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
-        end
-    end
-})
-
-Tab2:AddButton({
-    Name = "• 45 JJ ÇEK!",
-    Callback = function()
-local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
-        "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
-        "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ",
-        "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK",
-        "KIRK BİR", "KIRK İKİ", "KIRK ÜÇ", "KIRK DÖRT", "KIRK BEŞ"}
-    for _, message in ipairs(messages) do
-        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-        wait(2)
-       end
-    end
-})
-
-
-Tab2:AddButton({
-    Name = "• 50 JJ ÇEK!",
-    Callback = function()
-local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
-        "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
-        "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ",
-        "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK",
-        "KIRK BİR", "KIRK İKİ", "KIRK ÜÇ", "KIRK DÖRT", "KIRK BEŞ", "KIRK ALTI", "KIRK YEDİ", "KIRK SEKİZ", "KIRK DOKUZ", "ELLİ"}
-    for _, message in ipairs(messages) do
-        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-        wait(2)
-       end
-    end
-})
-
-Tab2:AddButton({
-    Name = "• 100 JJ ÇEK!",
-    Callback = function()
-local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
-        "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
-        "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ",
-        "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK",
-        "KIRK BİR", "KIRK İKİ", "KIRK ÜÇ", "KIRK DÖRT", "KIRK BEŞ", "KIRK ALTI", "KIRK YEDİ", "KIRK SEKİZ", "KIRK DOKUZ", "ELLİ",
-        "ELLİ BİR", "ELLİ İKİ", "ELLİ ÜÇ", "ELLİ DÖRT", "ELLİ BEŞ", "ELLİ ALTI", "ELLİ YEDİ", "ELLİ SEKİZ", "ELLİ DOKUZ", "ALTMIŞ", "ALTMIŞ BİR", "ALTMIŞ İKİ", "ALTMIŞ ÜÇ", "ALTMIŞ DÖRT", "ALTMIŞ BEŞ", 
-    "ALTMIŞ ALTI", "ALTMIŞ YEDİ", "ALTMIŞ SEKİZ", "ALTMIŞ DOKUZ", "YETMİŞ", "YETMİŞ BİR", 
-    "YETMİŞ İKİ", "YETMİŞ ÜÇ", "YETMİŞ DÖRT", "YETMİŞ BEŞ", "YETMİŞ ALTI", "YETMİŞ YEDİ", 
-    "YETMİŞ SEKİZ", "YETMİŞ DOKUZ", "SEKSEN", "SEKSEN BİR", "SEKSEN İKİ", "SEKSEN ÜÇ", "SEKSEN DÖRT", 
-    "SEKSEN BEŞ", "SEKSEN ALTI", "SEKSEN YEDİ", "SEKSEN SEKİZ", "SEKSEN DOKUZ", "DOKSAN", 
-    "DOKSAN BİR", "DOKSAN İKİ", "DOKSAN ÜÇ", "DOKSAN DÖRT", "DOKSAN BEŞ", "DOKSAN ALTI", "DOKSAN YEDİ", 
-    "DOKSAN SEKİZ", "DOKSAN DOKUZ", "YÜZ"}
-    for _, message in ipairs(messages) do
-        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-        wait(2)
-       end
-    end
-})
+-- JJ Butonlarını Ekleyelim
+onayliMesajGonder("• 15 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ"})
+onayliMesajGonder("• 20 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"})
+onayliMesajGonder("• 25 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ", "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ"})
+onayliMesajGonder("• 30 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ", "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ"})
+onayliMesajGonder("• 35 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ", "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ", "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ"})
+onayliMesajGonder("• 40 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ", "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ", "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK"})
+onayliMesajGonder("• 45 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ", "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ", "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK", "KIRK BİR", "KIRK İKİ", "KIRK ÜÇ", "KIRK DÖRT", "KIRK BEŞ"})
 
 
 
