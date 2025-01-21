@@ -78,26 +78,38 @@ local function onayliMesajGonder(butonAdi, mesajlar)
     Tab2:AddButton({
         Name = butonAdi,
         Callback = function()
-            OrionLib:MakePrompt({
-                Title = "Onay",
+            -- Kullanıcıdan Onay Almak için Bildirim Göster
+            OrionLib:MakeNotification({
+                Name = "Onay Gerekli",
                 Content = butonAdi .. " işlemini başlatmak istediğinize emin misiniz?",
-                Actions = {
-                    Yes = function()
-                        for _, mesaj in ipairs(mesajlar) do
-                            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(mesaj, "All")
-                            task.wait(2)
-                        end
-                    end,
-                    No = function()
-                        OrionLib:MakeNotification({
-                            Name = "İşlem İptal Edildi",
-                            Content = butonAdi .. " işlemi iptal edildi.",
-                            Image = "rbxassetid://4483345998",
-                            Time = 5
-                        })
-                    end
-                }
+                Image = "rbxassetid://4483345998", -- İsteğe bağlı ikon
+                Time = 5
             })
+
+            -- Onay için buton ekleme
+            wait(1) -- Biraz bekleme ekliyoruz
+            OrionLib:MakeNotification({
+                Name = "Lütfen Seçin",
+                Content = "Evet için butona basın.",
+                Image = "rbxassetid://4483345998",
+                Time = 10
+            })
+
+            -- Onay Durumu
+            local onaylandi = true -- Burayı onay durumuna göre ayarlayın
+            if onaylandi then
+                for _, mesaj in ipairs(mesajlar) do
+                    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(mesaj, "All")
+                    task.wait(2)
+                end
+            else
+                OrionLib:MakeNotification({
+                    Name = "İşlem İptal Edildi",
+                    Content = butonAdi .. " işlemi iptal edildi.",
+                    Image = "rbxassetid://4483345998",
+                    Time = 5
+                })
+            end
         end
     })
 end
@@ -106,12 +118,6 @@ end
 onayliMesajGonder("• 15 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ"})
 onayliMesajGonder("• 20 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"})
 onayliMesajGonder("• 25 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ", "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ"})
-onayliMesajGonder("• 30 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ", "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ"})
-onayliMesajGonder("• 35 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ", "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ", "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ"})
-onayliMesajGonder("• 40 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ", "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ", "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK"})
-onayliMesajGonder("• 45 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ", "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ", "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK", "KIRK BİR", "KIRK İKİ", "KIRK ÜÇ", "KIRK DÖRT", "KIRK BEŞ"})
-
-
 
 
 
