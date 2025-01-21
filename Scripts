@@ -84,17 +84,9 @@ Tab2:AddButton({
         local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
                           "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"}
 
-        -- DefaultChatSystem üzerinden mesaj gönder
-        local ChatEvents = game:GetService("ReplicatedStorage"):FindFirstChild("DefaultChatSystemChatEvents")
-        if not ChatEvents or not ChatEvents:FindFirstChild("SayMessageRequest") then
-            warn("Chat sistemi mevcut değil!")
-            return
-        end
-
-        for _, message in ipairs(messages) do
-            ChatEvents.SayMessageRequest:FireServer(message, "All") -- Mesaj gönder
-            task.wait(0.5) -- Mesajlar arasında bekleme süresi
-        end
+        -- RemoteEvent'i bul ve tetikleyin
+        local ChatEvent = game:GetService("ReplicatedStorage"):WaitForChild("GlobalChatEvent")
+        ChatEvent:FireServer(messages) -- Sunucuya mesajları gönder
     end
 })
 
