@@ -1,8 +1,6 @@
--- Local Player Tanımı
 local player = game.Players.LocalPlayer
 local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/newfile.lua'))()
 
--- Pencere Tanımı
 local Window = OrionLib:MakeWindow({
     Name = "Sydearr Hub - TA",
     HidePremium = false,
@@ -10,77 +8,198 @@ local Window = OrionLib:MakeWindow({
     ConfigFolder = "OrionTest"
 })
 
--- Onay Sistemi
-local function onayliMesajGonder(butonAdi, mesajlar)
-    Tab2:AddButton({
-        Name = butonAdi,
-        Callback = function()
-            -- Onay için özel bir GUI penceresi oluştur
-            local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
-            local Frame = Instance.new("Frame", ScreenGui)
-            Frame.Size = UDim2.new(0, 300, 0, 150)
-            Frame.Position = UDim2.new(0.5, -150, 0.5, -75)
-            Frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+-- Create a tab
+local Tab1 = Window:MakeTab({
+    Name = "Anasayfa",
+    Icon = "rbxassetid://4483345998",
+    PremiumOnly = false
+})
 
-            local Label = Instance.new("TextLabel", Frame)
-            Label.Text = "Bu işlemi başlatmak istiyor musunuz?"
-            Label.Size = UDim2.new(1, 0, 0.5, 0)
-            Label.BackgroundTransparency = 1
-            Label.TextColor3 = Color3.new(1, 1, 1)
-            Label.Font = Enum.Font.SourceSans
-            Label.TextScaled = true
+-- Add a section to the tab
+local Section1 = Tab1:AddSection({
+    Name = "- GUI Anasayfası -"
+})
 
-            local YesButton = Instance.new("TextButton", Frame)
-            YesButton.Text = "Evet"
-            YesButton.Size = UDim2.new(0.4, 0, 0.3, 0)
-            YesButton.Position = UDim2.new(0.1, 0, 0.6, 0)
-            YesButton.BackgroundColor3 = Color3.new(0, 1, 0)
-            YesButton.Font = Enum.Font.SourceSans
-            YesButton.TextScaled = true
+Tab1:AddParagraph("Sydearr Hub Sunar:", [[
+ 
+- Yapılan ilk TA GUI hilesidir.
+ 
+- Sunucumuza gelip GUI hakkında isteklerinizi belirtebilirsiniz.
+ 
+- Discord sunucumuzda mümkün olduğunca güncelleme isteyebilirsiniz ama güncelleme'nin ne hakkında olması gerektiğini bildirmeniz gerekir.
+ 
+- Teleport bölgeleri, siz yakalanmayın diye metro istasyonları olarak ayarlandı.
+]])
 
-            local NoButton = Instance.new("TextButton", Frame)
-            NoButton.Text = "Hayır"
-            NoButton.Size = UDim2.new(0.4, 0, 0.3, 0)
-            NoButton.Position = UDim2.new(0.5, 0, 0.6, 0)
-            NoButton.BackgroundColor3 = Color3.new(1, 0, 0)
-            NoButton.Font = Enum.Font.SourceSans
-            NoButton.TextScaled = true
 
-            -- "Evet" Butonu Tıklanınca
-            YesButton.MouseButton1Click:Connect(function()
-                ScreenGui:Destroy() -- Onay penceresini kapat
-                for _, mesaj in ipairs(mesajlar) do
-                    local success, err = pcall(function()
-                        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(mesaj, "All")
-                    end)
-                    if not success then
-                        warn("Mesaj Gönderme Hatası: " .. tostring(err))
-                    end
-                    task.wait(2)
-                end
-            end)
+Tab1:AddParagraph("Discord Sunucularımız:", [[
 
-            -- "Hayır" Butonu Tıklanınca
-            NoButton.MouseButton1Click:Connect(function()
-                ScreenGui:Destroy() -- Onay penceresini kapat
-            end)
-        end
-    })
-end
+- Ana Sunucumuz: https://discord.gg/xTafcNjWcd
 
--- JJ Tabını Tanımlama
+- Script Sunucumuz: https://discord.gg/AR2AeEnPDG
+]])
+
+Tab1:AddParagraph("GUI Developers:", [[
+ 
+- @kaansfriztche
+
+- @ross_x1
+]])
+
+Tab1:AddParagraph("Content Finders:", [[
+
+- @ross_x1 
+
+- @rip_sigma_31
+
+- @rewaqz
+
+- @kaansfriztche
+]])
+
+
+-- Create a tab
 local Tab2 = Window:MakeTab({
     Name = "JJ",
     Icon = "rbxassetid://4483345998",
     PremiumOnly = false
 })
 
--- Butonlar
-onayliMesajGonder("• 15 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ"})
-onayliMesajGonder("• 20 JJ ÇEK!", {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON", "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"})
+-- Add a section to the tab
+local Section2 = Tab2:AddSection({
+    Name = "- Jump Jackler -"
+})
+
+-- Create a notification
+OrionLib:MakeNotification({
+    Name = "Hoşgeldin!",
+    Content = "Sydearr Hub'a Hoşgeldin!",
+    Image = "rbxassetid://4483345998",
+    Time = 8
+})
+
+-- Add buttons to the tab
+Tab2:AddButton({
+    Name = "• 20 JJ ÇEK!",
+    Callback = function()
+        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
+            "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+Tab2:AddButton({
+    Name = "• 25 JJ ÇEK!",
+    Callback = function()
+        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
+            "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
 
 
 
+Tab2:AddButton({
+    Name = "• 30 JJ ÇEK!",
+    Callback = function()
+        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
+            "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+
+Tab2:AddButton({
+    Name = "• 35 JJ ÇEK!",
+    Callback = function()
+        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
+            "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ", "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+Tab2:AddButton({
+    Name = "• 40 JJ ÇEK!",
+    Callback = function()
+        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
+            "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ",
+            "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK"}
+        for _, message in ipairs(messages) do
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            task.wait(2)
+        end
+    end
+})
+
+Tab2:AddButton({
+    Name = "• 45 JJ ÇEK!",
+    Callback = function()
+local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+        "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
+        "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ",
+        "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK",
+        "KIRK BİR", "KIRK İKİ", "KIRK ÜÇ", "KIRK DÖRT", "KIRK BEŞ"}
+    for _, message in ipairs(messages) do
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+        wait(2)
+       end
+    end
+})
+
+
+Tab2:AddButton({
+    Name = "• 50 JJ ÇEK!",
+    Callback = function()
+local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+        "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
+        "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ",
+        "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK",
+        "KIRK BİR", "KIRK İKİ", "KIRK ÜÇ", "KIRK DÖRT", "KIRK BEŞ", "KIRK ALTI", "KIRK YEDİ", "KIRK SEKİZ", "KIRK DOKUZ", "ELLİ"}
+    for _, message in ipairs(messages) do
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+        wait(2)
+       end
+    end
+})
+
+Tab2:AddButton({
+    Name = "• 100 JJ ÇEK!",
+    Callback = function()
+local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+        "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
+        "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ",
+        "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK",
+        "KIRK BİR", "KIRK İKİ", "KIRK ÜÇ", "KIRK DÖRT", "KIRK BEŞ", "KIRK ALTI", "KIRK YEDİ", "KIRK SEKİZ", "KIRK DOKUZ", "ELLİ",
+        "ELLİ BİR", "ELLİ İKİ", "ELLİ ÜÇ", "ELLİ DÖRT", "ELLİ BEŞ", "ELLİ ALTI", "ELLİ YEDİ", "ELLİ SEKİZ", "ELLİ DOKUZ", "ALTMIŞ", "ALTMIŞ BİR", "ALTMIŞ İKİ", "ALTMIŞ ÜÇ", "ALTMIŞ DÖRT", "ALTMIŞ BEŞ", 
+    "ALTMIŞ ALTI", "ALTMIŞ YEDİ", "ALTMIŞ SEKİZ", "ALTMIŞ DOKUZ", "YETMİŞ", "YETMİŞ BİR", 
+    "YETMİŞ İKİ", "YETMİŞ ÜÇ", "YETMİŞ DÖRT", "YETMİŞ BEŞ", "YETMİŞ ALTI", "YETMİŞ YEDİ", 
+    "YETMİŞ SEKİZ", "YETMİŞ DOKUZ", "SEKSEN", "SEKSEN BİR", "SEKSEN İKİ", "SEKSEN ÜÇ", "SEKSEN DÖRT", 
+    "SEKSEN BEŞ", "SEKSEN ALTI", "SEKSEN YEDİ", "SEKSEN SEKİZ", "SEKSEN DOKUZ", "DOKSAN", 
+    "DOKSAN BİR", "DOKSAN İKİ", "DOKSAN ÜÇ", "DOKSAN DÖRT", "DOKSAN BEŞ", "DOKSAN ALTI", "DOKSAN YEDİ", 
+    "DOKSAN SEKİZ", "DOKSAN DOKUZ", "YÜZ"}
+    for _, message in ipairs(messages) do
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+        wait(2)
+       end
+    end
+})
 
 -- Create a tab
 local Tab3 = Window:MakeTab({
@@ -93,21 +212,6 @@ local Tab3 = Window:MakeTab({
 local Section3 = Tab3:AddSection({
     Name = "- Grammer Jackler -"
 })
-
-
--- Add buttons to the tab
-Tab3:AddButton({
-    Name = "• 15 GJ ÇEK!",
-    Callback = function()
-        local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi.", "Sekiz.", "Dokuz.", "On.",
- "On bir.", "On iki.", "On üç.", "On dört.", "On beş."}
-        for _, message in ipairs(messages) do
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
-        end
-    end
-})
-
 
 -- Add buttons to the tab
 Tab3:AddButton({
@@ -251,10 +355,6 @@ local messages = {"Bir.", "İki.", "Üç.", "Dört.", "Beş.", "Altı.", "Yedi."
     end
 })
 
-
-
-
-
 -- Create a tab
 local Tab6 = Window:MakeTab({
     Name = "HJ",
@@ -265,30 +365,6 @@ local Tab6 = Window:MakeTab({
 -- Add a section to the tab
 local Section6 = Tab6:AddSection({
     Name = "- Hummer Jackler -"
-})
-
-
-Tab6:AddButton({
-    Name = "• 1 HJ ÇEK!",
-    Callback = function()
-        local messages = {"B", "İ", "R", "BİR"}
-        for _, message in ipairs(messages) do
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
-        end
-    end
-})
-
-
-Tab6:AddButton({
-    Name = "• 2 HJ ÇEK!",
-    Callback = function()
-        local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ"}
-        for _, message in ipairs(messages) do
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
-        end
-    end
 })
 
 Tab6:AddButton({
@@ -345,41 +421,6 @@ Tab6:AddButton({
         end
     end
 })
-
-Tab6:AddButton({
-    Name = "• 8 HJ ÇEK!",
-    Callback = function()
-        local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT", "B", "E", "Ş", "BEŞ", "A", "L", "T", "I", "ALTI", "Y", "E", "D", "İ", "YEDİ", "S", "E", "K", "İ", "Z", "SEKİZ"}
-        for _, message in ipairs(messages) do
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
-        end
-    end
-})
-
-Tab6:AddButton({
-    Name = "• 9 HJ ÇEK!",
-    Callback = function()
-        local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT", "B", "E", "Ş", "BEŞ", "A", "L", "T", "I", "ALTI", "Y", "E", "D", "İ", "YEDİ", "S", "E", "K", "İ", "Z", "SEKİZ", "D", "O", "K", "U", "Z", "DOKUZ"}
-        for _, message in ipairs(messages) do
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
-        end
-    end
-})
-
-Tab6:AddButton({
-    Name = "• 10 HJ ÇEK!",
-    Callback = function()
-        local messages = {"B", "İ", "R", "BİR", "İ", "K", "İ", "İKİ", "Ü", "Ç", "ÜÇ", "D", "Ö", "R", "T", "DÖRT", "B", "E", "Ş", "BEŞ", "A", "L", "T", "I", "ALTI", "Y", "E", "D", "İ", "YEDİ", "S", "E", "K", "İ", "Z", "SEKİZ", "D", "O", "K", "U", "Z", "DOKUZ", "O", "N", "ON"}
-        for _, message in ipairs(messages) do
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
-        end
-    end
-})
-
-
 
 -- Create Tab 3
 local Tab4 = Window:MakeTab({
@@ -461,7 +502,7 @@ Tab4:AddButton({
                 humanoidRootPart.CFrame = CFrame.new(destination)
             else
                 warn("Geçersiz konum: " .. tostring(locationName))
-            end
+   end
         end
 
         teleportTo("MetroDoor2") 
