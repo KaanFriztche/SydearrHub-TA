@@ -22,13 +22,13 @@ local Section1 = Tab1:AddSection({
 
 Tab1:AddParagraph("Sydearr Hub Sunar:", [[
  
-- Yapılan ilk TA GUI hilesidir.
+**- Yapılan ilk TA GUI hilesidir.**
  
-- Sunucumuza gelip GUI hakkında isteklerinizi belirtebilirsiniz.
+**- Sunucumuza gelip GUI hakkında isteklerinizi belirtebilirsiniz.**
  
 - Discord sunucumuzda mümkün olduğunca güncelleme isteyebilirsiniz ama güncelleme'nin ne hakkında olması gerektiğini bildirmeniz gerekir.
  
-- Teleport bölgeleri, siz yakalanmayın diye metro istasyonları olarak ayarlandı.
+- Teleport bölgeleri, sizin yakalanma ihtimalinizi en minimuma indirecek şekilde diye ayarlandı.
 ]])
 
 
