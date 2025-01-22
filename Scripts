@@ -86,6 +86,20 @@ local function sendMessages(messages, delay)
     end
 end
 
+
+-- Sıralı mesaj gönderme fonksiyonu
+local function sendMessages(messages, delay)
+    for _, message in ipairs(messages) do
+        local success, err = pcall(function()
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+        end)
+        if not success then
+            warn("Mesaj gönderilirken hata oluştu: " .. tostring(err))
+        end
+        task.wait(delay) -- Mesajlar arasındaki bekleme süresi
+    end
+end
+
 -- 20 JJ mesajları
 local jjMessages = {
     "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ",
@@ -99,10 +113,10 @@ local delayBetweenMessages = 2 -- Her mesaj arasında 2 saniye bekleme
 Tab2:AddButton({
     Name = "• 20 JJ ÇEK!",
     Callback = function()
+        print("20 JJ düğmesine basıldı!")
         sendMessages(jjMessages, delayBetweenMessages)
     end
 })
-
 
 
 Tab2:AddButton({
