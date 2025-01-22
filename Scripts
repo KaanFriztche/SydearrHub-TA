@@ -96,31 +96,58 @@ local jjMessages = {
     "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"
 }
 
--- Her mesaj arasındaki bekleme süresi
-local delayBetweenMessages = 2
+-- Mesaj gönderme fonksiyonu
+local function sendMessages()
+    for _, message in ipairs(jjMessages) do
+        local success, errorMessage = pcall(function()
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+        end)
+        if not success then
+            warn("Mesaj gönderilemedi: " .. tostring(errorMessage))
+        end
+        task.wait(2) -- Mesajlar arasında 2 saniye bekleme
+    end
+end
 
--- "20 JJ ÇEK!" butonu
+-- "20 JJ ÇEK!" butonu ekleme
 Tab2:AddButton({
     Name = "• 20 JJ ÇEK!",
     Callback = function()
-        print("20 JJ butonuna tıklandı!") -- Konsol kontrolü için
-        sendMessages(jjMessages, delayBetweenMessages)
+        print("20 JJ ÇEK butonuna basıldı!") -- Konsol için
+        sendMessages()
     end
 })
 
-
+-- "20 JJ ÇEK!" butonu ekleme
 Tab2:AddButton({
     Name = "• 30 JJ ÇEK!",
     Callback = function()
-        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
-            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
-            "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ"}
-        for _, message in ipairs(messages) do
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
-        end
+        print("20 JJ ÇEK butonuna basıldı!") -- Konsol için
+        sendMessages()
     end
 })
+-- 20 JJ mesajları
+local jjMessages = {
+    "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ",
+    "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+    "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
+    "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"
+}
+
+-- Mesaj gönderme fonksiyonu
+local function sendMessages()
+    for _, message in ipairs(jjMessages) do
+        local success, errorMessage = pcall(function()
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+        end)
+        if not success then
+            warn("Mesaj gönderilemedi: " .. tostring(errorMessage))
+        end
+        task.wait(2) -- Mesajlar arasında 2 saniye bekleme
+    end
+end
+
+
 
 
 
