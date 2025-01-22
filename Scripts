@@ -80,7 +80,8 @@ OrionLib:MakeNotification({
 
 local RunService = game:GetService("RunService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
+Name = "• 30 JJ ÇEK!",
+    Callback = function()
 local jjMessages = {
     "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ",
     "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
