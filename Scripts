@@ -78,25 +78,13 @@ OrionLib:MakeNotification({
     Time = 8
 })
 
--- Sıralı mesaj gönderme fonksiyonu
+-- Mesaj gönderme fonksiyonu
 local function sendMessages(messages, delay)
     for _, message in ipairs(messages) do
-        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-        task.wait(delay) -- Mesajlar arasındaki bekleme süresi
-    end
-end
-
-
--- Sıralı mesaj gönderme fonksiyonu
-local function sendMessages(messages, delay)
-    for _, message in ipairs(messages) do
-        local success, err = pcall(function()
+        pcall(function()
             game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
         end)
-        if not success then
-            warn("Mesaj gönderilirken hata oluştu: " .. tostring(err))
-        end
-        task.wait(delay) -- Mesajlar arasındaki bekleme süresi
+        task.wait(delay)
     end
 end
 
@@ -107,13 +95,15 @@ local jjMessages = {
     "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
     "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"
 }
-local delayBetweenMessages = 2 -- Her mesaj arasında 2 saniye bekleme
 
--- "20 JJ ÇEK!" düğmesini ekle
+-- Her mesaj arasındaki bekleme süresi
+local delayBetweenMessages = 2
+
+-- "20 JJ ÇEK!" butonu
 Tab2:AddButton({
     Name = "• 20 JJ ÇEK!",
     Callback = function()
-        print("20 JJ düğmesine basıldı!")
+        print("20 JJ butonuna tıklandı!") -- Konsol kontrolü için
         sendMessages(jjMessages, delayBetweenMessages)
     end
 })
