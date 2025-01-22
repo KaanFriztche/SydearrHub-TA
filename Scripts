@@ -83,8 +83,7 @@ Tab2:AddButton({
     Name = "• 20 JJ ÇEK!",
     Callback = function()
         -- Mesaj listesi ve gönderim fonksiyonu
-        local messages = {
-            "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ",
+        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ",
             "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
             "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
             "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"
@@ -98,6 +97,7 @@ Tab2:AddButton({
         end
     end
 })
+
 
 
 Tab2:AddButton({
