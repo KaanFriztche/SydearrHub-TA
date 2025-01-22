@@ -78,29 +78,30 @@ OrionLib:MakeNotification({
     Time = 8
 })
 
-Name = "• 30 JJ ÇEK!",
-    Callback = function()
+-- Sıralı mesaj gönderme fonksiyonu
+local function sendMessages(messages, delay)
+    for _, message in ipairs(messages) do
+        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+        task.wait(delay) -- Mesajlar arasındaki bekleme süresi
+    end
+end
+
+-- 20 JJ mesajları
 local jjMessages = {
     "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ",
     "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
     "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
     "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"
 }
+local delayBetweenMessages = 2 -- Her mesaj arasında 2 saniye bekleme
 
-local interval = 2 -- Mesajlar arasındaki bekleme süresi (saniye)
-local currentIndex = 1
-local lastTime = 0
-
--- RenderStepped döngüsü ile mesajları gönder
-RunService.RenderStepped:Connect(function(deltaTime)
-    lastTime = lastTime + deltaTime
-    if lastTime >= interval and currentIndex <= #jjMessages then
-        -- Mesajı gönder
-        ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(jjMessages[currentIndex], "All")
-        currentIndex = currentIndex + 1
-        lastTime = 0
+-- "20 JJ ÇEK!" düğmesini ekle
+Tab2:AddButton({
+    Name = "• 20 JJ ÇEK!",
+    Callback = function()
+        sendMessages(jjMessages, delayBetweenMessages)
     end
-end)
+})
 
 
 
