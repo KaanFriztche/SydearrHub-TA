@@ -223,8 +223,7 @@ local Section3 = Tab3:AddSection({
 
 
 
-
--- Sayıları Türkçe yazıya çevirme fonksiyonu
+-- Türkçe sayıları yazıya çeviren fonksiyon
 local function numberToTurkishText(number)
     local numbersInTurkish = {
         "Bir", "İki", "Üç", "Dört", "Beş",
@@ -241,20 +240,26 @@ local function numberToTurkishText(number)
     return numbersInTurkish[number] or tostring(number) -- Tablo dışında bir sayı gelirse olduğu gibi döner
 end
 
--- GJ mesajlarını gönderme fonksiyonu
+-- GJ mesajlarını gönderen ana fonksiyon
 local function sendGJMessages(count)
-    -- DefaultChatSystemChatEvents servisini kontrol et
-    local chatEvent = game:GetService("ReplicatedStorage"):FindFirstChild("DefaultChatSystemChatEvents")
+    -- `DefaultChatSystemChatEvents` kontrolü
+    local replicatedStorage = game:GetService("ReplicatedStorage")
+    local chatEvent = replicatedStorage:FindFirstChild("DefaultChatSystemChatEvents")
     if not chatEvent or not chatEvent:FindFirstChild("SayMessageRequest") then
-        warn("SayMessageRequest servisi bulunamadı! Mesaj gönderimi başarısız.")
+        warn("Mesaj gönderme servisi bulunamadı! Mesajlar gönderilemiyor.")
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = "Hata!",
+            Text = "Mesaj gönderilemedi, oyun izin vermiyor.",
+            Duration = 5
+        })
         return
     end
 
-    -- Mesajları gönder
+    -- Mesajları sırayla gönder
     for i = 1, count do
-        local message = numberToTurkishText(i) .. "." -- Mesajı oluştur
+        local message = numberToTurkishText(i) .. "." -- Mesaj formatı: "Bir.", "İki.", vb.
         local success, errorMessage = pcall(function()
-            chatEvent.SayMessageRequest:FireServer(message, "All")
+            chatEvent.SayMessageRequest:FireServer(message, "All") -- Mesaj gönderimi
         end)
 
         -- Hata kontrolü
@@ -267,39 +272,37 @@ local function sendGJMessages(count)
             })
         end
 
-        task.wait(2) -- Her mesaj arasında 2 saniye bekle
+        -- Her mesaj arasında bekleme süresi
+        task.wait(2)
     end
 end
 
--- 20 GJ ÇEK butonu
+-- GUI butonları
 Tab3:AddButton({
     Name = "• 20 GJ ÇEK!",
     Callback = function()
-        sendGJMessages(20)
+        sendGJMessages(20) -- 20 mesaj gönderir
     end
 })
 
--- 30 GJ ÇEK butonu
 Tab3:AddButton({
     Name = "• 30 GJ ÇEK!",
     Callback = function()
-        sendGJMessages(30)
+        sendGJMessages(30) -- 30 mesaj gönderir
     end
 })
 
--- 40 GJ ÇEK butonu
 Tab3:AddButton({
     Name = "• 40 GJ ÇEK!",
     Callback = function()
-        sendGJMessages(40)
+        sendGJMessages(40) -- 40 mesaj gönderir
     end
 })
 
--- 50 GJ ÇEK butonu
 Tab3:AddButton({
     Name = "• 50 GJ ÇEK!",
     Callback = function()
-        sendGJMessages(50)
+        sendGJMessages(50) -- 50 mesaj gönderir
     end
 })
 
