@@ -224,7 +224,7 @@ local Section3 = Tab3:AddSection({
 
 
 
-
+-- Sayıları Türkçe yazıya çevirme fonksiyonu
 local function numberToTurkishText(number)
     local numbersInTurkish = {
         "Bir", "İki", "Üç", "Dört", "Beş",
@@ -238,62 +238,68 @@ local function numberToTurkishText(number)
         "Kırk Bir", "Kırk İki", "Kırk Üç", "Kırk Dört", "Kırk Beş",
         "Kırk Altı", "Kırk Yedi", "Kırk Sekiz", "Kırk Dokuz", "Elli"
     }
-    return numbersInTurkish[number] or tostring(number) -- Eğer tablo dışında bir sayı gelirse, olduğu gibi döner
+    return numbersInTurkish[number] or tostring(number) -- Tablo dışında bir sayı gelirse olduğu gibi döner
 end
 
-
-
+-- GJ mesajlarını gönderme fonksiyonu
 local function sendGJMessages(count)
-    for i = 1, count do
-        -- Türkçe sayıya çevir ve nokta ekle
-        local message = numberToTurkishText(i) .. "."
+    -- DefaultChatSystemChatEvents servisini kontrol et
+    local chatEvent = game:GetService("ReplicatedStorage"):FindFirstChild("DefaultChatSystemChatEvents")
+    if not chatEvent or not chatEvent:FindFirstChild("SayMessageRequest") then
+        warn("SayMessageRequest servisi bulunamadı! Mesaj gönderimi başarısız.")
+        return
+    end
 
-        -- Mesaj gönderme işlemi
+    -- Mesajları gönder
+    for i = 1, count do
+        local message = numberToTurkishText(i) .. "." -- Mesajı oluştur
         local success, errorMessage = pcall(function()
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
+            chatEvent.SayMessageRequest:FireServer(message, "All")
         end)
 
         -- Hata kontrolü
         if not success then
-            warn("Mesaj gönderilemedi: " .. (errorMessage or "Bilinmeyen bir hata oluştu"))
+            warn("Mesaj gönderilemedi: " .. (errorMessage or "Bilinmeyen hata"))
             game:GetService("StarterGui"):SetCore("SendNotification", {
                 Title = "Hata!",
-                Text = "Mesaj gönderilemedi: " .. (errorMessage or "Bilinmeyen bir hata oluştu"),
+                Text = "Mesaj gönderilemedi: " .. (errorMessage or "Bilinmeyen hata"),
                 Duration = 5
             })
         end
 
-        -- Her mesaj arasında 2.1 saniye bekle
-        task.wait(2)
+        task.wait(2) -- Her mesaj arasında 2 saniye bekle
     end
 end
 
+-- 20 GJ ÇEK butonu
 Tab3:AddButton({
     Name = "• 20 GJ ÇEK!",
     Callback = function()
-        sendGJMessages(20) -- 20 mesaj gönderir
+        sendGJMessages(20)
     end
 })
 
+-- 30 GJ ÇEK butonu
 Tab3:AddButton({
     Name = "• 30 GJ ÇEK!",
     Callback = function()
-        sendGJMessages(30) -- 30 mesaj gönderir
+        sendGJMessages(30)
     end
 })
 
+-- 40 GJ ÇEK butonu
 Tab3:AddButton({
     Name = "• 40 GJ ÇEK!",
     Callback = function()
-        sendGJMessages(40) -- 40 mesaj gönderir
+        sendGJMessages(40)
     end
 })
 
-
+-- 50 GJ ÇEK butonu
 Tab3:AddButton({
     Name = "• 50 GJ ÇEK!",
     Callback = function()
-        sendGJMessages(50) -- 50 mesaj gönderir
+        sendGJMessages(50)
     end
 })
 
