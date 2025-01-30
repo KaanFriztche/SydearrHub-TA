@@ -78,9 +78,6 @@ OrionLib:MakeNotification({
     Time = 8
 })
 
-
-
-
 Tab2:AddButton({
     Name = "• 20 JJ ÇEK!",
     Callback = function()
@@ -88,19 +85,15 @@ Tab2:AddButton({
             "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", 
             "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
             "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
-            "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"
+            "ON ALTI", "ON YEDİ", "ON SEKMİZ", "ON DOKUZ", "YİRMİ"
         }
 
-        local StarterGui = game:GetService("StarterGui")
-
-        for _, msg in ipairs(messages) do
-            StarterGui:SetCore("ChatMakeSystemMessage", {
-                Text = msg,
-                Color = Color3.fromRGB(255, 255, 0), -- Sarı renk
-                Font = Enum.Font.SourceSansBold,
-                FontSize = Enum.FontSize.Size24
-            })
-            task.wait(1.5) -- Spam koruması için bekleme süresi
+        local chatEvent = game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):FindFirstChild("SayMessageRequest")
+        if chatEvent then
+            for _, msg in ipairs(messages) do
+                chatEvent:FireServer(msg, "All")
+                task.wait(2) -- 2 saniye bekleme süresi
+            end
         end
     end
 })
