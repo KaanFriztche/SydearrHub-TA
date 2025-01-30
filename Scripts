@@ -84,36 +84,23 @@ OrionLib:MakeNotification({
 Tab2:AddButton({
     Name = "• 20 JJ ÇEK!",
     Callback = function()
-        local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
-            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"}
-        
-        -- `DefaultChatSystemChatEvents` olup olmadığını kontrol edelim
-        local chatService = game:GetService("ReplicatedStorage"):FindFirstChild("DefaultChatSystemChatEvents")
-        
-        if chatService and chatService:FindFirstChild("SayMessageRequest") then
-            for _, message in ipairs(messages) do
-                local success, err = pcall(function()
-                    chatService.SayMessageRequest:FireServer(message, "All")
-                end)
+        local messages = {
+            "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", 
+            "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
+            "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"
+        }
 
-                if not success then
-                    warn("Mesaj gönderilemedi: " .. (err or "Bilinmeyen hata"))
-                    game:GetService("StarterGui"):SetCore("SendNotification", {
-                        Title = "Hata!",
-                        Text = "Mesaj gönderilemedi: " .. (err or "Bilinmeyen hata"),
-                        Duration = 5
-                    })
-                end
-                
-                task.wait(2) -- Mesajları aralıklı göndermek için bekleme süresi
-            end
-        else
-            warn("Chat servisi bulunamadı!")
-            game:GetService("StarterGui"):SetCore("SendNotification", {
-                Title = "Hata!",
-                Text = "Chat sistemi kapatılmış veya değiştirilmiş olabilir.",
-                Duration = 5
+        local StarterGui = game:GetService("StarterGui")
+
+        for _, msg in ipairs(messages) do
+            StarterGui:SetCore("ChatMakeSystemMessage", {
+                Text = msg,
+                Color = Color3.fromRGB(255, 255, 0), -- Sarı renk
+                Font = Enum.Font.SourceSansBold,
+                FontSize = Enum.FontSize.Size24
             })
+            task.wait(1.5) -- Spam koruması için bekleme süresi
         end
     end
 })
