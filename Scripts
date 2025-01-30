@@ -85,13 +85,12 @@ Tab2:AddButton({
             "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", 
             "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
             "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
-            "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"
+            "ON ALTI", "ON YEDİ", "ON SEKMİZ", "ON DOKUZ", "YİRMİ"
         }
 
-        local player = game.Players.LocalPlayer
         for _, msg in ipairs(messages) do
-            player:Chat(msg) -- Chat mesajını gönder
-            task.wait(1.5) -- Bekleme süresi
+            game:GetService("Players").LocalPlayer:Chat(msg)
+            task.wait(1.5) -- Spam koruması için bekleme süresi
         end
     end
 })
