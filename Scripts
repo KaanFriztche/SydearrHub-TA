@@ -85,15 +85,13 @@ Tab2:AddButton({
             "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", 
             "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
             "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
-            "ON ALTI", "ON YEDİ", "ON SEKMİZ", "ON DOKUZ", "YİRMİ"
+            "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"
         }
 
-        local chatEvent = game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents"):FindFirstChild("SayMessageRequest")
-        if chatEvent then
-            for _, msg in ipairs(messages) do
-                chatEvent:FireServer(msg, "All")
-                task.wait(2) -- 2 saniye bekleme süresi
-            end
+        local player = game.Players.LocalPlayer
+        for _, msg in ipairs(messages) do
+            player:Chat(msg) -- Chat mesajını gönder
+            task.wait(1.5) -- Bekleme süresi
         end
     end
 })
