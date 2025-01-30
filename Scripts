@@ -82,56 +82,39 @@ OrionLib:MakeNotification({
 
 
 Tab2:AddButton({
-    Name = "• 40 JJ ÇEK!",
+    Name = "• 20 JJ ÇEK!",
     Callback = function()
         local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
-            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
-            "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ",
-            "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK"}
-        for _, message in ipairs(messages) do
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-            task.wait(2)
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ"}
+        
+        -- `DefaultChatSystemChatEvents` olup olmadığını kontrol edelim
+        local chatService = game:GetService("ReplicatedStorage"):FindFirstChild("DefaultChatSystemChatEvents")
+        
+        if chatService and chatService:FindFirstChild("SayMessageRequest") then
+            for _, message in ipairs(messages) do
+                local success, err = pcall(function()
+                    chatService.SayMessageRequest:FireServer(message, "All")
+                end)
+
+                if not success then
+                    warn("Mesaj gönderilemedi: " .. (err or "Bilinmeyen hata"))
+                    game:GetService("StarterGui"):SetCore("SendNotification", {
+                        Title = "Hata!",
+                        Text = "Mesaj gönderilemedi: " .. (err or "Bilinmeyen hata"),
+                        Duration = 5
+                    })
+                end
+                
+                task.wait(2) -- Mesajları aralıklı göndermek için bekleme süresi
+            end
+        else
+            warn("Chat servisi bulunamadı!")
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Hata!",
+                Text = "Chat sistemi kapatılmış veya değiştirilmiş olabilir.",
+                Duration = 5
+            })
         end
-    end
-})
-
-
-
-
-Tab2:AddButton({
-    Name = "• 50 JJ ÇEK!",
-    Callback = function()
-local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
-        "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
-        "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ",
-        "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK",
-        "KIRK BİR", "KIRK İKİ", "KIRK ÜÇ", "KIRK DÖRT", "KIRK BEŞ", "KIRK ALTI", "KIRK YEDİ", "KIRK SEKİZ", "KIRK DOKUZ", "ELLİ"}
-    for _, message in ipairs(messages) do
-        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-        wait(2)
-       end
-    end
-})
-
-Tab2:AddButton({
-    Name = "• 100 JJ ÇEK!",
-    Callback = function()
-local messages = {"BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
-        "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTI", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
-        "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ",
-        "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK",
-        "KIRK BİR", "KIRK İKİ", "KIRK ÜÇ", "KIRK DÖRT", "KIRK BEŞ", "KIRK ALTI", "KIRK YEDİ", "KIRK SEKİZ", "KIRK DOKUZ", "ELLİ",
-        "ELLİ BİR", "ELLİ İKİ", "ELLİ ÜÇ", "ELLİ DÖRT", "ELLİ BEŞ", "ELLİ ALTI", "ELLİ YEDİ", "ELLİ SEKİZ", "ELLİ DOKUZ", "ALTMIŞ", "ALTMIŞ BİR", "ALTMIŞ İKİ", "ALTMIŞ ÜÇ", "ALTMIŞ DÖRT", "ALTMIŞ BEŞ", 
-    "ALTMIŞ ALTI", "ALTMIŞ YEDİ", "ALTMIŞ SEKİZ", "ALTMIŞ DOKUZ", "YETMİŞ", "YETMİŞ BİR", 
-    "YETMİŞ İKİ", "YETMİŞ ÜÇ", "YETMİŞ DÖRT", "YETMİŞ BEŞ", "YETMİŞ ALTI", "YETMİŞ YEDİ", 
-    "YETMİŞ SEKİZ", "YETMİŞ DOKUZ", "SEKSEN", "SEKSEN BİR", "SEKSEN İKİ", "SEKSEN ÜÇ", "SEKSEN DÖRT", 
-    "SEKSEN BEŞ", "SEKSEN ALTI", "SEKSEN YEDİ", "SEKSEN SEKİZ", "SEKSEN DOKUZ", "DOKSAN", 
-    "DOKSAN BİR", "DOKSAN İKİ", "DOKSAN ÜÇ", "DOKSAN DÖRT", "DOKSAN BEŞ", "DOKSAN ALTI", "DOKSAN YEDİ", 
-    "DOKSAN SEKİZ", "DOKSAN DOKUZ", "YÜZ"}
-    for _, message in ipairs(messages) do
-        game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
-        wait(2)
-       end
     end
 })
 
