@@ -573,9 +573,29 @@ Tab7:AddButton({
 })
 
 
+Tab7:AddButton({
+    Name = "• R6 Animations FE",
+    Callback = function()
+        local scriptUrl = "https://pastebin.com/raw/1p6xnBNf"
+        
+        -- HttpGet komutu ile scripti almak
+        local success, response = pcall(function()
+            return game:HttpGet(scriptUrl)
+        end)
+        
+        if success and response then
+            -- loadstring ile scripti çalıştırıyoruz
+            loadstring(response)()
+        else
+       warn("Script yüklenemedi!")
+        end
+    end
+})
+
+
 
 Tab7:AddButton({
-    Name = "• R6 Seraphic Blade Animation FE",
+    Name = "• R6 Seraphic And Touch Fling FE",
     Callback = function()
         local scriptUrl = "https://pastefy.app/59mJGQGe/raw"
         
