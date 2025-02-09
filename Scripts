@@ -28,7 +28,7 @@ Tab1:AddParagraph("Sydearr Hub Sunar:", [[
  
 - Discord sunucumuzda mümkün olduğunca güncelleme isteyebilirsiniz ama güncelleme'nin ne hakkında olması gerektiğini bildirmeniz gerekir.
  
-- Teleport bölgeleri, sizin yakalanma ihtimalinizi en minimuma indirecek şekilde diye ayarlandı.
+- Teleport bölgeleri, sizin yakalanma ihtimalinizi en minimuma indirecek şekilde metro bölgeleri olarak ayarlandı.
 ]])
 
 
@@ -510,7 +510,7 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
-    Name = "• Invisible",
+    Name = "• R6 Invisible FE",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/3Rnd9rHf"
         
@@ -532,7 +532,7 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
-    Name = "• R6 & R15 Hug",
+    Name = "• R6 & R15 Hug FE",
     Callback = function()
         local scriptUrl = "https://raw.githubusercontent.com/JSFKGBASDJKHIOAFHDGHIUODSGBJKLFGDKSB/fe/refs/heads/main/FEHUGG"
         
@@ -553,7 +553,7 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
-    Name = "• R6 SCP-096",
+    Name = "• R6 SCP-096 FE",
     Callback = function()
         local scriptUrl = "https://pastefy.app/YsJgITXR/raw"
         
@@ -573,7 +573,7 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
-    Name = "• R6 Fighter ( Punch & Defense)",
+    Name = "• R6 Fighter FE ( Punch & Defense)",
     Callback = function()
         local scriptUrl = "https://pastefy.app/wxVAgZpT/raw"
         
@@ -597,7 +597,7 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
-    Name = "• Jerk Off Tool (31 Çek)",
+    Name = "• R6 Jerk Off Tool FE",
     Callback = function()
         -- İnfinite Yield scriptini CodeX ile çalıştırmak için
         local scriptUrl = "https://pastefy.app/wa3v2vgm/raw"
@@ -619,7 +619,7 @@ Tab7:AddButton({
 
 
 Tab7:AddButton({
-    Name = "• Teleport Tool",
+    Name = "• R6 Teleport Tool FE",
     Callback = function()
         local scriptUrl = "https://pastebin.com/raw/j5RJ3PQZ"
         
