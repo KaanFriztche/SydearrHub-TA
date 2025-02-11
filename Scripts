@@ -123,13 +123,20 @@ Tab2:AddButton({
 
             local chatService = game:GetService("TextChatService")
             local channel = chatService.TextChannels.RBXGeneral
+
+            -- Humanoid'i tekrar bulmaya çalış
             local humanoid = character:FindFirstChildOfClass("Humanoid")
+            if not humanoid then
+                warn("Humanoid bulunamadı! Tekrar deneniyor...")
+                character.ChildAdded:Wait() -- Humanoid eklenmesini bekler
+                humanoid = character:FindFirstChildOfClass("Humanoid")
+            end
 
             if channel and humanoid then
                 for _, message in ipairs(messages) do
                     channel:SendAsync(message) -- Mesaj gönder
                     task.wait(0.5) -- 0.5 saniye bekle
-                    humanoid.Jump = true -- Zıplat
+                    humanoid.Jump = true -- **Kesin Zıplat**
                     task.wait(interval - 0.5) -- Kalan süreyi bekle
                 end
             else
