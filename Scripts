@@ -81,90 +81,6 @@ OrionLib:MakeNotification({
 
 
 
-Tab2:AddButton({
-    Name = "• 30. JJ ÇEK!",
-    Callback = function()
-        local player = game.Players.LocalPlayer
-        local backpack = player:FindFirstChild("Backpack")
-        local character = player.Character or player.CharacterAdded:Wait()
-
-        if not backpack or not character then
-            warn("Backpack veya Character bulunamadı!")
-            return
-        end
-
-        local toolName = "30. JJ Çek"
-
-        -- Eğer tool zaten varsa, tekrar oluşturma
-        for _, item in ipairs(backpack:GetChildren()) do
-            if item:IsA("Tool") and item.Name == toolName then
-                print("Tool zaten var, tekrar eklenmeyecek.")
-                return
-            end
-        end
-
-        -- Yeni Tool oluştur
-        local tool = Instance.new("Tool")
-        tool.Name = toolName
-        tool.RequiresHandle = false
-        tool.Parent = backpack
-
-        -- Mesaj Listesi
-        local messages = {
-            "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ",
-            "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
-            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
-            "ON ALTı", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
-            "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ",
-            "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ"
-        }
-
-        local interval = 2 -- Mesajlar arası toplam süre (saniye)
-        local isActive = false -- Tekrar kullanım engelleme
-
-        -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
-        local function forceJump()
-            local humanoid = character:FindFirstChildOfClass("Humanoid")
-            if humanoid then
-                humanoid:ChangeState(Enum.HumanoidStateType.Jumping) -- **Kesin zıplatır**
-            else
-                warn("Humanoid bulunamadı!")
-            end
-        end
-
-        -- **Mesaj ve Zıplama Fonksiyonu**
-        local function sendMessages()
-            if isActive then return end
-            isActive = true
-
-            local chatService = game:GetService("TextChatService")
-            local channel = chatService.TextChannels.RBXGeneral
-
-            if channel then
-                for i, message in ipairs(messages) do
-                    -- 20. mesaja gelindiğinde 10 saniye bekle
-                    if i == 20 then
-                        task.wait(10)
-                    end
-                    channel:SendAsync(message) -- Mesaj gönder
-                    task.wait(0.5) -- 0.5 saniye bekle
-                    forceJump() -- **Yeni zıplama fonksiyonunu çağır**
-                    task.wait(interval - 0.5) -- Kalan süreyi bekle
-                end
-            else
-                warn("Chat kanalı bulunamadı!")
-            end
-
-            isActive = false
-        end
-
-        -- **Tool Kullanıldığında Mesaj Gönderme**
-        tool.Activated:Connect(sendMessages)
-    end
-})
-
-
-
 
 
 
@@ -443,7 +359,7 @@ Tab2:AddButton({
             "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ"
         }
 
-        local interval = 2.7 -- Mesajlar arası toplam süre (saniye)
+        local interval = 2 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
@@ -811,6 +727,210 @@ Tab2:AddButton({
         tool.Activated:Connect(sendMessages)
     end
 })
+
+
+
+Tab2:AddButton({
+    Name = "• 100 JJ Tool",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local backpack = player:FindFirstChild("Backpack")
+        local character = player.Character or player.CharacterAdded:Wait()
+
+        if not backpack or not character then
+            warn("Backpack veya Character bulunamadı!")
+            return
+        end
+
+        local toolName = "100 JJ ÇEK!"
+
+        -- Eğer tool zaten varsa, tekrar oluşturma
+        for _, item in ipairs(backpack:GetChildren()) do
+            if item:IsA("Tool") and item.Name == toolName then
+                print("Tool zaten var, tekrar eklenmeyecek.")
+                return
+            end
+        end
+
+        -- Yeni Tool oluştur
+        local tool = Instance.new("Tool")
+        tool.Name = toolName
+        tool.RequiresHandle = false
+        tool.Parent = backpack
+
+        -- Mesaj Listesi
+        local messages = {
+            "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ",
+            "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ",
+            "ON ALTı", "ON YEDİ", "ON SEKİZ", "ON DOKUZ", "YİRMİ",
+            "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", "YİRMİ DÖRT", "YİRMİ BEŞ",
+            "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ",
+            "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", "OTUZ BEŞ",
+            "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK",
+            "KIRK BİR", "KIRK İKİ", "KIRK ÜÇ", "KIRK DÖRT", "KIRK BEŞ",
+            "KIRK ALTI", "KIRK YEDİ", "KIRK SEKİZ", "KIRK DOKUZ", "ELLİ",
+            "ELLİ BİR", "ELLİ İKİ", "ELLİ ÜÇ", "ELLİ DÖRT", "ELLİ BEŞ",
+            "ELLİ ALTI", "ELLİ YEDİ", "ELLİ SEKİZ", "ELLİ DOKUZ", "ALTMIŞ",
+            "ALTMIŞ BİR", "ALTMIŞ İKİ", "ALTMIŞ ÜÇ", "ALTMIŞ DÖRT", "ALTMIŞ BEŞ",
+            "ALTMIŞ ALTI", "ALTMIŞ YEDİ", "ALTMIŞ SEKİZ", "ALTMIŞ DOKUZ", "YETMİŞ",
+            "YETMİŞ BİR", "YETMİŞ İKİ", "YETMİŞ ÜÇ", "YETMİŞ DÖRT", "YETMİŞ BEŞ",
+            "YETMİŞ ALTI", "YETMİŞ YEDİ", "YETMİŞ SEKİZ", "YETMİŞ DOKUZ", "SEKSEN",
+            "SEKSEN BİR", "SEKSEN İKİ", "SEKSEN ÜÇ", "SEKSEN DÖRT", "SEKSEN BEŞ",
+            "SEKSEN ALTI", "SEKSEN YEDİ", "SEKSEN SEKİZ", "SEKSEN DOKUZ", "DOKSAN",
+            "DOKSAN BİR", "DOKSAN İKİ", "DOKSAN ÜÇ", "DOKSAN DÖRT", "DOKSAN BEŞ",
+            "DOKSAN ALTI", "DOKSAN YEDİ", "DOKSAN SEKİZ", "DOKSAN DOKUZ", "YÜZ"
+        }
+
+        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local isActive = false -- Tekrar kullanım engelleme
+
+        -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
+        local function forceJump()
+            local humanoid = character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                humanoid:ChangeState(Enum.HumanoidStateType.Jumping) -- **Kesin zıplatır**
+            else
+                warn("Humanoid bulunamadı!")
+            end
+        end
+
+        -- **Mesaj ve Zıplama Fonksiyonu**
+        local function sendMessages()
+            if isActive then return end
+            isActive = true
+
+            local chatService = game:GetService("TextChatService")
+            local channel = chatService.TextChannels.RBXGeneral
+
+            if channel then
+                for _, message in ipairs(messages) do
+                    channel:SendAsync(message) -- Mesaj gönder
+                    task.wait(0.5) -- 0.5 saniye bekle
+                    forceJump() -- **Yeni zıplama fonksiyonunu çağır**
+                    task.wait(interval - 0.5) -- Kalan süreyi bekle
+                end
+            else
+                warn("Chat kanalı bulunamadı!")
+            end
+
+            isActive = false
+        end
+
+        -- **Tool Kullanıldığında Mesaj Gönderme**
+        tool.Activated:Connect(sendMessages)
+    end
+})
+
+
+
+Tab2:AddButton({
+    Name = "• 200 JJ Tool",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local backpack = player:FindFirstChild("Backpack")
+        local character = player.Character or player.CharacterAdded:Wait()
+
+        if not backpack or not character then
+            warn("Backpack veya Character bulunamadı!")
+            return
+        end
+
+        local toolName = "200 JJ ÇEK!"
+
+        -- Eğer tool zaten varsa, tekrar oluşturma
+        for _, item in ipairs(backpack:GetChildren()) do
+            if item:IsA("Tool") and item.Name == toolName then
+                print("Tool zaten var, tekrar eklenmeyecek.")
+                return
+            end
+        end
+
+        -- Yeni Tool oluştur
+        local tool = Instance.new("Tool")
+        tool.Name = toolName
+        tool.RequiresHandle = false
+        tool.Parent = backpack
+
+        -- Mesaj Listesi (200'e kadar)
+        local messages = {
+            "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ", "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ", "ON ALTı", "ON YEDİ", 
+            "ON SEKİZ", "ON DOKUZ", "YİRMİ", "YİRMİ BİR", "YİRMİ İKİ", "YİRMİ ÜÇ", 
+            "YİRMİ DÖRT", "YİRMİ BEŞ", "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", 
+            "YİRMİ DOKUZ", "OTUZ", "OTUZ BİR", "OTUZ İKİ", "OTUZ ÜÇ", "OTUZ DÖRT", 
+            "OTUZ BEŞ", "OTUZ ALTI", "OTUZ YEDİ", "OTUZ SEKİZ", "OTUZ DOKUZ", "KIRK", 
+            "KIRK BİR", "KIRK İKİ", "KIRK ÜÇ", "KIRK DÖRT", "KIRK BEŞ", "KIRK ALTI", 
+            "KIRK YEDİ", "KIRK SEKİZ", "KIRK DOKUZ", "ELLİ", "ELLİ BİR", "ELLİ İKİ", 
+            "ELLİ ÜÇ", "ELLİ DÖRT", "ELLİ BEŞ", "ELLİ ALTI", "ELLİ YEDİ", "ELLİ SEKİZ", 
+            "ELLİ DOKUZ", "ALTMIŞ", "ALTMIŞ BİR", "ALTMIŞ İKİ", "ALTMIŞ ÜÇ", "ALTMIŞ DÖRT", 
+            "ALTMIŞ BEŞ", "ALTMIŞ ALTI", "ALTMIŞ YEDİ", "ALTMIŞ SEKİZ", "ALTMIŞ DOKUZ", 
+            "YETMİŞ", "YETMİŞ BİR", "YETMİŞ İKİ", "YETMİŞ ÜÇ", "YETMİŞ DÖRT", "YETMİŞ BEŞ", 
+            "YETMİŞ ALTI", "YETMİŞ YEDİ", "YETMİŞ SEKİZ", "YETMİŞ DOKUZ", "SEKSEN", 
+            "SEKSEN BİR", "SEKSEN İKİ", "SEKSEN ÜÇ", "SEKSEN DÖRT", "SEKSEN BEŞ", "SEKSEN ALTI", 
+            "SEKSEN YEDİ", "SEKSEN SEKİZ", "SEKSEN DOKUZ", "DOKSAN", "DOKSAN BİR", "DOKSAN İKİ", 
+            "DOKSAN ÜÇ", "DOKSAN DÖRT", "DOKSAN BEŞ", "DOKSAN ALTI", "DOKSAN YEDİ", "DOKSAN SEKİZ", 
+            "DOKSAN DOKUZ", "YÜZ", "YÜZ BİR", "YÜZ İKİ", "YÜZ ÜÇ", "YÜZ DÖRT", "YÜZ BEŞ", 
+            "YÜZ ALTI", "YÜZ YEDİ", "YÜZ SEKİZ", "YÜZ DOKUZ", "YÜZ ON", "YÜZ ON BİR", "YÜZ ON İKİ", 
+            "YÜZ ON ÜÇ", "YÜZ ON DÖRT", "YÜZ ON BEŞ", "YÜZ ON ALTı", "YÜZ ON YEDİ", "YÜZ ON SEKİZ", 
+            "YÜZ ON DOKUZ", "YÜZ YİRMİ", "YÜZ YİRMİ BİR", "YÜZ YİRMİ İKİ", "YÜZ YİRMİ ÜÇ", 
+            "YÜZ YİRMİ DÖRT", "YÜZ YİRMİ BEŞ", "YÜZ YİRMİ ALTI", "YÜZ YİRMİ YEDİ", "YÜZ YİRMİ SEKİZ", 
+            "YÜZ YİRMİ DOKUZ", "YÜZ OTUZ", "YÜZ OTUZ BİR", "YÜZ OTUZ İKİ", "YÜZ OTUZ ÜÇ", 
+            "YÜZ OTUZ DÖRT", "YÜZ OTUZ BEŞ", "YÜZ OTUZ ALTI", "YÜZ OTUZ YEDİ", "YÜZ OTUZ SEKİZ", 
+            "YÜZ OTUZ DOKUZ", "YÜZ KIRK", "YÜZ KIRK BİR", "YÜZ KIRK İKİ", "YÜZ KIRK ÜÇ", 
+            "YÜZ KIRK DÖRT", "YÜZ KIRK BEŞ", "YÜZ KIRK ALTI", "YÜZ KIRK YEDİ", "YÜZ KIRK SEKİZ", 
+            "YÜZ KIRK DOKUZ", "YÜZ ELLİ", "YÜZ ELLİ BİR", "YÜZ ELLİ İKİ", "YÜZ ELLİ ÜÇ", 
+            "YÜZ ELLİ DÖRT", "YÜZ ELLİ BEŞ", "YÜZ ELLİ ALTI", "YÜZ ELLİ YEDİ", "YÜZ ELLİ SEKİZ", 
+            "YÜZ ELLİ DOKUZ", "YÜZ ALTMIŞ", "YÜZ ALTMIŞ BİR", "YÜZ ALTMIŞ İKİ", "YÜZ ALTMIŞ ÜÇ", 
+            "YÜZ ALTMIŞ DÖRT", "YÜZ ALTMIŞ BEŞ", "YÜZ ALTMIŞ ALTI", "YÜZ ALTMIŞ YEDİ", "YÜZ ALTMIŞ SEKİZ", 
+            "YÜZ ALTMIŞ DOKUZ", "YÜZ YETMİŞ", "YÜZ YETMİŞ BİR", "YÜZ YETMİŞ İKİ", "YÜZ YETMİŞ ÜÇ", 
+            "YÜZ YETMİŞ DÖRT", "YÜZ YETMİŞ BEŞ", "YÜZ YETMİŞ ALTI", "YÜZ YETMİŞ YEDİ", "YÜZ YETMİŞ SEKİZ", 
+            "YÜZ YETMİŞ DOKUZ", "YÜZ SEKSEN", "YÜZ SEKSEN BİR", "YÜZ SEKSEN İKİ", "YÜZ SEKSEN ÜÇ", 
+            "YÜZ SEKSEN DÖRT", "YÜZ SEKSEN BEŞ", "YÜZ SEKSEN ALTI", "YÜZ SEKSEN YEDİ", "YÜZ SEKSEN SEKİZ", 
+            "YÜZ SEKSEN DOKUZ", "YÜZ DOKSAN", "YÜZ DOKSAN BİR", "YÜZ DOKSAN İKİ", "YÜZ DOKSAN ÜÇ", 
+            "YÜZ DOKSAN DÖRT", "YÜZ DOKSAN BEŞ", "YÜZ DOKSAN ALTI", "YÜZ DOKSAN YEDİ", "YÜZ DOKSAN SEKİZ", 
+            "YÜZ DOKSAN DOKUZ", "YÜZ YÜZ"
+        }
+
+        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local isActive = false -- Tekrar kullanım engelleme
+
+        -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
+        local function forceJump()
+            local humanoid = character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                humanoid:ChangeState(Enum.HumanoidStateType.Jumping) -- **Kesin zıplatır**
+            else
+                warn("Humanoid bulunamadı!")
+            end
+        end
+
+        -- **Mesaj ve Zıplama Fonksiyonu**
+        local function sendMessages()
+            if isActive then return end
+            isActive = true
+
+            local chatService = game:GetService("TextChatService")
+            local channel = chatService.TextChannels.RBXGeneral
+
+            if channel then
+                for _, message in ipairs(messages) do
+                    channel:SendAsync(message) -- Mesaj gönder
+                    task.wait(0.5) -- 0.5 saniye bekle
+                    forceJump() -- **Yeni zıplama fonksiyonunu çağır**
+                    task.wait(interval - 0.5) -- Kalan süreyi bekle
+                end
+            else
+                warn("Chat kanalı bulunamadı!")
+            end
+
+            isActive = false
+        end
+
+        -- **Tool Kullanıldığında Mesaj Gönderme**
+        tool.Activated:Connect(sendMessages)
+
+
 
 
 
