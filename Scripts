@@ -81,61 +81,65 @@ OrionLib:MakeNotification({
 Tab2:AddButton({
     Name = "• 15 JJ ÇEK!",
     Callback = function()
-        -- Envanterde aynı isimde tool olup olmadığını kontrol et
         local player = game.Players.LocalPlayer
-        local backpack = player.Backpack
+        local backpack = player:FindFirstChild("Backpack")
         local character = player.Character or player.CharacterAdded:Wait()
-
+        
+        if not backpack or not character then
+            warn("Backpack veya Character bulunamadı!")
+            return
+        end
+        
         local toolName = "15 JJ Çek"
-
-        -- Eğer tool zaten varsa, tekrar oluşturma
+        
+        -- Tool zaten varsa eklemeyi önle
         for _, item in ipairs(backpack:GetChildren()) do
             if item:IsA("Tool") and item.Name == toolName then
                 print("Tool zaten var, tekrar eklenmeyecek.")
                 return
             end
         end
-
-        -- Yeni Tool Oluşturma
+        
+        -- Yeni Tool oluştur
         local tool = Instance.new("Tool")
         tool.Name = toolName
         tool.RequiresHandle = false
         tool.Parent = backpack
-
+        
         -- Mesaj Listesi
         local messages = {
             "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ",
             "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
             "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ"
         }
-
-        local interval = 2 -- Mesajlar arası süre (saniye)
-        local isActive = false -- Durum değişkeni
-
-        -- Yeni Chat Sistemini Kullanarak Mesaj Gönderme Fonksiyonu
+        
+        local interval = 2 -- Mesajlar arası bekleme süresi
+        local isActive = false -- Tool'un tekrar tekrar kullanılmasını engelleyen değişken
+        
+        -- Mesaj ve Zıplama Fonksiyonu
         local function sendMessages()
-            if isActive then return end
+            if isActive then return end -- Aktifse tekrar çalıştırma
             isActive = true
-
-            local chatService = game:GetService("TextChatService")
-            local channel = chatService.TextChannels.RBXGeneral
+            
+            local chatEvent = game.ReplicatedStorage:FindFirstChild("DefaultChatSystemChatEvents")
             local humanoid = character:FindFirstChildOfClass("Humanoid")
-
-            if channel and humanoid then
+            
+            if chatEvent and chatEvent:FindFirstChild("SayMessageRequest") and humanoid then
                 for _, message in ipairs(messages) do
-                    channel:SendAsync(message)
-                    wait(0.5)
+                    pcall(function()
+                        chatEvent.SayMessageRequest:FireServer(message, "All")
+                    end)
                     humanoid.Jump = true
-                    wait(interval - 0.5)
+                    task.wait(interval)
                 end
             else
-                print("Chat kanalı veya Humanoid bulunamadı!")
+                warn("Chat sistemi veya Humanoid bulunamadı!")
             end
-
+            
             isActive = false
         end
-
-        -- Tool Kullanıldığında Çalıştır
+        
+        -- Tool Kullanıldığında Mesaj Gönderme
         tool.Activated:Connect(sendMessages)
     end
 })
