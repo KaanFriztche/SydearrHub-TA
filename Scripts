@@ -116,7 +116,17 @@ Tab2:AddButton({
         local interval = 2 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
-        -- TextChatService kullanarak mesaj gönderme fonksiyonu
+        -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
+        local function forceJump()
+            local humanoid = character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                humanoid:ChangeState(Enum.HumanoidStateType.Jumping) -- **Kesin zıplatır**
+            else
+                warn("Humanoid bulunamadı!")
+            end
+        end
+
+        -- **Mesaj ve Zıplama Fonksiyonu**
         local function sendMessages()
             if isActive then return end
             isActive = true
@@ -124,29 +134,21 @@ Tab2:AddButton({
             local chatService = game:GetService("TextChatService")
             local channel = chatService.TextChannels.RBXGeneral
 
-            -- Humanoid'i tekrar bulmaya çalış
-            local humanoid = character:FindFirstChildOfClass("Humanoid")
-            if not humanoid then
-                warn("Humanoid bulunamadı! Tekrar deneniyor...")
-                character.ChildAdded:Wait() -- Humanoid eklenmesini bekler
-                humanoid = character:FindFirstChildOfClass("Humanoid")
-            end
-
-            if channel and humanoid then
+            if channel then
                 for _, message in ipairs(messages) do
                     channel:SendAsync(message) -- Mesaj gönder
                     task.wait(0.5) -- 0.5 saniye bekle
-                    humanoid.Jump = true -- **Kesin Zıplat**
+                    forceJump() -- **Yeni zıplama fonksiyonunu çağır**
                     task.wait(interval - 0.5) -- Kalan süreyi bekle
                 end
             else
-                warn("Chat kanalı veya Humanoid bulunamadı!")
+                warn("Chat kanalı bulunamadı!")
             end
 
             isActive = false
         end
 
-        -- Tool Kullanıldığında Mesaj Gönderme
+        -- **Tool Kullanıldığında Mesaj Gönderme**
         tool.Activated:Connect(sendMessages)
     end
 })
