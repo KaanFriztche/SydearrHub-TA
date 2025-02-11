@@ -113,7 +113,7 @@ Tab2:AddButton({
             "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ"
         }
 
-        local interval = 2 -- Mesajlar arası bekleme süresi
+        local interval = 2 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- TextChatService kullanarak mesaj gönderme fonksiyonu
@@ -127,9 +127,10 @@ Tab2:AddButton({
 
             if channel and humanoid then
                 for _, message in ipairs(messages) do
-                    channel:SendAsync(message)
-                    humanoid.Jump = true
-                    task.wait(interval)
+                    channel:SendAsync(message) -- Mesaj gönder
+                    task.wait(0.5) -- 0.5 saniye bekle
+                    humanoid.Jump = true -- Zıplat
+                    task.wait(interval - 0.5) -- Kalan süreyi bekle
                 end
             else
                 warn("Chat kanalı veya Humanoid bulunamadı!")
