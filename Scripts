@@ -356,7 +356,7 @@ Tab2:AddButton({
             "YİRMİ ALTI", "YİRMİ YEDİ", "YİRMİ SEKİZ", "YİRMİ DOKUZ", "OTUZ"
         }
 
-        local interval = 2.3 -- Mesajlar arası toplam süre (saniye)
+        local interval = 2.7 -- Mesajlar arası toplam süre (saniye)
         local isActive = false -- Tekrar kullanım engelleme
 
         -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
