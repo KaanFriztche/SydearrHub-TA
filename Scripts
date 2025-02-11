@@ -80,77 +80,65 @@ OrionLib:MakeNotification({
 
 Tab2:AddButton({
     Name = "• 15 JJ ÇEK!",
--- Envanterde aynı isimde tool olup olmadığını kontrol et
-local player = game.Players.LocalPlayer
-local backpack = player.Backpack
-local character = player.Character or player.CharacterAdded:Wait()
+    Callback = function()
+        -- Envanterde aynı isimde tool olup olmadığını kontrol et
+        local player = game.Players.LocalPlayer
+        local backpack = player.Backpack
+        local character = player.Character or player.CharacterAdded:Wait()
 
-local toolName = "15 JJ Çek"
+        local toolName = "15 JJ Çek"
 
--- Eğer tool zaten varsa, tekrar oluşturma
-for _, item in ipairs(backpack:GetChildren()) do
-    if item:IsA("Tool") and item.Name == toolName then
-        print("Tool zaten var, tekrar eklenmeyecek.")
-        return
-    end
-end
-
--- Yeni Tool Oluşturma
-local tool = Instance.new("Tool")
-tool.Name = toolName
-tool.RequiresHandle = false
-tool.Parent = backpack
-
--- Mesaj Listesi
-local messages = {
-    "BİR",
-    "İKİ",
-    "ÜÇ",
-   "DÖRT",
-   "BEŞ",
-   "ALTI",
-   "YEDİ",
-   "SEKİZ",
-   "DOKUZ",
-   "ON",
-   "ON BİR",
-   "ON İKİ",
-   "ON ÜÇ",
-   "ON DÖRT",
-   "ON BEŞ"
-
-}
-
-local interval = 2 -- Mesajlar arası süre (saniye)
-
-local isActive = false -- Durum değişkeni, işlemin aktif olup olmadığını kontrol eder
-
--- Yeni Chat Sistemini Kullanarak Mesaj Gönderme Fonksiyonu
-local function sendMessages()
-    if isActive then return end -- Eğer işlem zaten aktifse, yeni tıklamayı engelle
-
-    isActive = true -- İşlem başladı
-
-    local chatService = game:GetService("TextChatService")
-    local channel = chatService.TextChannels.RBXGeneral -- Genel sohbet kanalı
-    local humanoid = character:FindFirstChildOfClass("Humanoid")
-
-    if channel and humanoid then
-        for _, message in ipairs(messages) do
-            channel:SendAsync(message) -- Mesajı gönder
-            wait(0.5) -- 0.5 saniye bekle
-            humanoid.Jump = true -- Karakteri zıplat
-            wait(interval - 0.5) -- Geri kalan süreyi bekle
+        -- Eğer tool zaten varsa, tekrar oluşturma
+        for _, item in ipairs(backpack:GetChildren()) do
+            if item:IsA("Tool") and item.Name == toolName then
+                print("Tool zaten var, tekrar eklenmeyecek.")
+                return
+            end
         end
-    else
-        print("Chat kanalı veya Humanoid bulunamadı! Oyun, yeni chat sistemini engelliyor olabilir.")
+
+        -- Yeni Tool Oluşturma
+        local tool = Instance.new("Tool")
+        tool.Name = toolName
+        tool.RequiresHandle = false
+        tool.Parent = backpack
+
+        -- Mesaj Listesi
+        local messages = {
+            "BİR", "İKİ", "ÜÇ", "DÖRT", "BEŞ",
+            "ALTI", "YEDİ", "SEKİZ", "DOKUZ", "ON",
+            "ON BİR", "ON İKİ", "ON ÜÇ", "ON DÖRT", "ON BEŞ"
+        }
+
+        local interval = 2 -- Mesajlar arası süre (saniye)
+        local isActive = false -- Durum değişkeni
+
+        -- Yeni Chat Sistemini Kullanarak Mesaj Gönderme Fonksiyonu
+        local function sendMessages()
+            if isActive then return end
+            isActive = true
+
+            local chatService = game:GetService("TextChatService")
+            local channel = chatService.TextChannels.RBXGeneral
+            local humanoid = character:FindFirstChildOfClass("Humanoid")
+
+            if channel and humanoid then
+                for _, message in ipairs(messages) do
+                    channel:SendAsync(message)
+                    wait(0.5)
+                    humanoid.Jump = true
+                    wait(interval - 0.5)
+                end
+            else
+                print("Chat kanalı veya Humanoid bulunamadı!")
+            end
+
+            isActive = false
+        end
+
+        -- Tool Kullanıldığında Çalıştır
+        tool.Activated:Connect(sendMessages)
     end
-
-    isActive = false -- İşlem tamamlandığında tekrar tıklanabilir hale gelir
-end
-
--- Tool Kullanıldığında Çalıştır
-tool.Activated:Connect(sendMessages)
+})
 
 
 
