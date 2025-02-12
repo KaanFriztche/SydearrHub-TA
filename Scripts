@@ -842,88 +842,78 @@ local Section3 = Tab3:AddSection({
 
 
 
+Tab3:AddButton({
+    Name = "• 15 GJ Tool",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local backpack = player:FindFirstChild("Backpack")
+        local character = player.Character or player.CharacterAdded:Wait()
 
-
--- Türkçe sayıları yazıya çeviren fonksiyon
-local function numberToTurkishText(number)
-    local numbersInTurkish = {
-        "Bir", "İki", "Üç", "Dört", "Beş",
-        "Altı", "Yedi", "Sekiz", "Dokuz", "On",
-        "On Bir", "On İki", "On Üç", "On Dört", "On Beş",
-        "On Altı", "On Yedi", "On Sekiz", "On Dokuz", "Yirmi",
-        "Yirmi Bir", "Yirmi İki", "Yirmi Üç", "Yirmi Dört", "Yirmi Beş",
-        "Yirmi Altı", "Yirmi Yedi", "Yirmi Sekiz", "Yirmi Dokuz", "Otuz",
-        "Otuz Bir", "Otuz İki", "Otuz Üç", "Otuz Dört", "Otuz Beş",
-        "Otuz Altı", "Otuz Yedi", "Otuz Sekiz", "Otuz Dokuz", "Kırk",
-        "Kırk Bir", "Kırk İki", "Kırk Üç", "Kırk Dört", "Kırk Beş",
-        "Kırk Altı", "Kırk Yedi", "Kırk Sekiz", "Kırk Dokuz", "Elli"
-    }
-    return numbersInTurkish[number] or tostring(number) -- Tablo dışında bir sayı gelirse olduğu gibi döner
-end
-
--- GJ mesajlarını gönderen ana fonksiyon
-local function sendGJMessages(count)
-    -- `DefaultChatSystemChatEvents` kontrolü
-    local replicatedStorage = game:GetService("ReplicatedStorage")
-    local chatEvent = replicatedStorage:FindFirstChild("DefaultChatSystemChatEvents")
-    if not chatEvent or not chatEvent:FindFirstChild("SayMessageRequest") then
-        warn("Mesaj gönderme servisi bulunamadı! Mesajlar gönderilemiyor.")
-        game:GetService("StarterGui"):SetCore("SendNotification", {
-            Title = "Hata!",
-            Text = "Mesaj gönderilemedi, oyun izin vermiyor.",
-            Duration = 5
-        })
-        return
-    end
-
-    -- Mesajları sırayla gönder
-    for i = 1, count do
-        local message = numberToTurkishText(i) .. "." -- Mesaj formatı: "Bir.", "İki.", vb.
-        local success, errorMessage = pcall(function()
-            chatEvent.SayMessageRequest:FireServer(message, "All") -- Mesaj gönderimi
-        end)
-
-        -- Hata kontrolü
-        if not success then
-            warn("Mesaj gönderilemedi: " .. (errorMessage or "Bilinmeyen hata"))
-            game:GetService("StarterGui"):SetCore("SendNotification", {
-                Title = "Hata!",
-                Text = "Mesaj gönderilemedi: " .. (errorMessage or "Bilinmeyen hata"),
-                Duration = 5
-            })
+        if not backpack or not character then
+            warn("Backpack veya Character bulunamadı!")
+            return
         end
 
-        -- Her mesaj arasında bekleme süresi
-        task.wait(2)
-    end
-end
+        local toolName = "15 GJ ÇEK!"
 
--- GUI butonları
-Tab3:AddButton({
-    Name = "• 20 GJ ÇEK!",
-    Callback = function()
-        sendGJMessages(20) -- 20 mesaj gönderir
-    end
-})
+        -- Eğer tool zaten varsa, tekrar oluşturma
+        for _, item in ipairs(backpack:GetChildren()) do
+            if item:IsA("Tool") and item.Name == toolName then
+                print("Tool zaten var, tekrar eklenmeyecek.")
+                return
+            end
+        end
 
-Tab3:AddButton({
-    Name = "• 30 GJ ÇEK!",
-    Callback = function()
-        sendGJMessages(30) -- 30 mesaj gönderir
-    end
-})
+        -- Yeni Tool oluştur
+        local tool = Instance.new("Tool")
+        tool.Name = toolName
+        tool.RequiresHandle = false
+        tool.Parent = backpack
 
-Tab3:AddButton({
-    Name = "• 40 GJ ÇEK!",
-    Callback = function()
-        sendGJMessages(40) -- 40 mesaj gönderir
-    end
-})
+        -- **Mesaj Listesi (1'den 100'e kadar)**
+        local messages = {
+            "Bir.", "İki.", "Üç.", "Dört.", "Beş.",
+            "Altı.", "Yedi.", "Sekiz.", "Dokuz.", "On.",
+            "On bir.", "On iki.", "On üç.", "On dört.", "On beş."
+        }
 
-Tab3:AddButton({
-    Name = "• 50 GJ ÇEK!",
-    Callback = function()
-        sendGJMessages(50) -- 50 mesaj gönderir
+        local interval = 2 -- Mesajlar arası toplam süre (saniye)
+        local isActive = false -- Tekrar kullanım engelleme
+
+        -- **Zıplama işlemini doğrudan karaktere bağlayan fonksiyon**
+        local function forceJump()
+            local humanoid = character:FindFirstChildOfClass("Humanoid")
+            if humanoid then
+                humanoid:ChangeState(Enum.HumanoidStateType.Jumping) -- **Kesin zıplatır**
+            else
+                warn("Humanoid bulunamadı!")
+            end
+        end
+
+        -- **Mesaj ve Zıplama Fonksiyonu**
+        local function sendMessages()
+            if isActive then return end
+            isActive = true
+
+            local chatService = game:GetService("TextChatService")
+            local channel = chatService.TextChannels.RBXGeneral
+
+            if channel then
+                for _, message in ipairs(messages) do
+                    channel:SendAsync(message) -- Mesaj gönder
+                    task.wait(0.5) -- 0.5 saniye bekle
+                    forceJump() -- **Yeni zıplama fonksiyonunu çağır**
+                    task.wait(interval - 0.5) -- Kalan süreyi bekle
+                end
+            else
+                warn("Chat kanalı bulunamadı!")
+            end
+
+            isActive = false
+        end
+
+        -- **Tool Kullanıldığında Mesaj Gönderme**
+        tool.Activated:Connect(sendMessages)
     end
 })
 
