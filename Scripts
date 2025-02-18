@@ -2,7 +2,7 @@ local player = game.Players.LocalPlayer
 local OrionLib = loadstring(game:HttpGet('https://raw.githubusercontent.com/KaanFriztche/SydearrHubLibrary/refs/heads/main/newfile.lua'))()
 
 local Window = OrionLib:MakeWindow({
-    Name = "Sydearr Hub - TA  v1.3",
+    Name = "Sydearr Hub - TA  V1.3",
     HidePremium = false,
     SaveConfig = true,
     ConfigFolder = "OrionTest"
